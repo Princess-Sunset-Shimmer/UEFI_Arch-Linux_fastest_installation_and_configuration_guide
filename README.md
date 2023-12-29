@@ -9,20 +9,28 @@ installation
 configuration
 # installation
 ## .Make bootable USB and Boot live environment
-1. goto [official download page](https://archlinux.org/download/) to download iso file
-2. check file SHA256
+- goto [official download page](https://archlinux.org/download/) to download iso file
+- check file SHA256
 ```asm
         sha256sum /directory/archlinux.iso
 ```
-3. use either GUI utility like `rufus` and `etcher` or use CLI `dd` to write your image file to your USB flash drive
+- use either GUI utility like `rufus` and `etcher` or use CLI `dd` to write your image file to your USB flash drive
 ```asm
         dd if=/directory/archlinux.iso of=/dev/usb_flash_drive_file_name status=progress
 ```
-4. boot your bootable USB flash drive you just made and select `*Arch Linux install medium (x86_64, UEFI)` then continue
+- boot your bootable USB you just made and select `*Arch Linux install medium (x86_64, UEFI)` then continue
 ## .connect insternet
-just wire in
+- just wire in
 ## .Partition, Format and mount the disk
+create new partition for drive
+- type `cfdisk` to open TUI partition editor then select `GPT`
+- then create partition on your drive as required as table below
 
+partition name | partition type | partition size | partition purpose
+:------------- | :------------- | :------------- | :----------------
+/dev/sda1      | EFI system     | `300M` minium  | for install kernel and bootloadser
+/dev/sda2      | Linux swap     | `512M` minium  | for swaping
+/dev/sda3      | Linux root     | rest of drive  | for install Arch
 ## .install arch linux
 ## .reboot
 # configuration

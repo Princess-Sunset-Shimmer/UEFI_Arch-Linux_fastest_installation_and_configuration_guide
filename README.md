@@ -4,7 +4,7 @@ installation
 - step 1: [connect internet](#connect-internet "goto connect-internet")
 - step 2: [Partition, Format and mount the disk](#Partition-Format-and-mount-the-disk "goto Partition-Format-and-mount-the-disk")
 - step 3: [install arch linux](#installation "goto install arch linux")
-- step 4: [reboot](#reboot "goto reboot")
+- step 4: [finish the installation](#reboot "goto finish-the-installation")
 
 configuration
 # installation
@@ -64,7 +64,7 @@ you can make [swap] partition as twice bigger as your total system memory size, 
         grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi/
         grub-mkconfig -o /boot/grub/grub/cfg
 ```
-## .reboot
+## .finish the installation
 - set root password
 ```c
         passwd

@@ -28,7 +28,7 @@ create new partition for drive
 
 partition name | partition type | partition size | partition purpose
 :------------- | :------------- | :------------- | :----------------
-/dev/sda1      | EFI system     | `300M` minium  | for install kernel and bootloadser
+/dev/sda1      | EFI system     | `300M` minium  | for install kernel and bootloader
 /dev/sda2      | Linux swap     | `512M` minium  | for swaping
 /dev/sda3      | Linux root     | rest of drive  | for install Arch
 ## .install arch linux

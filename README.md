@@ -31,6 +31,7 @@ partition name | partition type | partition size | partition purpose
 /dev/sda1      | EFI system     | `300M` minium  | for install kernel and bootloader
 /dev/sda2      | Linux swap     | `512M` minium  | for swaping
 /dev/sda3      | Linux root     | rest of drive  | for install Arch
+
 you can make [swap] partition as twice bigger as your total system memory size, use `cat /proc/meminfo | grep MemTotal` to check your total memory size
 ## .install arch linux
 ## .reboot

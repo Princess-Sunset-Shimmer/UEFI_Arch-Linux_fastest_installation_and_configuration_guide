@@ -11,11 +11,11 @@ configuration
 ## .Make bootable USB and Boot live environment
 - goto [official download page](https://archlinux.org/download/) to download iso file
 - check file SHA256
-```asm
+```c
         sha256sum /directory/archlinux.iso
 ```
 - use either GUI utility like `rufus` and `etcher` or use CLI `dd` to write your image file to your USB flash drive
-```asm
+```c
         dd if=/directory/archlinux.iso of=/dev/usb_flash_drive_file_name status=progress
 ```
 - boot your bootable USB you just made and select `*Arch Linux install medium (x86_64, UEFI)` then continue
@@ -35,13 +35,13 @@ partition name | partition type | partition size | partition purpose
 you can make [swap] partition as twice bigger as your total system memory size, use `cat /proc/meminfo | grep MemTotal` to check your total memory size
 
 - format partions
-```asm
+```c
         mkfs.fat -F 32 /dev/sda1
         mkswap /dev/sda2
         mkfs.ext4 /dev/sda3
 ```
 - mount partitions
-```asm
+```c
         mount --mkdir /dev/sda1 /mnt/boot/
         swapon /dev/sda2
         mount /dev/sda3 /mnt/

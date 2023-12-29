@@ -47,5 +47,14 @@ you can make [swap] partition as twice bigger as your total system memory size, 
         mount /dev/sda3 /mnt/
 ```
 ## .install arch linux
+- install essential packages
+```c
+        pacstrap -K /mnt/ base linux-zen linux-firmware networkmanager grub efibootmgr
+```
+- generate [fstab](https://wiki.archlinux.org/title/fstab) file
+```c
+        genfstab -U //mnt/ >> /mnt/etc/fstab
+```
+- install bootloader
 ## .reboot
 # configuration

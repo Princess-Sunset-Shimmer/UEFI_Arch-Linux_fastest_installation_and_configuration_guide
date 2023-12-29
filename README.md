@@ -33,6 +33,19 @@ partition name | partition type | partition size | partition purpose
 /dev/sda3      | Linux root     | rest of drive  | for install Arch
 
 you can make [swap] partition as twice bigger as your total system memory size, use `cat /proc/meminfo | grep MemTotal` to check your total memory size
+
+- format partions
+```asm
+        mkfs.fat -F 32 /dev/sda1
+        mkswap /dev/sda2
+        mkfs.ext4 /dev/sda3
+```
+- mount partitions
+```asm
+        mount --mkdir /dev/sda1 /mnt/boot/
+        swapon /dev/sda2
+        mount /dev/sda3 /mnt/
+```
 ## .install arch linux
 ## .reboot
 # configuration

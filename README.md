@@ -8,7 +8,7 @@ installation
 
 configuration
 # installation
-## .Make bootable USB and Boot live environment
+## . Make bootable USB and Boot live environment
 - goto [official download page](https://archlinux.org/download/) to download iso file
 - check file SHA256
 ```asm
@@ -19,9 +19,9 @@ configuration
         dd if=/directory/archlinux.iso of=/dev/usb_flash_drive_file_name status=progress
 ```
 - boot your bootable USB you just made and select `*Arch Linux install medium (x86_64, UEFI)` then continue
-## .connect internet
+## . connect internet
 - just wire in
-## .Partition, Format and mount the disk
+## . Partition, Format and mount the disk
 - create new partition for drive
     - type `cfdisk` to open TUI partition editor then select `GPT`
     - then create partition on your drive as required as table below
@@ -33,6 +33,6 @@ partition name | partition type | partition size | partition purpose
 /dev/sda3      | Linux root     | rest of drive  | for install Arch
 
 you can make [swap] partition as twice bigger as your total system memory size, use `cat /proc/meminfo | grep MemTotal` to check your total memory size
-## .install arch linux
-## .reboot
+## . install arch linux
+## . reboot
 # configuration

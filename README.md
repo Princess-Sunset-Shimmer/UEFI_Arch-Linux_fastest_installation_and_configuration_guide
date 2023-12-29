@@ -4,6 +4,7 @@ installation
 - step 2: [Partition, Format and mount the disk](#Partition,-Format-and-mount-the-disk "goto Partition,-Format-and-mount-the-disk")
 - step 3: [install arch linux](#installation "goto install arch linux")
 - step 4: [reboot](#reboot "goto reboot")
+
 configuration
 # installation
 ## Make bootable USB and Boot live environment

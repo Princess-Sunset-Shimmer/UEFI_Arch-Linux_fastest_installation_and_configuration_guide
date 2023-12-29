@@ -8,7 +8,7 @@ installation
 
 configuration
 # installation
-## Make bootable USB and Boot live environment
+## .Make bootable USB and Boot live environment
 1. goto [official download page](https://archlinux.org/download/) to download iso file
 2. check file SHA256
 ```asm
@@ -19,10 +19,10 @@ configuration
         dd if=/directory/archlinux.iso of=/dev/usb_flash_drive_file_name status=progress
 ```
 4. boot your bootable USB flash drive you just made and select `*Arch Linux install medium (x86_64, UEFI)` then continue
-## connect insternet
+## .connect insternet
 just wire in
-## Partition, Format and mount the disk
+## .Partition, Format and mount the disk
 
-## install arch linux
-## reboot
+## .install arch linux
+## .reboot
 # configuration

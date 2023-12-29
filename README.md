@@ -56,11 +56,9 @@ you can make [swap] partition as twice bigger as your total system memory size, 
         genfstab -U //mnt/ >> /mnt/etc/fstab
 ```
 - install bootloader
-    - change root
 ```c
         arch-chroot /mnt/
 ```
-    - install bootloader 
 ```c
         mount --mkdir /dev/sda1 /boot/efi/
         grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi/

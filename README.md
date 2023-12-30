@@ -2,7 +2,7 @@
 installation
 - step 0: [Make bootable USB and Boot live environment](#Make-bootable-USB-and-Boot-live-environment "goto Make-bootable-USB-and-Boot-live-environment")
 - step 1: [connect internet](#connect-internet "goto connect-internet")
-- step 2: [Create, Format and mount new partitions](#Create-Format-and-mount-new-partitions "goto Create-Format-and-mount-new-partitions")
+- step 2: [Create, Format and Mount new partitions](#Create-Format-and-Mount-new-partitions "goto Create-Format-and-Mount-new-partitions")
 - step 3: [install arch linux](#installation "goto install arch linux")
 - step 4: [finish the installation](#reboot "goto finish-the-installation")
 
@@ -21,7 +21,7 @@ configuration
 - boot your bootable USB you just made and select `*Arch Linux install medium (x86_64, UEFI)` then continue
 ## .connect internet
 - just wire in
-## .Create, Format and mount new partitions
+## .Create, Format and Mount new partitions
 - create new partition for drive
     - type `cfdisk` to open TUI partition editor then select `GPT`
     - then create partition on your drive as required as table below

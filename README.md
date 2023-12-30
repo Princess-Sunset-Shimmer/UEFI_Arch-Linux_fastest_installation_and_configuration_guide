@@ -51,13 +51,14 @@ you can make [swap] partition as twice bigger as your total system memory size, 
 ```c
         pacstrap -K /mnt/ base linux-zen linux-firmware networkmanager grub efibootmgr
 ```
+- - - -
 [base](https://archlinux.org/packages/core/any/base/) is minimal arch\
 [linux-zen](https://archlinux.org/packages/extra/x86_64/linux-zen/) is kernel\
 arch base + linux kernel = arch linux\
 you can omit [linux-firmware](https://archlinux.org/packages/core/any/linux-firmware/) if you install arch linux on virtualBox\
 you can omit [networkmanager](https://archlinux.org/packages/extra/x86_64/networkmanager/) if you don't want a workable network on your system at call\
 [grub](https://archlinux.org/packages/core/x86_64/grub/) and [efibootmgr](https://archlinux.org/packages/core/x86_64/efibootmgr/) for installing bootloader later
-
+- - - -
 - generate [fstab](https://wiki.archlinux.org/title/fstab) file
 ```c
         genfstab -U //mnt/ >> /mnt/etc/fstab

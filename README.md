@@ -14,7 +14,7 @@
 ```c
         dd if=/directory/archlinux.iso of=/dev/usb_flash_drive_file_name status=progress
 ```
-- boot your bootable USB you just made and select `*Arch Linux install medium (x86_64, UEFI)` then continue
+- boot your bootable USB you just made then select `*Arch Linux install medium (x86_64, UEFI)` and continue
 ## .connect internet
 - just wire in
 ## .Create, Format and Mount new partitions

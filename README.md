@@ -85,3 +85,8 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
 ```c
         systemctl enable fstrim.timer
 ```
+- add new unpriviliged user
+```c
+        useradd -m user_name
+        passwd user_name
+```

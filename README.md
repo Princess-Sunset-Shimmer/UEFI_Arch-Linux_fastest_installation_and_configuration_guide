@@ -81,7 +81,7 @@ you can omit [networkmanager](https://archlinux.org/packages/extra/x86_64/networ
 ```
 congratulation, minimal Arch Linux is successfully installed. you can login as root and configure your brand new Arch Linux now
 # configuration
-- turn trim for SSD
+- trim for SSD
 ```c
         systemctl enable fstrim.timer
 ```

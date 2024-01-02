@@ -90,3 +90,5 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
         useradd -m user_name
         passwd user_name
 ```
+- - - -
+Licence: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)

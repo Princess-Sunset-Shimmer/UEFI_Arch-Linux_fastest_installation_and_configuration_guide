@@ -100,5 +100,10 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
         pacman -Syu irqbalance
         systemctl enable irqbalance
 ```
+- turn off core dump
+```c
+        echo kernel.core_pattern=/dev/null >> /etc/sysctl.d/50-coredump.conf
+        sysctl -p /etc/sysctl.d/50-coredump.conf
+```
 - - - -
 Licence: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)

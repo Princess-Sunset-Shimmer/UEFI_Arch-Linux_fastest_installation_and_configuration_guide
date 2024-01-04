@@ -105,5 +105,10 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
         echo kernel.core_pattern=/dev/null >> /etc/sysctl.d/50-coredump.conf
         sysctl -p /etc/sysctl.d/50-coredump.conf
 ```
+- general purpose mouse
+```c
+        pacman -Syu gpm
+        systemctl enable gpm
+```
 - - - -
 Licence: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)

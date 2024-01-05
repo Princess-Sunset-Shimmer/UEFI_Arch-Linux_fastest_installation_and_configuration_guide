@@ -85,12 +85,17 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
 ```c
         systemctl enable fstrim.timer
 ```
+- abandon core dump
+```c
+        echo kernel.core_pattern=/dev/null >> /etc/sysctl.d/50-coredump.conf
+        sysctl -p /etc/sysctl.d/50-coredump.conf
+```
 - networkmanager
 ```
         systemctl enable NetworkManager
         nmtui
 ```
-- add new unpriviliged user
+- create unpriviliged user
 ```c
         useradd -m user_name
         passwd user_name
@@ -99,11 +104,6 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
 ```
         pacman -Syu irqbalance
         systemctl enable irqbalance
-```
-- turn off core dump
-```c
-        echo kernel.core_pattern=/dev/null >> /etc/sysctl.d/50-coredump.conf
-        sysctl -p /etc/sysctl.d/50-coredump.conf
 ```
 - general purpose mouse
 ```c

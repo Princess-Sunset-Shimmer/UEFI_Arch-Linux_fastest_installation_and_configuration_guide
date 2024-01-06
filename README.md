@@ -110,6 +110,6 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
         pacman -Syu gpm
         systemctl enable gpm
 ```
-- put your login ascii art in `/etc/issue`
+- put login ascii art in `/etc/issue`
 - - - -
 Licence: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)

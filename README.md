@@ -93,6 +93,7 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
 - networkmanager
 ```
         systemctl enable NetworkManager
+        systemctl restart NetworkManager
         nmtui
 ```
 - create unpriviliged user

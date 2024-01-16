@@ -58,7 +58,7 @@ you can omit [networkmanager](https://archlinux.org/packages/extra/x86_64/networ
 - - - -
 - generate [fstab](https://wiki.archlinux.org/title/fstab) file
 ```c
-        genfstab -U //mnt/ >> /mnt/etc/fstab
+        genfstab -U /mnt/ >> /mnt/etc/fstab
 ```
 - install bootloader
 ```c

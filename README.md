@@ -86,35 +86,35 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
 3. [performance](#performance "goto performance")
 
 ## basic setup
-- networkmanager
+- networ kmanager
 ```
         systemctl enable NetworkManager
         systemctl restart NetworkManager
         nmtui
-```
-- trim for SSD
-```c
-        systemctl enable fstrim.timer
-```
-- abandon core dump
-```c
-        echo kernel.core_pattern=/dev/null >> /etc/sysctl.d/50-coredump.conf
-        sysctl -p /etc/sysctl.d/50-coredump.conf
 ```
 - create unpriviliged user
 ```c
         useradd -m user_name
         passwd user_name
 ```
-- irqbalance
-```
-        pacman -Syu irqbalance
-        systemctl enable irqbalance
+- trim for SSD
+```c
+        systemctl enable fstrim.timer
 ```
 - general purpose mouse
 ```c
         pacman -Syu gpm
         systemctl enable gpm
+```
+- abandon core dump
+```c
+        echo kernel.core_pattern=/dev/null >> /etc/sysctl.d/50-coredump.conf
+        sysctl -p /etc/sysctl.d/50-coredump.conf
+```
+- irqbalance
+```
+        pacman -Syu irqbalance
+        systemctl enable irqbalance
 ```
 - put login ascii art in `/etc/issue`
 - - - -

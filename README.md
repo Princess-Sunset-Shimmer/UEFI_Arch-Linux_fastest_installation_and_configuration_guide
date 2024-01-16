@@ -60,7 +60,7 @@ you can omit [networkmanager](https://archlinux.org/packages/extra/x86_64/networ
 ```c
         genfstab -U /mnt/ >> /mnt/etc/fstab
 ```
-- install bootloader
+- install Bootloader
 ```c
         arch-chroot /mnt/
 ```
@@ -81,6 +81,17 @@ you can omit [networkmanager](https://archlinux.org/packages/extra/x86_64/networ
 ```
 congratulation, minimal Arch Linux is successfully installed. you can login as root and configure your brand new Arch Linux now
 # configuration
+1. [basic setup](#basic-setup "goto basic-setup")
+2. [appearance](#apperance "goto appearance")
+3. [performance](#performance "goto performance")
+
+## basic setup
+- networkmanager
+```
+        systemctl enable NetworkManager
+        systemctl restart NetworkManager
+        nmtui
+```
 - trim for SSD
 ```c
         systemctl enable fstrim.timer
@@ -89,12 +100,6 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
 ```c
         echo kernel.core_pattern=/dev/null >> /etc/sysctl.d/50-coredump.conf
         sysctl -p /etc/sysctl.d/50-coredump.conf
-```
-- networkmanager
-```
-        systemctl enable NetworkManager
-        systemctl restart NetworkManager
-        nmtui
 ```
 - create unpriviliged user
 ```c

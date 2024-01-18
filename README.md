@@ -108,7 +108,7 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
 ```
 - abandon core dump
 ```c
-        echo kernel.core_pattern=/dev/null >> /etc/sysctl.d/50-coredump.conf
+        echo "kernel.core_pattern=/dev/null" >> /etc/sysctl.d/50-coredump.conf
         sysctl -p /etc/sysctl.d/50-coredump.conf
 ```
 - irqbalance

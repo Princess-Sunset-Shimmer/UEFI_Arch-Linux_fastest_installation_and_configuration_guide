@@ -101,6 +101,15 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
 ```c
         systemctl enable fstrim.timer
 ```
+- set hostname
+```c
+        echo "your_new_hostname" > /etc/hostname
+```
+- generate [hblock](https://github.com/hectorm/hblock) file
+```c
+        pacman -Syu hblock
+        hblock
+```
 - general purpose mouse
 ```c
         pacman -Syu gpm

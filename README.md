@@ -110,6 +110,9 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
         pacman -Syu hblock
         hblock
 ```
+- - - -
+you can generate updated hblock file by run `hblock` again
+- - - -
 - general purpose mouse
 ```c
         pacman -Syu gpm

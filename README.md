@@ -113,6 +113,15 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
 - - - -
 you can generate updated hblock file by run `hblock` again
 - - - -
+- set console font
+```py
+        ls /usr/share/kbd/consolefonts          # print available bitmap font files
+        setfont font_name                       # test font temporary
+        echo "font_name" >> /etc/vconsole.conf  # set font persistenct
+```
+- - - -
+`pacman -Syu terminus-font` to install [terminus console font](https://terminus-font.sourceforge.net/)
+- - - -
 - general purpose mouse
 ```c
         pacman -Syu gpm

@@ -114,6 +114,23 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
 you can generate updated hblock file by run `hblock` again
 - - - -
 - generate [top](https://en.wikipedia.org/wiki/Top_(software)) command config file
+```py
+        top # open top task manager first
+```
+- - - -
+suggested configuration:\
+press key `T` twice to get solid CPU usage graph\
+press key `M` once to get Memory usage graph\
+press `Shift` + `V` to get COMMAND hierarchy view\
+press `Shift` + `M` to show tasks by Memory usage\
+press key `D` once to set refresh delay, lower to 0.1 or higher above 3.0\
+press key `B` once switch to hilight mode then\
+press key `X` once to hilight tasks sorting column\
+press key `Y` once to hilight running tasks row\
+press key `Z` once to turn on color view and\
+press `Shift` + `Z` to toggle your color favor\
+press `Shift` + `W` to generate config file for current user
+- - - -
 - set console font
 ```py
         ls /usr/share/kbd/consolefonts          # print available bitmap font files

@@ -113,6 +113,7 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
 - - - -
 you can generate updated hblock file by run `hblock` again
 - - - -
+- generate [top](https://en.wikipedia.org/wiki/Top_(software)) command config file
 - set console font
 ```py
         ls /usr/share/kbd/consolefonts          # print available bitmap font files

@@ -140,10 +140,10 @@ press `Shift` + `W` to generate config file for current user
 - - - -
 `pacman -Syu terminus-font` to install [terminus console font](https://terminus-font.sourceforge.net/)
 - - - -
-- general purpose mouse
+- use mouse in console
 ```c
-        pacman -Syu gpm
         systemctl enable gpm
+        systemctl start gpm
 ```
 - abandon core dump
 ```c

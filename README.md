@@ -127,7 +127,7 @@ net.ipv4.conf.all.secure_redirects=0
 net.ipv4.conf.default.secure_redirects=0
 net.ipv4.icmp_echo_ignore_all=1
 ```
-add above contents to your `/etc/sysctl.d/99-sysctl.conf` file
+add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
 ```c
         sysctl -p /etc/sysctl.d/99-sysctl.conf
 ```
@@ -146,8 +146,11 @@ add above contents to your `/etc/sysctl.d/99-sysctl.conf` file
 ```
 - abandon core dump
 ```c
-        echo "kernel.core_pattern=/dev/null" >> /etc/sysctl.d/50-coredump.conf
-        sysctl -p /etc/sysctl.d/50-coredump.conf
+        kernel.core_pattern=/dev/null"
+```
+add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
+```c
+        sysctl -p /etc/sysctl.d/99-sysctl.conf
 ```
 - generate [top](https://en.wikipedia.org/wiki/Top_(software)) command config file
 ```py

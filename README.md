@@ -88,6 +88,14 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
         systemctl restart NetworkManager
         nmtui
 ```
+- generate [hblock](https://github.com/hectorm/hblock) file
+```c
+        pacman -Syu hblock
+        hblock
+```
+- - - -
+you can generate updated hblock file by run `hblock` again
+- - - -
 - create unpriviliged user
 ```c
         useradd -m user_name
@@ -101,14 +109,6 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
 ```c
         echo "your_new_hostname" > /etc/hostname
 ```
-- generate [hblock](https://github.com/hectorm/hblock) file
-```c
-        pacman -Syu hblock
-        hblock
-```
-- - - -
-you can generate updated hblock file by run `hblock` again
-- - - -
 - generate [top](https://en.wikipedia.org/wiki/Top_(software)) command config file
 ```py
         top # open top task manager first

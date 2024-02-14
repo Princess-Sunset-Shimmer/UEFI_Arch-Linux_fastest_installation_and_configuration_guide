@@ -81,11 +81,7 @@ you can omit [networkmanager](https://archlinux.org/packages/extra/x86_64/networ
 ```
 congratulation, minimal Arch Linux is successfully installed. you can login as root and configure your brand new Arch Linux now
 # configuration
-1. [basic setup](#basic-setup "goto basic-setup")
-2. [appearance](#apperance "goto appearance")
-3. [performance](#performance "goto performance")
 
-## basic setup
 - networ kmanager
 ```
         systemctl enable NetworkManager

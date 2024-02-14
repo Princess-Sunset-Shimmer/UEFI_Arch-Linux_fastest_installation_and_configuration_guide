@@ -94,7 +94,7 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
         hblock
 ```
 - - - -
-you can generate updated hblock file by run `hblock` again
+you can update hblock file by run `hblock` again
 - - - -
 - set hostname
 ```c

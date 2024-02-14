@@ -109,6 +109,11 @@ you can generate updated hblock file by run `hblock` again
 ```c
         systemctl enable fstrim.timer
 ```
+- abandon core dump
+```c
+        echo "kernel.core_pattern=/dev/null" >> /etc/sysctl.d/50-coredump.conf
+        sysctl -p /etc/sysctl.d/50-coredump.conf
+```
 - generate [top](https://en.wikipedia.org/wiki/Top_(software)) command config file
 ```py
         top # open top task manager first
@@ -140,11 +145,6 @@ press `Shift` + `W` to generate config file for current user
 ```c
         systemctl enable gpm
         systemctl start gpm
-```
-- abandon core dump
-```c
-        echo "kernel.core_pattern=/dev/null" >> /etc/sysctl.d/50-coredump.conf
-        sysctl -p /etc/sysctl.d/50-coredump.conf
 ```
 - irqbalance
 ```

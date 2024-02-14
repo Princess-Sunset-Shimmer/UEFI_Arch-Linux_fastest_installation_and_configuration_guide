@@ -96,6 +96,10 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
 - - - -
 you can generate updated hblock file by run `hblock` again
 - - - -
+- set hostname
+```c
+        echo "your_new_hostname" > /etc/hostname
+```
 - create unpriviliged user
 ```c
         useradd -m user_name
@@ -104,10 +108,6 @@ you can generate updated hblock file by run `hblock` again
 - trim for SSD
 ```c
         systemctl enable fstrim.timer
-```
-- set hostname
-```c
-        echo "your_new_hostname" > /etc/hostname
 ```
 - generate [top](https://en.wikipedia.org/wiki/Top_(software)) command config file
 ```py

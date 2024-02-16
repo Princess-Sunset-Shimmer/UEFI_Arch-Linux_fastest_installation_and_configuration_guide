@@ -153,12 +153,12 @@ add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
         sysctl -p /etc/sysctl.d/99-sysctl.conf
 ```
 - improve Virtual Memory performance
-```c
+```bash
         vm.dirty_background_ratio=16
         vm.dirty_ratio=32
         vm.vfs_cache_pressure=32
 ```
-add above contents to your `/etc/sysctl.d/99-sysctl.conf`; then
+add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
 ```c
         sysctl -p /etc/sysctl.d/99-sysctl.conf
 ```

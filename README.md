@@ -152,9 +152,24 @@ add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
 ```c
         sysctl -p /etc/sysctl.d/99-sysctl.conf
 ```
+- improve Virtual Memory performance
+```c
+        vm.dirty_background_ratio=16
+        vm.dirty_ratio=32
+        vm.vfs_cache_pressure=32
+```
+add above contents to your `/etc/sysctl.d/99-sysctl.conf`; then
+```c
+        sysctl -p /etc/sysctl.d/99-sysctl.conf
+```
 - generate [top](https://en.wikipedia.org/wiki/Top_(software)) command config file
 ```py
         top # open top task manager first
+```
+- use mouse in console
+```c
+        systemctl enable gpm
+        systemctl start gpm
 ```
 - - - -
 suggested configuration:\
@@ -179,11 +194,6 @@ press `Shift` + `W` to generate config file for current user
 - - - -
 `pacman -Syu terminus-font` to install [terminus console font](https://terminus-font.sourceforge.net/)
 - - - -
-- use mouse in console
-```c
-        systemctl enable gpm
-        systemctl start gpm
-```
 - irqbalance
 ```
         pacman -Syu irqbalance

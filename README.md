@@ -97,7 +97,7 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
 you can update hblock file by run `hblock` again
 - - - -
 - improve network performance and security
-```bash
+```py
 net.core.netdev_max_backlog=16384
 net.core.somaxconn=8192
 net.core.default_qdisc=cake
@@ -153,7 +153,7 @@ add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
         sysctl -p /etc/sysctl.d/99-sysctl.conf
 ```
 - improve Virtual Memory performance
-```bash
+```py
         vm.dirty_background_ratio=16
         vm.dirty_ratio=32
         vm.vfs_cache_pressure=32

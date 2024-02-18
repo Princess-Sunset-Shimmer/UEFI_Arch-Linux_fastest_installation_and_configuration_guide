@@ -81,6 +81,10 @@ you can omit [networkmanager](https://archlinux.org/packages/extra/x86_64/networ
 ```
 congratulation, minimal Arch Linux is successfully installed. you can login as root and configure your brand new Arch Linux now
 # configuration
+- [basic setup](#basic-setup "goto basic-setup")
+- [network](#network "goto network")
+- [package manager](#package "goto package manager")
+## basic setup
 - set hostname
 ```c
         echo "your_new_hostname" > /etc/hostname
@@ -90,6 +94,7 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
         useradd -m user_name
         passwd user_name
 ```
+## network
 - network manager
 ```
         systemctl enable NetworkManager
@@ -139,6 +144,9 @@ add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
 ```c
         sysctl -p /etc/sysctl.d/99-sysctl.conf
 ```
+## package manager
+`/etc/pacman.conf`
+##
 - trim for SSD
 ```c
         systemctl enable fstrim.timer

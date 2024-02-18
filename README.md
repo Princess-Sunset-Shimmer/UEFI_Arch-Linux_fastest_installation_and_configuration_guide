@@ -56,7 +56,7 @@ you can omit [networkmanager](https://archlinux.org/packages/extra/x86_64/networ
 [amd-ucode](https://archlinux.org/packages/core/any/amd-ucode/) provides `AMD microcode`. instead use [intel-ucode](https://archlinux.org/packages/extra/any/intel-ucode/) if you use intel chip\
 [grub](https://archlinux.org/packages/core/x86_64/grub/) and [efibootmgr](https://archlinux.org/packages/core/x86_64/efibootmgr/) for installing Bootloader later
 - - - -
-- generate [fstab](https://wiki.archlinux.org/title/fstab) file
+- generate [fstab](https://wiki.archlinux.org/title/fstab) ( File System TABle ) file
 ```c
         genfstab -U /mnt/ >> /mnt/etc/fstab
 ```

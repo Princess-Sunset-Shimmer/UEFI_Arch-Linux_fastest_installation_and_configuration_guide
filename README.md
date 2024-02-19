@@ -150,7 +150,7 @@ uncomment `Color`\
 uncomment `ParrallelDownloads = 5` and change the number as you wish\
 add `ILoveCandy`
 ## improve booting performance
-edit line at `/etc/default/grub` file
+modify the `GRUB_CMDLINE_LINUX_DEFAULT` of `/etc/default/grub` file to
 ```bash
 GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=0"
 ```
@@ -165,12 +165,13 @@ then regenerate `grub.cfg` file
 ```
 - abandon core dump
 ```c
-        kernel.core_pattern=/dev/null"
+kernel.core_pattern=/dev/null
 ```
 add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
 ```c
         sysctl -p /etc/sysctl.d/99-sysctl.conf
 ```
+## improve memory performance
 - improve Virtual Memory performance
 ```py
 vm.dirty_background_ratio=16
@@ -180,6 +181,15 @@ vm.vfs_cache_pressure=32
 add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
 ```c
         sysctl -p /etc/sysctl.d/99-sysctl.conf
+```
+- turn on swap memory compression
+add `zswap.enabled=1` to `GRUB_CMDLINE_LINUX_DEFAULT`
+```bash
+GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=0 zswap.enabled=1"
+```
+then regenerate `grub.cfg` file
+```c
+        grub-mkconfig -o /boot/grub/grub.cfg
 ```
 ## 
 - generate [top](https://en.wikipedia.org/wiki/Top_(software)) command config file

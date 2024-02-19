@@ -182,7 +182,7 @@ add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
 ```c
         sysctl -p /etc/sysctl.d/99-sysctl.conf
 ```
-- turn on swap memory compression
+- turn on swap memory compression\
 add `zswap.enabled=1` to `GRUB_CMDLINE_LINUX_DEFAULT`
 ```bash
 GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=0 zswap.enabled=1"

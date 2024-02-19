@@ -173,9 +173,9 @@ add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
 ```
 - improve Virtual Memory performance
 ```py
-        vm.dirty_background_ratio=16
-        vm.dirty_ratio=32
-        vm.vfs_cache_pressure=32
+vm.dirty_background_ratio=16
+vm.dirty_ratio=32
+vm.vfs_cache_pressure=32
 ```
 add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
 ```c

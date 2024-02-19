@@ -148,7 +148,7 @@ add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
 edit `/etc/pacman.conf` file:\
 uncomment `Color`\
 uncomment `ParrallelDownloads = 5` and change the number as you wish\
-add `ILoveCandy`\
+add `ILoveCandy`
 ##
 - trim for SSD
 ```c

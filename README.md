@@ -192,15 +192,34 @@ then regenerate `grub.cfg` file
 ```c
         grub-mkconfig -o /boot/grub/grub.cfg
 ```
-## 
-- generate [top](https://en.wikipedia.org/wiki/Top_(software)) command config file
-```py
-        top # open top task manager first
+## improve CPU performance
+- irqbalance
 ```
+        pacman -Syu irqbalance
+        systemctl enable irqbalance
+```
+## make console more awesome and cooler
+- put login ascii art in `/etc/issue`
+```
+```
+- set console font
+```py
+        ls /usr/share/kbd/consolefonts          # print available bitmap font files
+        setfont font_name                       # test font temporary
+        echo "font_name" >> /etc/vconsole.conf  # set font persistenct
+```
+- - - -
+`pacman -Syu terminus-font` to install [terminus console font](https://terminus-font.sourceforge.net/)
+- - - -
 - use mouse in console
 ```c
         systemctl enable gpm
         systemctl start gpm
+```
+## other
+- generate [top](https://en.wikipedia.org/wiki/Top_(software)) command config file
+```py
+        top # open top task manager first
 ```
 - - - -
 suggested configuration:\
@@ -216,20 +235,5 @@ press key `Z` once to turn on color view and\
 press `Shift` + `Z` to toggle your color favor\
 press `Shift` + `W` to generate config file for current user
 - - - -
-- set console font
-```py
-        ls /usr/share/kbd/consolefonts          # print available bitmap font files
-        setfont font_name                       # test font temporary
-        echo "font_name" >> /etc/vconsole.conf  # set font persistenct
-```
-- - - -
-`pacman -Syu terminus-font` to install [terminus console font](https://terminus-font.sourceforge.net/)
-- - - -
-- irqbalance
-```
-        pacman -Syu irqbalance
-        systemctl enable irqbalance
-```
-- put login ascii art in `/etc/issue`
 - - - -
 Licence: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)

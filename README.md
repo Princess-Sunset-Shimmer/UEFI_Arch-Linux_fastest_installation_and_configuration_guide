@@ -67,7 +67,7 @@ you can omit [networkmanager](https://archlinux.org/packages/extra/x86_64/networ
 ```c
         mount --mkdir /dev/sda1 /boot/efi/
         grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi/
-        grub-mkconfig -o /boot/grub/grub/cfg
+        grub-mkconfig -o /boot/grub/grub.cfg
 ```
 ## .finish the installation
 - set root password
@@ -149,7 +149,16 @@ edit `/etc/pacman.conf` file:\
 uncomment `Color`\
 uncomment `ParrallelDownloads = 5` and change the number as you wish\
 add `ILoveCandy`
-##
+## improve booting performance
+edit line at `/etc/default/grub` file
+```bash
+GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=0"
+```
+then regenerate `grub.cfg` file
+```c
+        grub-mkconfig -o /boot/grub/grub.cfg
+```
+## improve storage performance
 - trim for SSD
 ```c
         systemctl enable fstrim.timer
@@ -172,6 +181,7 @@ add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
 ```c
         sysctl -p /etc/sysctl.d/99-sysctl.conf
 ```
+## 
 - generate [top](https://en.wikipedia.org/wiki/Top_(software)) command config file
 ```py
         top # open top task manager first

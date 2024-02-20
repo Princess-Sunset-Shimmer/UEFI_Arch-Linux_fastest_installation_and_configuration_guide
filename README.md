@@ -150,7 +150,9 @@ uncomment `Color`\
 uncomment `ParrallelDownloads = 5` and change the number as you wish\
 add `ILoveCandy`
 ## improve booting performance
-modify the `GRUB_CMDLINE_LINUX_DEFAULT` of `/etc/default/grub` file to
+open `/etc/default/grub` file, then\
+change the `GRUB_TIMEOUT` to `0`, and\
+modify the `GRUB_CMDLINE_LINUX_DEFAULT` to
 ```bash
 GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=0"
 ```

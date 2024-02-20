@@ -150,8 +150,8 @@ uncomment `Color`\
 uncomment `ParrallelDownloads = 5` and change the number as you wish\
 add `ILoveCandy`
 ## improve booting performance
-open `/etc/default/grub` file, then\
-change the `GRUB_TIMEOUT` to `0`, and\
+open `/etc/default/grub` file\
+change the `GRUB_TIMEOUT` to `0`\
 modify the `GRUB_CMDLINE_LINUX_DEFAULT` to
 ```bash
 GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=0"
@@ -186,7 +186,8 @@ add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
 ```
 - turn on swap memory compression
 
-add `zswap.enabled=1` to `GRUB_CMDLINE_LINUX_DEFAULT` of `/etc/default/grub` file
+open `/etc/default/grub` file\
+add `zswap.enabled=1` to `GRUB_CMDLINE_LINUX_DEFAULT`
 ```bash
 GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=0 zswap.enabled=1"
 ```
@@ -202,7 +203,8 @@ then regenerate `grub.cfg` file
 ```
 - turn off [meltdown spectre attack](https://meltdownattack.com/) mitigations off
 
-add `mitigations=off` to `GRUB_CMDLINE_LINUX_DEFAULT` of `/etc/default/grub` file
+open `/etc/default/grub` file\
+add `mitigations=off` to `GRUB_CMDLINE_LINUX_DEFAULT`
 ```bash
 GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=0 zswap.enabled=1 mitigations=off"
 ```

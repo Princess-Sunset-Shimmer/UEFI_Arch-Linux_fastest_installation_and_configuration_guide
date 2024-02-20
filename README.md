@@ -214,7 +214,7 @@ then regenerate `grub.cfg` file
 ```
 ## make console more awesome and cooler
 - put login ascii art in `/etc/issue`
-```
+```sh
 \e[1;34m⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⣤⣶⣶⣶⣾⣿⣿⣿⣿⣷⣶⣶⣶⣦⣤⣀⡀
 \e[1;36m⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣶⣿⣿⣿⣿⡿⠿⠿⠛⠛⠛⠛⠛⠛⠛⠻⠿⢿⣿⣿⣿⣷⣦⣄⡀
 \e[0;36m ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣾⣿⣿⣿⠿⠛⠉⠀⠀⠀⣀⣀⣤⣤⣤⣶⣦⣤⣤⣄⣀⡀⠙⠛⢿⣿⣿⣿⣦⣄

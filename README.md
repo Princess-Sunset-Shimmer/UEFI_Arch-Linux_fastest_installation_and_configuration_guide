@@ -84,7 +84,13 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
 - [basic setup](#basic-setup "goto basic-setup")
 - [network](#network "goto network")
 - [package manager](#package "goto package manager")
-## basic setup
+- [improve booting performance](#improve-booting-performance "goto improve-booting-performance")
+- [improve storage performance](#improve-storage-performance "goto improve-storage-performance")
+- [improve memory performance](#improve-memory-performance "goto improve-memory-performance")
+- [improve CPU performance](#improve-CPU-performance "goto improve-CPU-performance")
+- [make console more awesome and cooler](#make-console-more-awesome-and-cooler "goto make-console-more-awesome-and-cooler")
+- [other](#other "goto other")
+## .basic setup
 - set hostname
 ```c
         echo "your_new_hostname" > /etc/hostname
@@ -94,7 +100,7 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
         useradd -m user_name
         passwd user_name
 ```
-## network
+## .network
 - network manager
 ```
         systemctl enable NetworkManager
@@ -144,7 +150,7 @@ add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
 ```c
         sysctl -p /etc/sysctl.d/99-sysctl.conf
 ```
-## package manager
+## .package manager
 edit `/etc/pacman.conf` file:\
 uncomment `Color`\
 uncomment `ParrallelDownloads = 5` and change the number as you wish\
@@ -160,7 +166,7 @@ then regenerate `grub.cfg` file
 ```c
         grub-mkconfig -o /boot/grub/grub.cfg
 ```
-## improve storage performance
+## .improve storage performance
 - trim for SSD
 ```c
         systemctl enable fstrim.timer
@@ -173,7 +179,7 @@ add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
 ```c
         sysctl -p /etc/sysctl.d/99-sysctl.conf
 ```
-## improve memory performance
+## .improve memory performance
 - improve Virtual Memory performance
 ```py
 vm.dirty_background_ratio=16
@@ -195,7 +201,7 @@ then regenerate `grub.cfg` file
 ```c
         grub-mkconfig -o /boot/grub/grub.cfg
 ```
-## improve CPU performance
+## .improve CPU performance
 - irqbalance
 ```
         pacman -Syu irqbalance
@@ -212,7 +218,7 @@ then regenerate `grub.cfg` file
 ```c
         grub-mkconfig -o /boot/grub/grub.cfg
 ```
-## make console more awesome and cooler
+## .make console more awesome and cooler
 - put login text art in `/etc/issue`
 ```py
 \e[1;34m⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⣤⣶⣶⣶⣾⣿⣿⣿⣿⣷⣶⣶⣶⣦⣤⣀⡀
@@ -260,7 +266,7 @@ then regenerate `grub.cfg` file
         systemctl enable gpm
         systemctl start gpm
 ```
-## other
+## .other
 - generate [top](https://en.wikipedia.org/wiki/Top_(software)) command config file
 ```py
         top # open top task manager first

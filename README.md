@@ -83,7 +83,7 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
 # configuration
 - [basic setup](#basic-setup "goto basic-setup")
 - [network](#network "goto network")
-- [package manager](#package "goto package manager")
+- [PACkage MANager](#PACkage-MANager "goto PACkage-MANager")
 - [improve Booting performance](#improve-Booting-performance "goto improve-Booting-performance")
 - [improve Storage performance](#improve-Storage-performance "goto improve-Storage-performance")
 - [improve Memory performance](#improve-Memory-performance "goto improve-Memory-performance")

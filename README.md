@@ -150,7 +150,7 @@ add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
 ```c
         sysctl -p /etc/sysctl.d/99-sysctl.conf
 ```
-## .package manager
+## .PACkage MANager
 edit `/etc/pacman.conf` file:\
 uncomment `Color`\
 uncomment `ParrallelDownloads = 5` and change the number as you wish\

@@ -213,7 +213,7 @@ then regenerate `grub.cfg` file
         grub-mkconfig -o /boot/grub/grub.cfg
 ```
 ## make console more awesome and cooler
-- put login ascii art in `/etc/issue`
+- put login text art in `/etc/issue`
 ```py
 \e[1;34m⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⣤⣶⣶⣶⣾⣿⣿⣿⣿⣷⣶⣶⣶⣦⣤⣀⡀
 \e[1;36m⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣶⣿⣿⣿⣿⡿⠿⠿⠛⠛⠛⠛⠛⠛⠛⠻⠿⢿⣿⣿⣿⣷⣦⣄⡀

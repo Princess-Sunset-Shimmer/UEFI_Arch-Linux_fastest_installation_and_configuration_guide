@@ -84,9 +84,9 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
 - [basic setup](#basic-setup "goto basic-setup")
 - [network](#network "goto network")
 - [package manager](#package "goto package manager")
-- [improve booting performance](#improve-booting-performance "goto improve-booting-performance")
-- [improve storage performance](#improve-storage-performance "goto improve-storage-performance")
-- [improve memory performance](#improve-memory-performance "goto improve-memory-performance")
+- [improve Booting performance](#improve-Booting-performance "goto improve-Booting-performance")
+- [improve Storage performance](#improve-Storage-performance "goto improve-Storage-performance")
+- [improve Memory performance](#improve-Memory-performance "goto improve-Memory-performance")
 - [improve CPU performance](#improve-CPU-performance "goto improve-CPU-performance")
 - [make console more awesome and cooler](#make-console-more-awesome-and-cooler "goto make-console-more-awesome-and-cooler")
 - [other](#other "goto other")
@@ -155,7 +155,7 @@ edit `/etc/pacman.conf` file:\
 uncomment `Color`\
 uncomment `ParrallelDownloads = 5` and change the number as you wish\
 add `ILoveCandy`
-## improve booting performance
+## improve Booting performance
 open `/etc/default/grub` file\
 change the `GRUB_TIMEOUT` to `0`\
 modify the `GRUB_CMDLINE_LINUX_DEFAULT` to
@@ -166,7 +166,7 @@ then regenerate `grub.cfg` file
 ```c
         grub-mkconfig -o /boot/grub/grub.cfg
 ```
-## .improve storage performance
+## .improve Storage performance
 - trim for SSD
 ```c
         systemctl enable fstrim.timer
@@ -179,7 +179,7 @@ add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
 ```c
         sysctl -p /etc/sysctl.d/99-sysctl.conf
 ```
-## .improve memory performance
+## .improve Memory performance
 - improve Virtual Memory performance
 ```py
 vm.dirty_background_ratio=16
@@ -219,7 +219,7 @@ then regenerate `grub.cfg` file
         grub-mkconfig -o /boot/grub/grub.cfg
 ```
 ## .make console more awesome and cooler
-- put login text art in `/etc/issue`
+- put your login text art in `/etc/issue` file
 ```py
 \e[1;34m⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⣤⣶⣶⣶⣾⣿⣿⣿⣿⣷⣶⣶⣶⣦⣤⣀⡀
 \e[1;36m⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣶⣿⣿⣿⣿⡿⠿⠿⠛⠛⠛⠛⠛⠛⠛⠻⠿⢿⣿⣿⣿⣷⣦⣄⡀

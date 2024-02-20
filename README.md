@@ -43,7 +43,7 @@ use `grep MemTotal /proc/meminfo` to check your total memory size
         swapon /dev/sda2
         mount /dev/sda3 /mnt/
 ```
-## .install arch linux
+## .install /\rch linux
 - install essential packages
 ```c
         pacstrap -K /mnt/ base linux-zen linux-firmware networkmanager amd-ucode grub efibootmgr

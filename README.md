@@ -92,7 +92,7 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
 - [other](#other "goto other")
 ## .basic setup
 - set hostname
-```c
+```lua
         echo "your_new_hostname" > /etc/hostname
 ```
 - create unpriviliged user
@@ -172,7 +172,7 @@ then regenerate `grub.cfg` file
         systemctl enable fstrim.timer
 ```
 - abandon core dump
-```c
+```lua
 kernel.core_pattern=/dev/null
 ```
 add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then

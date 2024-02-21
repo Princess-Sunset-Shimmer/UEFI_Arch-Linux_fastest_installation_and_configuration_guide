@@ -159,7 +159,7 @@ add `ILoveCandy`
 open `/etc/default/grub` file\
 change the `GRUB_TIMEOUT` to `0`\
 modify the `GRUB_CMDLINE_LINUX_DEFAULT` to
-```bash
+```sh
 GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=0"
 ```
 then regenerate `grub.cfg` file
@@ -281,7 +281,7 @@ else
 fi
 ```
 - command alias
-```
+```sh
 alias ip='ip --color=auto'
 alias ls='ls --color=auto -al'
 alias diff='diff --color=auto'

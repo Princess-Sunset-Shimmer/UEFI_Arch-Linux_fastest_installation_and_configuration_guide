@@ -159,7 +159,7 @@ add `ILoveCandy`
 open `/etc/default/grub` file\
 change the `GRUB_TIMEOUT` to `0`\
 modify the `GRUB_CMDLINE_LINUX_DEFAULT` to
-```asm
+```lua
 GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=0"
 ```
 then regenerate `grub.cfg` file
@@ -181,7 +181,7 @@ add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
 ```
 ## .improve Memory performance
 - improve Virtual Memory performance
-```py
+```lua
 vm.dirty_background_ratio=16
 vm.dirty_ratio=32
 vm.vfs_cache_pressure=32
@@ -211,7 +211,7 @@ then regenerate `grub.cfg` file
 
 open `/etc/default/grub` file\
 add `mitigations=off` to `GRUB_CMDLINE_LINUX_DEFAULT`
-```bash
+```lua
 GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=0 zswap.enabled=1 mitigations=off"
 ```
 then regenerate `grub.cfg` file

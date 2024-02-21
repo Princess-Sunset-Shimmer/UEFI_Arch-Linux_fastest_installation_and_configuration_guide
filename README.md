@@ -116,7 +116,7 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
 you can update hblock file by run `hblock` again
 - - - -
 - improve network performance and security
-```py
+```lua
 net.core.netdev_max_backlog=16384
 net.core.somaxconn=8192
 net.core.default_qdisc=cake

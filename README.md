@@ -269,7 +269,7 @@ then regenerate `grub.cfg` file
 - make command prompt awesome
 
 open `/etc/bash.bashrc` file\
-change original command prompt configuration to
+change original `PS1` configuration to
 ```sh
 if $EUID -ne 0
 then
@@ -280,6 +280,28 @@ else
         ps0='\e[12C\e[1;33m|\\/|\n\e[12C\e[1;31m|  |\e[1;32;43m \h \e[0;31;40m\n\e[13C\\/\e[1;35m'
 fi
 ```
+- command alias
+```
+alias ip='ip --color=auto'
+alias ls='ls --color=auto -al'
+alias diff='diff --color=auto'
+alias grep='grep --color=auto'
+alias wget='wget -c'
+alias ps='ps -uf'
+alias lspci='lspci -tv'
+```
+add above alias to your `/etc/bash.bashrc` file
+- enhance bash tab completion
+```sh
+set show-all-if-unmodified on
+set show-all-if-ambiguous on
+set colored-stats On
+set visible-stats On
+set mark-symlinked-directories On
+set colored-completion-prefix On
+set menu-complete-display-prefix On
+```
+add above contents to your `/etc/inputrc` file
 ## .other
 - generate [top](https://en.wikipedia.org/wiki/Top_(software)) command config file
 ```py

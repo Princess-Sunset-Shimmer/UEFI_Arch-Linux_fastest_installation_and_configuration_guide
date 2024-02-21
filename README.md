@@ -159,7 +159,7 @@ add `ILoveCandy`
 open `/etc/default/grub` file\
 change the `GRUB_TIMEOUT` to `0`\
 modify the `GRUB_CMDLINE_LINUX_DEFAULT` to
-```sh
+```asm
 GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=0"
 ```
 then regenerate `grub.cfg` file
@@ -194,7 +194,7 @@ add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
 
 open `/etc/default/grub` file\
 add `zswap.enabled=1` to `GRUB_CMDLINE_LINUX_DEFAULT`
-```bash
+```lua
 GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=0 zswap.enabled=1"
 ```
 then regenerate `grub.cfg` file

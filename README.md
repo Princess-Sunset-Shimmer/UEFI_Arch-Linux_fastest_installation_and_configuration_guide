@@ -46,12 +46,13 @@ use `grep MemTotal /proc/meminfo` to check your total memory size
 ## .install /\rch linux
 - install essential packages
 ```c
-        pacstrap -K /mnt/ base linux-zen linux-firmware networkmanager amd-ucode grub efibootmgr
+        pacstrap -K /mnt/ base linux-zen linux-firmware sof-firmware networkmanager amd-ucode grub efibootmgr
 ```
 - - - -
 [base](https://archlinux.org/packages/core/any/base/) is minimal arch\
 [linux-zen](https://archlinux.org/packages/extra/x86_64/linux-zen/) is kernel. arch base + linux kernel = arch linux\
 you can omit [linux-firmware](https://archlinux.org/packages/core/any/linux-firmware/) if you install arch linux on `VirtualBox`\
+[sof-firmware](https://archlinux.org/packages/extra/x86_64/sof-firmware/) for newer some laptops to get working audio\
 you can omit [networkmanager](https://archlinux.org/packages/extra/x86_64/networkmanager/) if you only use `systemd [ o < ]` to configure network\
 [amd-ucode](https://archlinux.org/packages/core/any/amd-ucode/) provides `AMD microcode`. instead use [intel-ucode](https://archlinux.org/packages/extra/any/intel-ucode/) if you use intel chip\
 [grub](https://archlinux.org/packages/core/x86_64/grub/) and [efibootmgr](https://archlinux.org/packages/core/x86_64/efibootmgr/) for installing Bootloader later

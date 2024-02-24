@@ -67,7 +67,7 @@ by this step, you can install other packages such as vim, fastfetch, tmux, gcc a
         arch-chroot /mnt/
 ```
 ```c
-        mount --mkdir /dev/sda1 /boot/efi/
+        mount --mkdir /dev/your_drive_name1 /boot/efi/
         grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi/
         grub-mkconfig -o /boot/grub/grub.cfg
 ```

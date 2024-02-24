@@ -55,7 +55,8 @@ you can omit [linux-firmware](https://archlinux.org/packages/core/any/linux-firm
 [sof-firmware](https://archlinux.org/packages/extra/x86_64/sof-firmware/) for newer some laptops to get working audio\
 you can omit [networkmanager](https://archlinux.org/packages/extra/x86_64/networkmanager/) if you only use `systemd [ o < ]` to configure network\
 [amd-ucode](https://archlinux.org/packages/core/any/amd-ucode/) provides `AMD microcode`. instead use [intel-ucode](https://archlinux.org/packages/extra/any/intel-ucode/) if you use intel chip\
-[grub](https://archlinux.org/packages/core/x86_64/grub/) and [efibootmgr](https://archlinux.org/packages/core/x86_64/efibootmgr/) for installing Bootloader later
+[grub](https://archlinux.org/packages/core/x86_64/grub/) and [efibootmgr](https://archlinux.org/packages/core/x86_64/efibootmgr/) for installing Bootloader later\
+by this step, you can install other packages such as vim, tmux, gcc and whatever you need
 - - - -
 - generate [fstab](https://wiki.archlinux.org/title/fstab) ( File System TABle ) file
 ```c

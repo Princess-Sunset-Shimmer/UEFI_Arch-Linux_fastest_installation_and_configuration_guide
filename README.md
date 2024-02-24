@@ -22,26 +22,26 @@
     - use `cfdisk` to open TUI partition editor then select `GPT`
     - then create partition on your drive as required as table below
 
-partition name | partition type | partition size | partition purpose
-:------------- | :------------- | :------------- | :----------------
-/dev/sda1      | EFI system     | `300M` minium  | for kernel and bootloader
-/dev/sda2      | Linux swap     | `512M` minium  | for swaping
-/dev/sda3      | Linux root     | rest of drive  | for Arch
+| partition name        | partition type | partition size | partition purpose         |
+| :-------------------- | :------------- | :------------- | :------------------------ |
+| /dev/your_drive_name1 | EFI system     | `300M` minium  | for kernel and bootloader |
+| /dev/your_deive_name2 | Linux swap     | `512M` minium  | for swaping               |
+| /dev/your_drive_name3 | Linux root     | rest of drive  | for Arch                  |
 
 you can make [swap] partition as twice bigger as your total system memory size\
 use `grep MemTotal /proc/meminfo` to check your total memory size
 
 - format partions
 ```c
-        mkfs.fat -F 32 /dev/sda1
-        mkswap /dev/sda2
-        mkfs.ext4 /dev/sda3
+        mkfs.fat -F 32 /dev/your_drive_name1
+        mkswap /dev/your_drive_name2
+        mkfs.ext4 /dev/your_drive_name3
 ```
 - mount partitions
 ```c
-        mount --mkdir /dev/sda1 /mnt/boot/
-        swapon /dev/sda2
-        mount /dev/sda3 /mnt/
+        mount --mkdir /dev/your_drive_name1 /mnt/boot/
+        swapon /dev/your_drive_name2
+        mount /dev/your_drive_name3 /mnt/
 ```
 ## .install Arch linux
 - install essential packages

@@ -19,7 +19,7 @@
 - just wire in
 ## .Create, Format and Mount new partitions
 - create new partition for drive
-    - type `cfdisk` to open TUI partition editor then select `GPT`
+    - use `cfdisk` to open TUI partition editor then select `GPT`
     - then create partition on your drive as required as table below
 
 partition name | partition type | partition size | partition purpose

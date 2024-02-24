@@ -2,7 +2,7 @@
 - step 0: [Make bootable USB and Boot live environment](#Make-bootable-USB-and-Boot-live-environment "goto Make-bootable-USB-and-Boot-live-environment")
 - step 1: [connect internet](#connect-internet "goto connect-internet")
 - step 2: [Create, Format and Mount new partitions](#Create-Format-and-Mount-new-partitions "goto Create-Format-and-Mount-new-partitions")
-- step 3: [install /\rch linux](#install-/\rch-linux "goto install-/\rch-linux")
+- step 3: [install Arch linux](#install-Arch-linux "goto install-Arch-linux")
 - step 4: [finish the installation](#finish-the-installation "goto finish-the-installation")
 ## .Make bootable USB and Boot live environment
 - goto [official download page](https://archlinux.org/download/) to download iso file
@@ -43,7 +43,7 @@ use `grep MemTotal /proc/meminfo` to check your total memory size
         swapon /dev/sda2
         mount /dev/sda3 /mnt/
 ```
-## .install /\rch linux
+## .install Arch linux
 - install essential packages
 ```c
         pacstrap -K /mnt/ base linux-zen linux-firmware sof-firmware networkmanager amd-ucode grub efibootmgr

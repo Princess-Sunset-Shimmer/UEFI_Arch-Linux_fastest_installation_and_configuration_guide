@@ -2,7 +2,7 @@
 - step 0: [Make bootable USB and Boot live environment](#Make-bootable-USB-and-Boot-live-environment "goto Make-bootable-USB-and-Boot-live-environment")
 - step 1: [connect internet](#connect-internet "goto connect-internet")
 - step 2: [Create, Format and Mount new partitions](#Create-Format-and-Mount-new-partitions "goto Create-Format-and-Mount-new-partitions")
-- step 3: [install arch linux](#install-arch-linux "goto install-arch-linux")
+- step 3: [install /\rch linux](#install-/\rch-linux "goto install-/\rch-linux")
 - step 4: [finish the installation](#finish-the-installation "goto finish-the-installation")
 ## .Make bootable USB and Boot live environment
 - goto [official download page](https://archlinux.org/download/) to download iso file
@@ -49,8 +49,8 @@ use `grep MemTotal /proc/meminfo` to check your total memory size
         pacstrap -K /mnt/ base linux-zen linux-firmware sof-firmware networkmanager amd-ucode grub efibootmgr
 ```
 - - - -
-[base](https://archlinux.org/packages/core/any/base/) is minimal arch\
-[linux-zen](https://archlinux.org/packages/extra/x86_64/linux-zen/) is kernel. arch base + linux kernel = arch linux\
+[base](https://archlinux.org/packages/core/any/base/) is minimal Arch\
+[linux-zen](https://archlinux.org/packages/extra/x86_64/linux-zen/) is kernel. Arch base + linux kernel = Arch linux\
 you can omit [linux-firmware](https://archlinux.org/packages/core/any/linux-firmware/) if you install arch linux on `VirtualBox`\
 [sof-firmware](https://archlinux.org/packages/extra/x86_64/sof-firmware/) for newer some laptops to get working audio\
 you can omit [networkmanager](https://archlinux.org/packages/extra/x86_64/networkmanager/) if you only use `systemd [ o < ]` to configure network\

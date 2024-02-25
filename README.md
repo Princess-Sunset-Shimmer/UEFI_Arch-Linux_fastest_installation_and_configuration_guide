@@ -61,7 +61,7 @@ by this step, you can install other packages such as vim, fastfetch, tmux, gcc a
 - - - -
 - generate [fstab](https://wiki.archlinux.org/title/fstab) ( File System TABle ) file
 ```c
-        genfstab -U /mnt/ >> /mnt/etc/fstab
+        genfstab -U /mnt/ > /mnt/etc/fstab
 ```
 - install Bootloader
 ```c
@@ -96,7 +96,7 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
 ## .basic setup
 - set hostname
 ```lua
-        echo "your_new_hostname" > /etc/hostname
+        echo 'your_new_hostname' > /etc/hostname
 ```
 - create unpriviliged user
 ```c

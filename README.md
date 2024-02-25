@@ -159,8 +159,15 @@ uncomment `Color`\
 uncomment `ParrallelDownloads = 5` and change the number as you wish\
 add `ILoveCandy`
 ## improve Booting performance
+reboot then press `C` when `grub menu` show out to enter `grub console`\
+then `videoinfo` to print all supported resolutions for grub\
+remember the lowest supported resolution such example as `640x480`\
 open `/etc/default/grub` file\
-change `GRUB_TIMEOUT` to `0`
+change `GRUB_GFXMODE` to your supported lowest resolution
+```
+GRUB_GFXMODE=640x480
+```
+change `GRUB_TIMEOUT` to `0`\
 change `GRUB_TIMEOUT_STYLE` to `hidden`
 ```lua
 GRUB_TIMEOUT=0

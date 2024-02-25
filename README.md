@@ -161,9 +161,16 @@ add `ILoveCandy`
 ## improve Booting performance
 open `/etc/default/grub` file\
 change the `GRUB_TIMEOUT` to `0`\
+```lua
+GRUB_TIMEOUT=0
+```
 modify the `GRUB_CMDLINE_LINUX_DEFAULT` to
 ```lua
 GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=0"
+```
+delete `part_msdos` MBR modules in `GRUB_PRELOAD_MODULES` ( UEFI use GPT )
+```lua
+GRUB_PRELOAD_MODULES="part_gpt"
 ```
 then regenerate `grub.cfg` file
 ```c

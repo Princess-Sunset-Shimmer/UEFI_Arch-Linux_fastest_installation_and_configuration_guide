@@ -160,9 +160,11 @@ uncomment `ParrallelDownloads = 5` and change the number as you wish\
 add `ILoveCandy`
 ## improve Booting performance
 open `/etc/default/grub` file\
-change the `GRUB_TIMEOUT` to `0`\
+change `GRUB_TIMEOUT` to `0`
+change `GRUB_TIMEOUT_STYLE` to `hidden`
 ```lua
 GRUB_TIMEOUT=0
+GRUB_TIMEOUT_STYLE=hidden
 ```
 modify the `GRUB_CMDLINE_LINUX_DEFAULT` to
 ```lua

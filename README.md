@@ -123,6 +123,8 @@ you can update hblock file by run `hblock` again
 net.core.netdev_max_backlog=16384
 net.core.somaxconn=8192
 net.core.default_qdisc=cake
+net.core.rmem_default = 16777216
+net.core.rmem_max = 33554432
 net.ipv4.ip_local_port_range=30000 65535
 net.ipv4.udp_rmem_min=8192
 net.ipv4.udp_wmem_min=8192

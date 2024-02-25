@@ -19,6 +19,7 @@
 - just wire in
 ## .Create, Format and Mount new partitions
 - create new partition for drive
+    - use `lsblk` to print your drive name first, then
     - use `cfdisk` to open TUI partition editor then select `GPT`
     - then create partition on your drive as required as table below
 
@@ -285,12 +286,13 @@ fi
 - command alias
 ```sh
 alias ip='ip --color=auto'
-alias ls='ls --color=auto -al'
+alias ls='ls --color=always -al|sort'
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias wget='wget -c'
 alias ps='ps -uf'
 alias lspci='lspci -tv'
+alias dd='dd status=progress'
 ```
 add above alias to your `/etc/bash.bashrc` file
 - enhance bash tab completion

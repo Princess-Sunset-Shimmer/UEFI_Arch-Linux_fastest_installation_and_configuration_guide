@@ -1,0 +1,10 @@
+runtime! archlinux.vim
+:set number
+:set nowrap
+:set cursorline
+:set foldmethod=indent
+:set expandtab
+:set tabstop=4
+:set shiftwidth=4
+:set incsearch
+:set hlsearch

@@ -299,7 +299,7 @@ then regenerate `grub.cfg` file
 open `/etc/bash.bashrc` file\
 change original `PS1` configuration to
 ```sh
-if $EUID -ne 0
+if test $EUID -ne 0
 then
         PS1="\[\e[2B\e[4C\e[0;36;40m__\e[1;35;44m \u \e[0;36;40m\]\n   |__> \[\e[s\e[0;0H\e[0;34;47m <$(users|wc -w)> [\w]\e[K\e[u\e[0;36;40m\]"
         PS0='\e[12C\e[1;32m|\\/|\n\e[12C\e[1;36m|  |\e[1;32;44m \h \e[1;34;40m\n\e[13C\\/\e[1;35m'

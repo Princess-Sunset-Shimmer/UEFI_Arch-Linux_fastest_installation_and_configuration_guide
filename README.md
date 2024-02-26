@@ -162,7 +162,7 @@ add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
 ```
 ## .PACkage MANager
 edit `/etc/pacman.conf` file:\
-uncomment `Color`\
+uncomment `Color` xor insteadly add `alias pacman='pacman --color always'` to your `/etc/bash.bashrc` file\
 uncomment `ParrallelDownloads = 5` and change the number as you wish\
 add `ILoveCandy`
 ## improve Booting performance

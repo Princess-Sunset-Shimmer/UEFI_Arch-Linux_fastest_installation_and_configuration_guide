@@ -162,7 +162,7 @@ add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
 ```
 ## .PACkage MANager
 edit `/etc/pacman.conf` file:\
-uncomment `Color` xor insteadly add `alias pacman='pacman --color always'` to your `/etc/bash.bashrc` file\
+uncomment `Color` xor insteadly add `alias pacman='pacman --color=always'` to your `/etc/bash.bashrc` file\
 uncomment `ParrallelDownloads = 5` and change the number as you wish\
 add `ILoveCandy`
 ## improve Booting performance
@@ -171,7 +171,7 @@ then `videoinfo` to print all supported resolutions for grub\
 remember the lowest supported resolution such example as `640x480`\
 open `/etc/default/grub` file\
 change `GRUB_GFXMODE` to your supported lowest resolution
-```
+```lua
 GRUB_GFXMODE=640x480
 ```
 change `GRUB_TIMEOUT` to `0`
@@ -310,10 +310,11 @@ fi
 ```
 - command alias
 ```sh
-alias ip='ip --color=auto'
+alias ip='ip --color=always'
 alias ls='ls --color=always -al|sort'
-alias diff='diff --color=auto'
-alias grep='grep --color=auto'
+alias diff='diff --color=always'
+alias grep='grep --color=always'
+alias pacman='pacman --color=always'
 alias wget='wget -c'
 alias ps='ps -uf'
 alias lspci='lspci -tv'

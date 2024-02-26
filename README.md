@@ -311,7 +311,7 @@ fi
 - command alias
 ```sh
 alias ip='ip --color=always'
-alias ls='ls --color=always -al|sort'
+alias ls='ls --color=always -al'
 alias diff='diff --color=always'
 alias grep='grep --color=always'
 alias pacman='pacman --color=always'

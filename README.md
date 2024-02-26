@@ -174,10 +174,12 @@ change `GRUB_GFXMODE` to your supported lowest resolution
 ```
 GRUB_GFXMODE=640x480
 ```
-change `GRUB_TIMEOUT` to `0`\
-change `GRUB_TIMEOUT_STYLE` to `hidden`
+change `GRUB_TIMEOUT` to `0`
 ```lua
 GRUB_TIMEOUT=0
+```
+change `GRUB_TIMEOUT_STYLE` to `hidden`
+```lua
 GRUB_TIMEOUT_STYLE=hidden
 ```
 modify the `GRUB_CMDLINE_LINUX_DEFAULT` to

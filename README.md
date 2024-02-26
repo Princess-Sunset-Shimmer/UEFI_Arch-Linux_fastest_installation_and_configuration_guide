@@ -353,5 +353,18 @@ press key `Z` once to turn on color view and\
 press `Shift` + `Z` to toggle your color favor\
 press `Shift` + `W` to generate config file for current user
 - - - -
+- vim minimal configuration
+```lua
+:set number
+:set nowrap
+:set cursorline
+:set foldmethod=indent
+:set expandtab
+:set tabstop=4
+:set shiftwidth=4
+:set incsearch
+:set hlsearch
+```
+add above contents to your `/etc/vimrc` file
 - - - -
 Licence: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)

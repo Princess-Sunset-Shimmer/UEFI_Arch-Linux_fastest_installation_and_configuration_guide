@@ -284,7 +284,7 @@ then regenerate `grub.cfg` file
 ```py
         ls /usr/share/kbd/consolefonts          # print available bitmap font files
         setfont font_name                       # test font temporary
-        echo "font_name" >> /etc/vconsole.conf  # set font persistenct
+        echo 'font_name' >> /etc/vconsole.conf  # set font persistenct
 ```
 - - - -
 `pacman -Syu terminus-font` to install [terminus console font](https://terminus-font.sourceforge.net/)
@@ -308,19 +308,21 @@ else
         ps0='\e[12C\e[1;33m|\\/|\n\e[12C\e[1;31m|  |\e[1;32;43m \h \e[0;31;40m\n\e[13C\\/\e[1;35m'
 fi
 ```
+then `source /etc/bash.bashrc` to see the changes
 - command alias
 ```sh
-alias ip='ip --color=always'
 alias ls='ls --color=always -al'
-alias diff='diff --color=always'
+alias ip='ip --color=always'
 alias grep='grep --color=always'
+alias diff='diff --color=always'
 alias pacman='pacman --color=always'
 alias wget='wget -c'
+alias dd='dd status=progress'
 alias ps='ps -uf'
 alias lspci='lspci -tv'
-alias dd='dd status=progress'
 ```
-add above alias to your `/etc/bash.bashrc` file
+add above alias to your `/etc/bash.bashrc` file\
+then `source /etc/bash.bashrc` to see the changes
 - enhance bash tab completion
 ```sh
 set show-all-if-unmodified on

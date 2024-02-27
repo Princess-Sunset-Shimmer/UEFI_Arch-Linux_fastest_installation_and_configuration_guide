@@ -247,7 +247,13 @@ then regenerate `grub.cfg` file
         grub-mkconfig -o /boot/grub/grub.cfg
 ```
 ## .make console more awesome and cooler
-- put your login text art in `/etc/issue` file
+- login shell
+
+change your `/etc/issue` file contents to
+```asm
+\e[0;0H\e[0;30;35 <\l> [/\\rch Linux \r]\e[K\e[m
+```
+then you can put your login text art in `/etc/issue` file
 ```py
 \e[1;34m⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⣤⣶⣶⣶⣾⣿⣿⣿⣿⣷⣶⣶⣶⣦⣤⣀⡀
 \e[1;36m⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣶⣿⣿⣿⣿⡿⠿⠿⠛⠛⠛⠛⠛⠛⠛⠻⠿⢿⣿⣿⣿⣷⣦⣄⡀

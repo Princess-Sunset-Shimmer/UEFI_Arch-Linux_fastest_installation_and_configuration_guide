@@ -250,7 +250,7 @@ then regenerate `grub.cfg` file
 - login shell
 
 change your `/etc/issue` file contents to
-```asm
+```lua
 \e[0;0H\e[0;30;35 <\l> [/\\rch Linux \r]\e[K\e[m
 ```
 then you can put your login text art in `/etc/issue` file

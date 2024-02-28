@@ -40,9 +40,9 @@ use `grep MemTotal /proc/meminfo` to check your total memory size
 ```
 - mount partitions
 ```c
+        mount /dev/your_drive_name3 /mnt/
         mount --mkdir /dev/your_drive_name1 /mnt/boot/
         swapon /dev/your_drive_name2
-        mount /dev/your_drive_name3 /mnt/
 ```
 ## .install Arch linux
 - install essential packages

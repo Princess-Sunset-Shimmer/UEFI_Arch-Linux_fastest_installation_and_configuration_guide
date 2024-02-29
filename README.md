@@ -313,15 +313,18 @@ then you can append your login text art in `/etc/issue` file
         systemctl enable gpm
         systemctl start gpm
 ```
-- command alias
-
+- system wide bash configuration
 remove all user specific config bash file `~/.bashrc`
+then open `/etc/bash.bashrc` and only keep `[[ $- != *i* ]] && return`
+follow the configuration below
+- command alias
 ```sh
 alias ls='ls --color=always -al'
 alias ip='ip --color=always'
 alias grep='grep --color=always'
 alias diff='diff --color=always'
 alias pacman='pacman --color=always'
+alias rm='rm -f'
 alias wget='wget -c'
 alias dd='dd status=progress'
 alias ps='ps -uf'

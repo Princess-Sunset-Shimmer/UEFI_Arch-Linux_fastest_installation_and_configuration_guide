@@ -23,11 +23,11 @@
     - use `cfdisk` to open TUI partition editor then select `GPT`
     - then create partition on your drive as suggested as table below
 
-| partition name        | partition type | partition size | partition purpose         |
-| :-------------------- | :------------- | :------------- | :------------------------ |
-| /dev/your_drive_name1 | EFI system     | `300M` minium  | for kernel and bootloader |
-| /dev/your_deive_name2 | Linux swap     | `512M` minium  | for swaping               |
-| /dev/your_drive_name3 | Linux root     | rest of drive  | for Arch                  |
+| Partition             | Type           | Size           | Purpose                             |
+| :-------------------- | :------------- | :------------- | :---------------------------------- |
+| /dev/your_drive_name1 | EFI system     | `256M` minium  | for Kernel, Bootloader and Firmware |
+| /dev/your_deive_name2 | Linux Swap     | `512M` minium  | for Swaping                         |
+| /dev/your_drive_name3 | Linux Root     | rest of drive  | for Arch                            |
 
 you can make [swap] partition as twice bigger as your total system memory size\
 use `grep MemTotal /proc/meminfo` to check your total memory size

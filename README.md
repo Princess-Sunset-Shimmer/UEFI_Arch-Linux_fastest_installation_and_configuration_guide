@@ -21,7 +21,7 @@
 - create new partition for drive
     - use `lsblk` to print your drive name first, then
     - use `cfdisk` to open TUI partition editor then select `GPT`
-    - then create partition on your drive as required as table below
+    - then create partition on your drive as suggested as table below
 
 | partition name        | partition type | partition size | partition purpose         |
 | :-------------------- | :------------- | :------------- | :------------------------ |
@@ -44,6 +44,8 @@ use `grep MemTotal /proc/meminfo` to check your total memory size
         mount --mkdir /dev/your_drive_name1 /mnt/boot/
         swapon /dev/your_drive_name2
 ```
+the Order to mount your drive must obay the Hierarchy of File System\
+mount Root-partition first, then mount Sub-partition next, and so on
 ## .install Arch linux
 - install essential packages
 ```c

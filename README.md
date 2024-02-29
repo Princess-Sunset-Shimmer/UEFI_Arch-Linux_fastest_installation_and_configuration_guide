@@ -313,6 +313,22 @@ then you can append your login text art in `/etc/issue` file
         systemctl enable gpm
         systemctl start gpm
 ```
+- command alias
+
+remove all user specific config bash file `~/.bashrc`
+```sh
+alias ls='ls --color=always -al'
+alias ip='ip --color=always'
+alias grep='grep --color=always'
+alias diff='diff --color=always'
+alias pacman='pacman --color=always'
+alias wget='wget -c'
+alias dd='dd status=progress'
+alias ps='ps -uf'
+alias lspci='lspci -tv'
+```
+add above alias to your `/etc/bash.bashrc` file\
+then `source /etc/bash.bashrc` to see the changes
 - make command prompt awesome
 
 open `/etc/bash.bashrc` file\
@@ -328,20 +344,6 @@ else
         clear
 fi
 ```
-then `source /etc/bash.bashrc` to see the changes
-- command alias
-```sh
-alias ls='ls --color=always -al'
-alias ip='ip --color=always'
-alias grep='grep --color=always'
-alias diff='diff --color=always'
-alias pacman='pacman --color=always'
-alias wget='wget -c'
-alias dd='dd status=progress'
-alias ps='ps -uf'
-alias lspci='lspci -tv'
-```
-add above alias to your `/etc/bash.bashrc` file\
 then `source /etc/bash.bashrc` to see the changes
 - enhance bash tab completion
 ```sh

@@ -319,7 +319,7 @@ then open `/etc/bash.bashrc` and only keep `[[ $- != *i* ]] && return`
 follow the configuration below
 - command alias
 ```sh
-alias ls='ls --color=always -al'
+alias ls='ls --color=always -alh'
 alias ip='ip --color=always'
 alias grep='grep --color=always'
 alias diff='diff --color=always'

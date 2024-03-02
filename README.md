@@ -1,7 +1,7 @@
 # installation
 - step 0: [Make bootable USB and Boot live environment](#Make-bootable-USB-and-Boot-live-environment "goto Make-bootable-USB-and-Boot-live-environment")
-- step 1: [connect internet](#connect-internet "goto connect-internet")
-- step 2: [Create, Format and Mount new partitions](#Create-Format-and-Mount-new-partitions "goto Create-Format-and-Mount-new-partitions")
+- step 1: [Partition, Format, Mount and genfstab for your drive](#Partition,-Format,-Mount-and-genfstab-for-your-drive "goto Partition,-Format,-Mount-and-genfstab-for-your-drive")
+- step 2: [connect internet](#connect-internet "goto connect-internet")
 - step 3: [install Arch linux](#install-Arch-linux "goto install-Arch-linux")
 - step 4: [finish the installation](#finish-the-installation "goto finish-the-installation")
 ## .Make bootable USB and Boot live environment
@@ -15,19 +15,17 @@
         dd if=/directory/archlinux.iso of=/dev/usb_flash_drive_file_name status=progress
 ```
 - boot your built bootable USB then select `*Arch Linux install medium (x86_64, UEFI)`
-## .connect internet
-- just wire in
-## .Create, Format and Mount new partitions
+## .Partition, Format, Mount and genfstab for your drive
 - create new partition for drive
     - use `lsblk` to print your drive name first, then
     - use `cfdisk` to open TUI partition editor then select `GPT`
     - then create partition on your drive as suggested as table below
 
-| Partition             | Type           | Size           | Purpose                             |
-| :-------------------- | :------------- | :------------- | :---------------------------------- |
-| /dev/your_drive_name1 | EFI system     | `256M` minium  | for Kernel, Bootloader and Firmware |
-| /dev/your_deive_name2 | Linux Swap     | `512M` minium  | for Swaping                         |
-| /dev/your_drive_name3 | Linux Root     | rest of drive  | for Arch                            |
+| Partition             | Type           | Size           | Purpose                                  |
+| :-------------------- | :------------- | :------------- | :--------------------------------------- |
+| /dev/your_drive_name1 | EFI system     | `256M` minium  | for Kernel, Bootloader, EFI and Firmware |
+| /dev/your_deive_name2 | Linux Swap     | `512M` minium  | for Swaping                              |
+| /dev/your_drive_name3 | Linux Root     | rest of drive  | for whole /\rch base                     |
 
 you can make [swap] partition as twice bigger as your total system memory size\
 use `grep MemTotal /proc/meminfo` to check your total memory size
@@ -46,6 +44,13 @@ use `grep MemTotal /proc/meminfo` to check your total memory size
 ```
 the Order to mount your drive must obay the Hierarchy of File System\
 mount Root-partition first, then mount Sub-partition next, and so on
+- generate [fstab](https://wiki.archlinux.org/title/fstab) ( File System TABle ) file
+```c
+        mkdir /mnt/etc/
+        genfstab -U /mnt/ > /mnt/etc/fstab
+```
+## .connect internet
+Just Wire In
 ## .install Arch linux
 - install essential packages
 ```c
@@ -61,10 +66,6 @@ you can omit [networkmanager](https://archlinux.org/packages/extra/x86_64/networ
 [grub](https://archlinux.org/packages/core/x86_64/grub/) and [efibootmgr](https://archlinux.org/packages/core/x86_64/efibootmgr/) for installing Bootloader later\
 by this step, you can install other packages such as vim, tmux, gcc, cmatrix, fastfetch, wget, rtorrent, elinks, cmus and whatever you need
 - - - -
-- generate [fstab](https://wiki.archlinux.org/title/fstab) ( File System TABle ) file
-```c
-        genfstab -U /mnt/ > /mnt/etc/fstab
-```
 - install Bootloader
 ```c
         arch-chroot /mnt/

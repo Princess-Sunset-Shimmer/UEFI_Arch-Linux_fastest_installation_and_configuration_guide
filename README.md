@@ -319,7 +319,6 @@ then open `/etc/bash.bashrc` and only keep `[[ $- != *i* ]] && return`
 follow the configuration below
 - command alias
 ```sh
-alias ls='ls --color=always -alh'
 alias ip='ip --color=always'
 alias grep='grep --color=always'
 alias diff='diff --color=always'
@@ -329,6 +328,18 @@ alias wget='wget -c'
 alias dd='dd status=progress'
 alias ps='ps -uf'
 alias lspci='lspci -tv'
+
+ls() {
+        command ls --color=always -alh $@ | sort | GREP_COLORS='ms=01;34' grep '>\|-\|/\|' | grep ':\|\.\|root\|total\|'
+}
+
+file() {
+        command file $@ | grep '/\|-\|+\|' | GREP_COLORS='ms=01;34' grep ':\|\.\|#\|)\|(\|'
+}
+
+lsblk() {
+        command lsblk $@ | GREP_COLORS='ms=01;34' grep 'NAME\|SIZE\|SWAP\|\.\|:\|' | grep '/\|'
+}
 ```
 add above alias to your `/etc/bash.bashrc` file\
 then `source /etc/bash.bashrc` to see the changes

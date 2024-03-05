@@ -333,7 +333,7 @@ ls() {
 }
 
 file() {
-        command file $@ | grep '/\|-\|+\|' | GREP_COLORS='ms=01;34' grep ':\|\.\|#\|)\|(\|_\|'
+        command file $@ | grep '/\|-\|+\|' | GREP_COLORS='ms=01;34' grep ':\|\.\|,\|#\|)\|(\|_\|'
 }
 
 lsblk() {

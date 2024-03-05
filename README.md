@@ -337,7 +337,7 @@ file() {
 }
 
 lsblk() {
-        command lsblk $@ | grep ']\|\[\|RM\|RO\|FS\|%\|' | GREP_COLORS='ms=01;34' grep 'NAME\|SIZE\|TYPE\|SWAP\|\.\|:\|/\|VER\|AVAIL\|USE\|'
+        command lsblk $@ | grep ']\|\[\|RM\|RO\|FS\|%\|' | GREP_COLORS='ms=01;34' grep '^NAME\|SIZE\|TYPE\|SWAP\|\.\|:\|/\|VER\|AVAIL\|UUID\|USE\|'
 }
 
 lspci() {

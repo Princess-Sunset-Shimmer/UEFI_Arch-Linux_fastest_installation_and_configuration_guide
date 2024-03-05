@@ -327,7 +327,6 @@ alias rm='rm -f'
 alias wget='wget -c'
 alias dd='dd status=progress'
 alias ps='ps -uf'
-alias lspci='lspci -tv'
 
 ls() {
         command ls --color=always -alh $@ | sort | grep ':\|\.\|root\|total\|' | GREP_COLORS='ms=01;34' grep '>\|-\|/\|_\|'
@@ -339,6 +338,10 @@ file() {
 
 lsblk() {
         command lsblk $@ | grep '\]\|\[\|RM\|RO\|FS\|%\|' | GREP_COLORS='ms=01;34' grep 'NAME\|SIZE\|TYPE\|SWAP\|\.\|:\|/\|VER\|AVAIL\|USE\|'
+}
+
+lspci() {
+        command lspci -tv $@ | grep '\]\|\[\|+\|-\||\|\\\|/\|' | GREP_COLORS='ms=01;34' grep '\.\|:\|,\|'
 }
 ```
 add above alias to your `/etc/bash.bashrc` file\

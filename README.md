@@ -337,11 +337,11 @@ file() {
 }
 
 lsblk() {
-        command lsblk $@ | grep '\]\|\[\|RM\|RO\|FS\|%\|' | GREP_COLORS='ms=01;34' grep 'NAME\|SIZE\|TYPE\|SWAP\|\.\|:\|/\|VER\|AVAIL\|USE\|'
+        command lsblk $@ | grep ']\|\[\|RM\|RO\|FS\|%\|' | GREP_COLORS='ms=01;34' grep 'NAME\|SIZE\|TYPE\|SWAP\|\.\|:\|/\|VER\|AVAIL\|USE\|'
 }
 
 lspci() {
-        command lspci -tv $@ | grep '\]\|\[\|+\|-\||\|\\\|/\|' | GREP_COLORS='ms=01;34' grep '\.\|:\|,\|'
+        command lspci -tv $@ | grep ']\|\[\|+\|-\||\|\\\|/\|' | GREP_COLORS='ms=01;34' grep '\.\|:\|,\|'
 }
 ```
 add above alias to your `/etc/bash.bashrc` file\

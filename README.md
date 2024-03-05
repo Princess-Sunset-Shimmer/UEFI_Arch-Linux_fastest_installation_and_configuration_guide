@@ -330,15 +330,15 @@ alias ps='ps -uf'
 alias lspci='lspci -tv'
 
 ls() {
-        command ls --color=always -alh $@ | sort | GREP_COLORS='ms=01;34' grep '>\|-\|/\|' | grep ':\|\.\|root\|total\|'
+        command ls --color=always -alh $@ | sort | grep ':\|\.\|root\|total\|' | GREP_COLORS='ms=01;34' grep '>\|-\|/\|_\|'
 }
 
 file() {
-        command file $@ | grep '/\|-\|+\|' | GREP_COLORS='ms=01;34' grep ':\|\.\|#\|)\|(\|'
+        command file $@ | grep '/\|-\|+\|' | GREP_COLORS='ms=01;34' grep ':\|\.\|#\|)\|(\|_\|'
 }
 
 lsblk() {
-        command lsblk $@ | GREP_COLORS='ms=01;34' grep 'NAME\|SIZE\|SWAP\|\.\|:\|' | grep '/\|'
+        command lsblk $@ | grep '\]\|\[\|RM\|RO\|FS\|%\|' | GREP_COLORS='ms=01;34' grep 'NAME\|SIZE\|TYPE\|SWAP\|\.\|:\|/\|VER\|AVAIL\|USE\|'
 }
 ```
 add above alias to your `/etc/bash.bashrc` file\

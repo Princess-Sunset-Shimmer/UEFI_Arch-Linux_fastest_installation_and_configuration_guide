@@ -336,6 +336,10 @@ file() {
         command file $@ | grep '/\|-\|+\|' | GREP_COLORS='ms=01;34' grep ':\|\.\|,\|#\|)\|(\|_\|'
 }
 
+cat() {
+        command cat $@ | grep '\.\|,\|;\|:\|_\|}\|{\|)\|(\|]\|\[\|\\\|\$\|#\|?\|!\|@\|`\|"\|' grep "'\|" | GREP_COLORS='ms=01;34' grep '+\|-\|*\|/\|%\|=\|>\|<\|&\||\|^\|~\|'
+}
+
 lsblk() {
         command lsblk $@ | grep ']\|\[\|RM\|RO\|FS\|%\|' | GREP_COLORS='ms=01;34' grep '^NAME\|SIZE\|TYPE\|SWAP\|\.\|:\|/\|VER\|AVAIL\|UUID\|USE\|'
 }

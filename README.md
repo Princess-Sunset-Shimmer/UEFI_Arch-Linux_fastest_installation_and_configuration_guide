@@ -314,6 +314,7 @@ then you can append your login text art in `/etc/issue` file
         systemctl start gpm
 ```
 - system wide bash configuration
+
 remove all user specific config bash file `~/.bashrc`
 then open `/etc/bash.bashrc` and only keep `[[ $- != *i* ]] && return`
 follow the configuration below
@@ -377,6 +378,31 @@ set colored-completion-prefix On
 set menu-complete-display-prefix On
 ```
 add above contents to your `/etc/inputrc` file
+- tmux
+
+install tmux
+```sh
+        pacman -Syu tmux
+```
+create system wide config file for tmux
+```sh
+        vim /etc/tmux.conf
+```
+```sh
+set -g pane-border-status bottom
+set -g pane-border-style fg=white
+set -g pane-active-border-style fg=brightcyan
+set -g pane-border-format ""
+set -g status-style bg=black
+set -g status-justify centre
+set -g status-right "#[fg=brightblue]%I:%M %p"
+set -g status-left "#[fg=brightblue]TMUX-#S"
+set -g window-status-current-format "#[fg=brightmagenta]#{?window_zoomed_flag,( #I ),(#I)}"
+set -g window-status-format "#[fg=magenta] #I "
+set -g message-style bg=black,fg=white
+set -g clock-mode-colour magenta
+```
+add above contents to your `/etc/tmux.conf` file
 ## .other
 - generate [top](https://en.wikipedia.org/wiki/Top_(software)) command config file
 ```py

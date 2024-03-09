@@ -410,6 +410,8 @@ add above contents to your `/etc/tmux.conf` file
 ```
 - - - -
 suggested configuration:\
+press key `Z` once to turn on color view and\
+press `Shift` + `Z` to toggle your color favor\
 press key `T` twice to get solid CPU usage graph\
 press key `M` once to get Memory usage graph\
 press `Shift` + `M` to show tasks by Memory usage\
@@ -417,8 +419,6 @@ press `Shift` + `V` to get COMMAND hierarchy view\
 press key `D` once to set refresh delay, lower to 0.1 or higher above 3.0\
 press key `B` once switch to hilight mode then\
 press key `X` once to hilight tasks sorting column\
-press key `Z` once to turn on color view and\
-press `Shift` + `Z` to toggle your color favor\
 press `Shift` + `W` to generate config file for current user
 - - - -
 - vim minimal configuration

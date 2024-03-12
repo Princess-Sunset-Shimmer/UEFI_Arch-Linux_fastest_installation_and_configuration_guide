@@ -13,6 +13,10 @@ ls() {
   command ls --color=always -alh $@|sort|grep '^b\|:\|\.\|root\|'|GREP_COLORS='ms=01;34' grep '^d\|-\|>\|/\|_\|'|GREP_COLORS='ms=01;32' grep '^total\|'|GREP_COLORS='ms=01;36' grep '^l\|'|GREP_COLORS='ms=01;33' grep '^c\|'
 }
 
+cd() {
+  command cd $@;ls
+}
+
 file() {
   command file $@|grep '/\|-\|+\|'|GREP_COLORS='ms=01;34' grep ':\|\.\|,\|#\|)\|(\|_\|'
 }

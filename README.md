@@ -354,7 +354,7 @@ lspci() {
 }
 ```
 add above alias to your `/etc/bash.bashrc` file\
-then `source /etc/bash.bashrc` to see the changes
+then `. /etc/bash.bashrc` to see the changes
 - make command prompt awesome
 
 open `/etc/bash.bashrc` file\
@@ -370,7 +370,7 @@ else
         clear
 fi
 ```
-then `source /etc/bash.bashrc` to see the changes
+then `. /etc/bash.bashrc` to see the changes
 - enhance bash tab completion
 ```sh
 set show-all-if-unmodified on
@@ -406,7 +406,8 @@ set -g window-status-format "#[fg=magenta] #I "
 set -g message-style bg=black,fg=white
 set -g clock-mode-colour magenta
 ```
-add above contents to your `/etc/tmux.conf` file
+add above contents to your `/etc/tmux.conf` file\
+then ``
 ## .other
 - generate [top](https://en.wikipedia.org/wiki/Top_(software)) command config file
 ```py

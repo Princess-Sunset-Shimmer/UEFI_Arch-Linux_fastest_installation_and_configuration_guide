@@ -102,8 +102,17 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
 ```
 - create unpriviliged user
 ```c
-        useradd -m user_name
+        useradd -m your_user_name
         passwd user_name
+```
+then switch to unpriviliged user and create `.config` directory
+```py
+        su your_user_name
+        mkdir /home/your_user_name/.config
+```
+exit back to `root` and make a symbolic link that link root's `.config` to unpriviliged user's
+```py
+        ln -s /home/your_user_name/.config /root/.config
 ```
 ## .network
 - network manager

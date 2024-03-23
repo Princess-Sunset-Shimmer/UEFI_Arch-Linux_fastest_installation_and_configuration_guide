@@ -1,4 +1,3 @@
-
 # This function API is accessible to scripts in /etc/profile.d
 append_path() {
     case ":$PATH:" in
@@ -8,26 +7,20 @@ append_path() {
             PATH="${PATH:+$PATH:}$1"
     esac
 }
-
 # Append our default paths and Force PATH to be environment
 export PATH='/usr/local/sbin:/usr/local/bin:/usr/bin'
-
-# Load profiles from /etc/profile.d
-if test -d /etc/profile.d/; then
+# execute global bash config when interactive but not posix or sh mode
+[[ $BASH ]] && [[ $PS1 ]] && [[ -z $POSIXLY_CORRECT ]] && [[ ${0#-} != sh ]] && [[ -r /etc/bash.bashrc ]] && . /etc/bash.bashrc
+# execute profiles from /etc/profile.d
+if [[ -d /etc/profile.d/ ]]; then
 	for profile in /etc/profile.d/*.sh; do
-		test -r "$profile" && . "$profile"
+		[[ -r $profile ]] && . "$profile"
 	done
 	unset profile
 fi
-
-# Unload our profile API functions
+# undefine profile API functions
 unset -f append_path
-
-# Source global bash config, when interactive but not posix or sh mode
-[[ $BASH ]] && [[ $PS1 ]] && [[ -z $POSIXLY_CORRECT ]] && [[ ${0#-} != sh ]] && [[ -r /etc/bash.bashrc ]] && . /etc/bash.bashrc
-
 # Termcap is outdated, old, and crusty, kill it.
 unset TERMCAP
-
 # Man is much better than us at figuring this out
 unset MANPATH

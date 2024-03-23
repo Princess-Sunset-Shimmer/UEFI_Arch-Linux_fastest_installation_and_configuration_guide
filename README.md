@@ -112,6 +112,7 @@ then switch to unpriviliged user and create `.config` directory
 ```
 exit back to `root` and make a symbolic link that link root's `.config` to unpriviliged user's
 ```py
+        exit
         ln -s /home/your_user_name/.config /root/.config
 ```
 ## .network

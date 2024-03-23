@@ -237,7 +237,7 @@ then regenerate `grub.cfg` file
         pacman -Syu irqbalance
         systemctl enable irqbalance
 ```
-- turn off [meltdown spectre attack](https://meltdownattack.com/) mitigations off
+- turn off [meltdown spectre attack](https://meltdownattack.com/) mitigations
 
 open `/etc/default/grub` file\
 add `mitigations=off` to `GRUB_CMDLINE_LINUX_DEFAULT`

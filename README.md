@@ -38,23 +38,23 @@ use `grep MemTotal /proc/meminfo` to check your total memory size
 ```
 - mount partitions
 ```c
-        mount /dev/your_drive_name3 /mnt/
-        mount --mkdir /dev/your_drive_name1 /mnt/boot/
+        mount /dev/your_drive_name3 /mnt
+        mount --mkdir /dev/your_drive_name1 /mnt/boot
         swapon /dev/your_drive_name2
 ```
 the Order to mount your Partitions or Drives must obay the Hierarchy of File System\
 mount `/` Root-partition to `/mnt/` first, then mount Sub-partition next, and so on
 - generate [fstab](https://wiki.archlinux.org/title/fstab) ( File System TABle ) file
 ```c
-        mkdir /mnt/etc/
-        genfstab -U /mnt/ > /mnt/etc/fstab
+        mkdir /mnt/etc
+        genfstab -U /mnt > /mnt/etc/fstab
 ```
 ## .connect internet
 Just Wire In
 ## .install Arch linux
 - install essential packages
 ```c
-        pacstrap -K /mnt/ base linux-zen linux-firmware sof-firmware amd-ucode networkmanager grub efibootmgr
+        pacstrap -K /mnt base linux-zen linux-firmware sof-firmware amd-ucode networkmanager grub efibootmgr
 ```
 - - - -
 [base](https://archlinux.org/packages/core/any/base/) is minimal Arch\
@@ -68,10 +68,10 @@ by this step, you can install other packages such as dust, btop, vim, tmux, gcc,
 - - - -
 - install Bootloader
 ```c
-        arch-chroot /mnt/
+        arch-chroot /mnt
 ```
 ```c
-        grub-install --efi-directory=/boot/
+        grub-install --efi-directory=/boot
         grub-mkconfig -o /boot/grub/grub.cfg
 ```
 ## .finish the installation

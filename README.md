@@ -178,13 +178,12 @@ uncomment `Color` xor insteadly add `alias pacman='pacman --color=always'` to yo
 uncomment `ParrallelDownloads = 5` and change the number as you wish\
 add `ILoveCandy`
 ## improve Booting performance
-reboot then press `C` when `grub menu` show out to enter `grub console`\
-then `videoinfo` to print all supported resolutions for grub\
-remember the lowest supported resolution such example as `640x480`\
 open `/etc/default/grub` file\
-change `GRUB_GFXMODE` to your supported lowest resolution
+uncomment `GRUB_TERMINAL_OUTPUT=console`
+comment out `GRUB_GFXMODE=auto` and `GRUB_GFXPAYLOAD_LINUX=keep`
 ```lua
-GRUB_GFXMODE=640x480
+#GRUB_GFXMODE=auto
+#GRUB_GFXPAYLOAD_LINUX=keep
 ```
 change `GRUB_TIMEOUT` to `0`
 ```lua

@@ -317,11 +317,48 @@ then you can append your login text art in `/etc/issue` file
 - - - -
 `pacman -Syu terminus-font` to install [terminus console font](https://terminus-font.sourceforge.net/)
 - - - -
+- enhance bash tab completion
+```sh
+set show-all-if-unmodified on
+set show-all-if-ambiguous on
+set colored-stats On
+set visible-stats On
+set mark-symlinked-directories On
+set colored-completion-prefix On
+set menu-complete-display-prefix On
+```
+add above contents to your `/etc/inputrc` file
 - use mouse in console
 ```c
         systemctl enable gpm
         systemctl start gpm
 ```
+- tmux
+
+install tmux
+```sh
+        pacman -Syu tmux
+```
+create system wide config file for tmux
+```sh
+        vim /etc/tmux.conf
+```
+```sh
+set -g pane-border-status bottom
+set -g pane-border-style fg=white
+set -g pane-active-border-style fg=brightcyan
+set -g pane-border-format ""
+set -g status-style bg=black
+set -g status-justify centre
+set -g status-right "#[fg=brightblue]%I:%M %p "
+set -g status-left " #[fg=brightblue]TMUX-#S"
+set -g window-status-current-format "#[fg=brightmagenta]#{?window_zoomed_flag,( #I ),(#I)}"
+set -g window-status-format "#[fg=magenta] #I "
+set -g message-style bg=black,fg=white
+set -g clock-mode-colour magenta
+```
+add above contents to your `/etc/tmux.conf` file\
+then `tmux source-file /etc/tmux.conf` to see the changes
 - system wide bash configuration
 
 remove all user specific config bash file `~/.bashrc`
@@ -380,43 +417,6 @@ else
 fi
 ```
 then `. /etc/bash.bashrc` to see the changes
-- enhance bash tab completion
-```sh
-set show-all-if-unmodified on
-set show-all-if-ambiguous on
-set colored-stats On
-set visible-stats On
-set mark-symlinked-directories On
-set colored-completion-prefix On
-set menu-complete-display-prefix On
-```
-add above contents to your `/etc/inputrc` file
-- tmux
-
-install tmux
-```sh
-        pacman -Syu tmux
-```
-create system wide config file for tmux
-```sh
-        vim /etc/tmux.conf
-```
-```sh
-set -g pane-border-status bottom
-set -g pane-border-style fg=white
-set -g pane-active-border-style fg=brightcyan
-set -g pane-border-format ""
-set -g status-style bg=black
-set -g status-justify centre
-set -g status-right "#[fg=brightblue]%I:%M %p "
-set -g status-left " #[fg=brightblue]TMUX-#S"
-set -g window-status-current-format "#[fg=brightmagenta]#{?window_zoomed_flag,( #I ),(#I)}"
-set -g window-status-format "#[fg=magenta] #I "
-set -g message-style bg=black,fg=white
-set -g clock-mode-colour magenta
-```
-add above contents to your `/etc/tmux.conf` file\
-then `tmux source-file /etc/tmux.conf`
 ## .other
 - generate [top](https://en.wikipedia.org/wiki/Top_(software)) command config file
 ```py

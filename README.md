@@ -333,7 +333,7 @@ add above contents to your `/etc/inputrc` file
         systemctl enable gpm
         systemctl start gpm
 ```
-- tmux
+- tmux terminal multiplexer
 
 install tmux
 ```sh
@@ -359,6 +359,23 @@ set -g clock-mode-colour magenta
 ```
 add above contents to your `/etc/tmux.conf` file\
 then `tmux source-file /etc/tmux.conf` to see the changes
+
+- fastfetch
+
+install fastfetch
+```py
+        pacman -Syu fastfetch
+```
+generate config file to `/home/your_user_name/.config/fastfetch/config.jsonc`
+```py
+        fastfetch --gen-config
+```
+and Change the `config.jsonc` file contents to
+```lua
+{
+  "modules": ["os","separator","kernel","shell","terminal","terminalfont","display","cpu","gpu","memory","swap","disk","packages","localip","uptime","battery","separator","colors"]
+}
+```
 - system wide bash configuration
 
 remove all user specific config bash file `~/.bashrc`

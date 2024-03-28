@@ -265,7 +265,7 @@ change your `/etc/issue` file contents to
 \e[0;0H\e[0;30;35 <\l> [/\\rch Linux \r]\e[K\e[m
 ```
 then you can append your login text art in `/etc/issue` file
-```py
+```lua
 \e[1;36m                                  __,.-------..._
 \e[0;36m                            ,.-+'"" _,..+++++++._`" +._
 \e[0;32m                          ,/" ,.-+'"            '""+-._`'+.

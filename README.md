@@ -371,7 +371,7 @@ generate config file to `/home/your_user_name/.config/fastfetch/config.jsonc`
         fastfetch --gen-config
 ```
 and Change the `config.jsonc` file contents to
-```c
+```py
 {
   "modules": ["os","separator","kernel","shell","terminal","terminalfont","display","cpu","gpu","memory","swap","disk","packages","localip","uptime","battery","separator","colors"]
 }

@@ -93,7 +93,7 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
 - [improve Storage performance](#improve-Storage-performance "goto improve-Storage-performance")
 - [improve Memory performance](#improve-Memory-performance "goto improve-Memory-performance")
 - [improve CPU performance](#improve-CPU-performance "goto improve-CPU-performance")
-- [make console more awesome and cooler](#make-console-more-awesome-and-cooler "goto make-console-more-awesome-and-cooler")
+- [make linux console more awesome and cooler](#make-linux-console-more-awesome-and-cooler "goto make-linux-console-more-awesome-and-cooler")
 - [other](#other "goto other")
 ## .basic setup
 - set hostname
@@ -257,7 +257,7 @@ then regenerate `grub.cfg` file
 ```c
         grub-mkconfig -o /boot/grub/grub.cfg
 ```
-## .make console more awesome and cooler
+## .make linux console more awesome and cooler
 - login shell
 
 change your `/etc/issue` file contents to

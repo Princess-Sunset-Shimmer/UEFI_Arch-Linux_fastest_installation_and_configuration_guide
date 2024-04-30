@@ -50,7 +50,7 @@ mount `/` Root-partition to `/mnt/` first, then mount Sub-partition next, and so
         genfstab -U /mnt > /mnt/etc/fstab
 ```
 ## .connect internet
-Just Wire In
+*** Just Wire In ***
 ## .install Arch linux
 - install essential packages
 ```c

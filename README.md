@@ -254,14 +254,10 @@ options root=UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw quiet loglevel=0 zswap
 ```
 - turn off [meltdown spectre attack](https://meltdownattack.com/) mitigations
 
-open `/etc/default/grub` file\
-add `mitigations=off` to `GRUB_CMDLINE_LINUX_DEFAULT`
+open `/boot/loader/loader.conf` file\
+add `mitigations=off` to `options`
 ```lua
-GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=0 zswap.enabled=1 mitigations=off"
-```
-then regenerate `grub.cfg` file
-```c
-        grub-mkconfig -o /boot/grub/grub.cfg
+options root=UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw quiet loglevel=0 zswap.enabled=1 mitigations=off"
 ```
 ## .make linux console more awesome and cooler
 - login shell

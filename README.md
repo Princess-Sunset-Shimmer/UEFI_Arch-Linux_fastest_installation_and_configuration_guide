@@ -55,7 +55,7 @@ mount `/` Root-partition to `/mnt/` first, then mount Sub-partition next, and so
 ## .install Arch linux
 - install essential packages
 ```c
-        pacstrap -K /mnt base linux-zen linux-firmware sof-firmware amd-ucode networkmanager grub efibootmgr
+        pacstrap -K /mnt base linux-zen linux-firmware sof-firmware amd-ucode networkmanager
 ```
 - - - -
 [base](https://archlinux.org/packages/core/any/base/) is minimal Arch\
@@ -64,16 +64,15 @@ you can omit [linux-firmware](https://archlinux.org/packages/core/any/linux-firm
 [sof-firmware](https://archlinux.org/packages/extra/x86_64/sof-firmware/) for newer some laptops to get working audio\
 [amd-ucode](https://archlinux.org/packages/core/any/amd-ucode/) provides `AMD microcode`. instead use [intel-ucode](https://archlinux.org/packages/extra/any/intel-ucode/) if you use intel chip\
 you can omit [networkmanager](https://archlinux.org/packages/extra/x86_64/networkmanager/) if you only use `systemd [ o < ]` to configure network\
-[grub](https://archlinux.org/packages/core/x86_64/grub/) and [efibootmgr](https://archlinux.org/packages/core/x86_64/efibootmgr/) for installing Bootloader later\
 by this step, you can install other packages such as dust, btop, vim, tmux, calc, gcc, cmatrix, fastfetch, wget, rtorrent, elinks, cmus and whatever you need
 - - - -
 - install Bootloader
+
 ```c
         arch-chroot /mnt
 ```
 ```c
-        grub-install --efi-directory=/boot
-        grub-mkconfig -o /boot/grub/grub.cfg
+
 ```
 ## .finish the installation
 - set root password

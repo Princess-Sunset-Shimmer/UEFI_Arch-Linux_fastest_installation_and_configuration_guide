@@ -79,7 +79,8 @@ initrd /amd-ucode.img
 initrd /initramfs-linux-zen.img
 options root=UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw
 ```
-`linux` 
+`linux` takes path to kernel, path is NOT `/boot/...` because we previously created partition for `/boot`\
+`initrd`
 ```c
         arch-chroot /mnt
         bootctl install

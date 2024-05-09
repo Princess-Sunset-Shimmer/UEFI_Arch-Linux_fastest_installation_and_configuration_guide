@@ -79,6 +79,7 @@ initrd /amd-ucode.img
 initrd /initramfs-linux-zen.img
 options root=UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw
 ```
+`linux` 
 ```c
         arch-chroot /mnt
         bootctl install

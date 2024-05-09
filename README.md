@@ -10,7 +10,7 @@
 ```c
         sha256sum /directory/archlinux.iso
 ```
-- use either GUI utility like `rufus` and `etcher` or use CLI `dd` to write your image file to your USB flash drive
+- use either GUI utility like `rufus` and `etcher` or use `dd` to write your image file to your USB flash drive
 ```c
         dd if=/directory/archlinux.iso of=/dev/usb_flash_drive_file_name status=progress
 ```
@@ -21,14 +21,15 @@
     - use `cfdisk` to open TUI partition editor then select `GPT`
     - then create partition on your drive as suggested as table below
 
-| Partition             | Type           | Size           | Purpose                                  |
+| Partition             | Mount on       | Size           | Purpose                                  |
 | :-------------------- | :------------- | :------------- | :--------------------------------------- |
-| /dev/your_drive_name1 | EFI system     | `256M` minium  | for Kernel, Bootloader, EFI and Firmware |
-| /dev/your_deive_name2 | Linux Swap     | `512M` minium  | for Swaping                              |
-| /dev/your_drive_name3 | Linux Root     | rest of drive  | for whole /\rch base                     |
+| /dev/your_drive_name1 | `/boot`        | `256M` minium  | for Kernel, Bootloader, EFI and Firmware |
+| /dev/your_deive_name2 | [SWAP]         | `512M` minium  | for Swaping                              |
+| /dev/your_drive_name3 | `/`            | rest of drive  | for whole /\rch base                     |
 
-you can make [swap] partition as twice bigger as your total system memory size\
-use `grep MemTotal /proc/meminfo` to check your total memory size
+you can make [SWAP] partition as twice bigger as your total system memory size\
+use `grep MemTotal /proc/meminfo` to check your total memory size\
+if you have multiple fast drives, then create multiple smaller [SWAP] partitions on multiple fast drives
 
 - format partions
 ```c

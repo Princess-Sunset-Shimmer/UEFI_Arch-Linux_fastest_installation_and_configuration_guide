@@ -205,33 +205,12 @@ uncomment `Color` xor insteadly add `alias pacman='pacman --color=always'` to yo
 uncomment `ParrallelDownloads = 5` and change the number as you wish\
 add `ILoveCandy`
 ## improve Booting performance
-open `/etc/default/grub` file\
-uncomment `GRUB_TERMINAL_OUTPUT=console`
-comment out `GRUB_GFXMODE=auto` and `GRUB_GFXPAYLOAD_LINUX=keep`
+open `/boot/loader/loader.conf` file\
+add kernel parameters `quiet` and `loglevel=0` to
 ```lua
-#GRUB_GFXMODE=auto
-#GRUB_GFXPAYLOAD_LINUX=keep
+options root=UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw quiet loglevel=0
 ```
-change `GRUB_TIMEOUT` to `0`
-```lua
-GRUB_TIMEOUT=0
-```
-change `GRUB_TIMEOUT_STYLE` to `hidden`
-```lua
-GRUB_TIMEOUT_STYLE=hidden
-```
-modify the `GRUB_CMDLINE_LINUX_DEFAULT` to
-```lua
-GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=0"
-```
-delete `part_msdos` MBR modules in `GRUB_PRELOAD_MODULES` ( UEFI use GPT )
-```lua
-GRUB_PRELOAD_MODULES="part_gpt"
-```
-then regenerate `grub.cfg` file
-```c
-        grub-mkconfig -o /boot/grub/grub.cfg
-```
+
 ## .improve Storage performance
 - trim for SSD
 ```c

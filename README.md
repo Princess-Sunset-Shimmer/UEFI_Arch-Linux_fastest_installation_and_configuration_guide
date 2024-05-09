@@ -210,7 +210,7 @@ add kernel parameters `quiet` and `loglevel=0` to
 ```lua
 options root=UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw quiet loglevel=0
 ```
-
+you can manually update
 ## .improve Storage performance
 - trim for SSD
 ```c

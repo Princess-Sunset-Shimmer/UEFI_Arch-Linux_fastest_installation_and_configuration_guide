@@ -66,10 +66,16 @@ you can omit [linux-firmware](https://archlinux.org/packages/core/any/linux-firm
 you can omit [networkmanager](https://archlinux.org/packages/extra/x86_64/networkmanager/) if you only use `systemd [ o < ]` to configure network\
 by this step, you can install other packages such as dust, btop, vim, tmux, calc, gcc, cmatrix, fastfetch, wget, rtorrent, elinks, cmus and whatever you need
 - - - -
-- install Bootloader
-
+## .install Bootloader and enable Microcode updates
+- write your ***boot entry file*** for boot-loader
+```c
+        mkdir -P /mnt/boot/loader/entries
+        vim /mnt/boot/loader/entries/arch.conf
+```
+file:
 ```c
         arch-chroot /mnt
+        bootctl install
 ```
 ```c
 

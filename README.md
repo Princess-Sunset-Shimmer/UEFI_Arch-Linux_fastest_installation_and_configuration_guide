@@ -67,12 +67,18 @@ you can omit [networkmanager](https://archlinux.org/packages/extra/x86_64/networ
 by this step, you can install other packages such as dust, btop, vim, tmux, calc, gcc, cmatrix, fastfetch, wget, rtorrent, elinks, cmus and whatever you need
 - - - -
 ## .install Bootloader and enable Microcode updates
-- write your ***boot entry file*** for boot-loader
+- write your ***boot-entry-file*** for boot-loader
 ```c
         mkdir -P /mnt/boot/loader/entries
         vim /mnt/boot/loader/entries/arch.conf
 ```
-file:
+example minimal entry-file contents:
+```
+linux /vmlinuz-linux-zen
+initrd /amd-ucode.img
+initrd /initramfs-linux-zen.img
+options root=UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw
+```
 ```c
         arch-chroot /mnt
         bootctl install

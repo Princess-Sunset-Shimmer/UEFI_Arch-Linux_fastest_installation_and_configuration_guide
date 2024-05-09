@@ -206,7 +206,7 @@ uncomment `ParrallelDownloads = 5` and change the number as you wish\
 add `ILoveCandy`
 ## improve Booting performance
 open `/boot/loader/loader.conf` file\
-add kernel parameters `quiet` and `loglevel=0` to
+add kernel parameters `quiet` and `loglevel=0` to `options`
 ```lua
 options root=UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw quiet loglevel=0
 ```
@@ -241,14 +241,10 @@ add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
 ```
 - turn on swap memory compression
 
-open `/etc/default/grub` file\
-add `zswap.enabled=1` to `GRUB_CMDLINE_LINUX_DEFAULT`
+open `/boot/loader/loader.conf` file\
+add `zswap.enabled=1` to `options`
 ```lua
-GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=0 zswap.enabled=1"
-```
-then regenerate `grub.cfg` file
-```c
-        grub-mkconfig -o /boot/grub/grub.cfg
+options root=UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw quiet loglevel=0 zswap.enabled=1
 ```
 ## .improve CPU performance
 - irqbalance

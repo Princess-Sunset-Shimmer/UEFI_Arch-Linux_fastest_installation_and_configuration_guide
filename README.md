@@ -30,7 +30,7 @@
 
 you can make [SWAP] partition as twice bigger as your total system memory size\
 use `grep MemTotal /proc/meminfo` to check your total memory size\
-if you have multiple fast drives, then create multiple smaller [SWAP] partitions on multiple fast drives
+if you have multiple fast drives, then create multiple smaller [SWAP] partitions on multiple fast drives instead of using one giant [SWAP] partition on one drive
 
 - format partions
 ```c

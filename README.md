@@ -80,8 +80,8 @@ initrd /initramfs-linux-zen.img
 options root=UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw
 ```
 `linux` takes path to kernel, path is NOT `/boot/...` because we previously created partition for `/boot`\
-`initrd` [initial ram disk](https://en.wikipedia.org/wiki/Initial_ramdisk), you need to load ***amd-ucode.img*** xor ***intel-ucode.img*** to RAM first before load ***initial ram file system image***
-
+`initrd` [initial ram disk](https://en.wikipedia.org/wiki/Initial_ramdisk), you need to load ***amd-ucode.img*** xor ***intel-ucode.img*** to RAM first before load ***initial ram file system image***\
+`options` takes kernel parameters, replace `UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX` to your own `/` partition UUID witch you can find in previously generated ***fstab*** file
 ```c
         arch-chroot /mnt
         bootctl install

@@ -93,6 +93,8 @@ example minimal systemd-boot config file contents:
 default arch.conf
 editor no
 ```
+this set default entry file to previously wrote ***arch.conf***, and no boot-entry-editor\
+you can write more entry files with more kernels than one
 - install systemd boot-loader
 ```c
         arch-chroot /mnt

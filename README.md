@@ -210,7 +210,10 @@ add kernel parameters `quiet` and `loglevel=0` to
 ```lua
 options root=UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw quiet loglevel=0
 ```
-you can manually update
+you can manually update systemd-boot by run command `bootctl update`
+or you can enable `systemd-boot-update` service
+```c
+```
 ## .improve Storage performance
 - trim for SSD
 ```c

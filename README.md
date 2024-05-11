@@ -257,7 +257,7 @@ options root=UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw quiet loglevel=0 zswap
 open `/boot/loader/loader.conf` file\
 add `mitigations=off` to `options`
 ```lua
-options root=UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw quiet loglevel=0 zswap.enabled=1 mitigations=off"
+options root=UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw quiet loglevel=0 zswap.enabled=1 mitigations=off
 ```
 ## .make linux console more awesome and cooler
 - login shell

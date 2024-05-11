@@ -75,14 +75,14 @@ by this step, you can install other packages such as dust, btop, vim, tmux, calc
 ```
 example minimal entry-file contents:
 ```
-linux /vmlinuz-linux-zen
+linux /vmlinuz-linux
 initrd /amd-ucode.img
-initrd /initramfs-linux-zen.img
+initrd /initramfs-linux.img
 options root=UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw
 
 ```
-`linux` takes path to kernel, path is NOT `/boot/...` because we previously created partition for `/boot`\
-`initrd` [initial ram disk](https://en.wikipedia.org/wiki/Initial_ramdisk), you need to load ***amd-ucode.img*** xor ***intel-ucode.img*** to RAM first before load ***initial ram file system image***\
+`linux` takes path to kernel; path is NOT `/boot/...` because we previously created partition for `/boot`\
+`initrd` [initial ram disk](https://en.wikipedia.org/wiki/Initial_ramdisk); you need to load ***amd-ucode.img*** xor ***intel-ucode.img*** to RAM first before load ***initial ram file system image***\
 `options` takes kernel parameters, replace `UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX` to your own `/` partition UUID, which you can find in previously generated ***fstab*** file
 
 - write your systemd-boot config file

@@ -56,11 +56,11 @@ mount `/` Root-partition to `/mnt/` first, then mount Sub-partition next, and so
 ## .install Arch linux
 - install essential packages
 ```c
-        pacstrap -K /mnt base linux-zen linux-firmware sof-firmware amd-ucode networkmanager
+        pacstrap -K /mnt base linux linux-firmware sof-firmware amd-ucode networkmanager
 ```
 - - - -
 [base](https://archlinux.org/packages/core/any/base/) is minimal Arch\
-[linux-zen](https://archlinux.org/packages/extra/x86_64/linux-zen/) is kernel. Arch base + linux kernel = Arch linux\
+[linux](https://archlinux.org/packages/core/x86_64/linux/) is kernel. Arch base + linux kernel = Arch linux\
 you can omit [linux-firmware](https://archlinux.org/packages/core/any/linux-firmware/) if you install arch linux on `VirtualBox`\
 [sof-firmware](https://archlinux.org/packages/extra/x86_64/sof-firmware/) for some newer laptops to get working audio, it's optional for minimal system to run\
 [amd-ucode](https://archlinux.org/packages/core/any/amd-ucode/) provides `AMD microcode`. instead use [intel-ucode](https://archlinux.org/packages/extra/any/intel-ucode/) if you use intel chip\

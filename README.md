@@ -134,14 +134,13 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
 ```
 then switch to unpriviliged user and create `.config` directory
 ```py
-        su your_user_name
-        mkdir /home/your_user_name/.config
+        su -c "mkdir /home/your_user_name/.config" your_user_name
 ```
-exit back to `root` and make a symbolic link that link root's `.config` to unpriviliged user's
+then make a symbolic link that link root's `.config` to unpriviliged user's one
 ```py
-        exit
         ln -s /home/your_user_name/.config /root/.config
 ```
+also you choose remove entire `/root` directory and link entire `/root` to `/home/your_user_name`
 ## .network
 - network manager
 ```

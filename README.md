@@ -1,4 +1,4 @@
-minimal /\rch Linux installation starting right now
+minimal /\rch Linux installation starting right now\
 [installation](#installation "goto installation)\
 [configuration](# "goto comgifuration")
 # installation

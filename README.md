@@ -1,6 +1,6 @@
 minimal /\rch Linux installation starting right now\
 [installation](#installation "goto installation")\
-[configuration](# "goto congifuration")
+[configuration](# "goto confifuration")
 # installation
 - step 0: [Make bootable USB and Boot live environment](#Make-bootable-USB-and-Boot-live-environment "goto Make-bootable-USB-and-Boot-live-environment")
 - step 1: [Partition, Format, Mount and genfstab for your drive](#Partition,-Format,-Mount-and-genfstab-for-your-drive "goto Partition,-Format,-Mount-and-genfstab-for-your-drive")

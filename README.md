@@ -1,5 +1,5 @@
 minimal /\rch Linux installation starting right now\
-[installation](#installation "goto installation)\
+[installation](#installation "goto installation")\
 [configuration](# "goto comgifuration")
 # installation
 - step 0: [Make bootable USB and Boot live environment](#Make-bootable-USB-and-Boot-live-environment "goto Make-bootable-USB-and-Boot-live-environment")

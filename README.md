@@ -116,7 +116,7 @@ you can write more entry files with more kernels than just one
 ```
 congratulation, minimal Arch Linux is successfully installed. you can login as root and configure your brand new Arch Linux now
 # configuration
-- [basic setup](#basic-setup "goto basic-setup")
+- [user setup](#basic-setup "goto user-setup")
 - [network](#network "goto network")
 - [PACkage MANager](#PACkage-MANager "goto PACkage-MANager")
 - [improve Booting performance](#improve-Booting-performance "goto improve-Booting-performance")
@@ -125,7 +125,7 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
 - [improve CPU performance](#improve-CPU-performance "goto improve-CPU-performance")
 - [make linux console more awesome and cooler](#make-linux-console-more-awesome-and-cooler "goto make-linux-console-more-awesome-and-cooler")
 - [other](#other "goto other")
-## .basic setup
+## .user setup
 - set hostname
 ```lua
         echo 'your_new_hostname' > /etc/hostname

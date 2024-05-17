@@ -267,7 +267,7 @@ options root=UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw quiet loglevel=0 zswap
 
 change your `/etc/issue` file contents to
 ```lua
-\e[0;0H\e[0;30;35 <\l> [/\\rch Linux \r]\e[K\e[m
+\e[0;0H\e[0;30;45m <\l> [/\\rch Linux \r]\e[K\e[m
 ```
 then you can append your login text art in `/etc/issue` file
 ```lua

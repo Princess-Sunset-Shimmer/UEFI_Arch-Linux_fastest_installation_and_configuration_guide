@@ -125,7 +125,7 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
 - [improve CPU performance](#improve-CPU-performance "goto improve-CPU-performance")
 - [language font timezone](#language-font-timezone "goto language-font-timezone")
 - [make linux console more awesome and cooler](#make-linux-console-more-awesome-and-cooler "goto make-linux-console-more-awesome-and-cooler")
-- [other](#other "goto other")
+- [other packages](#other-packages "goto other-packages")
 ## .user setup
 - set hostname
 ```lua
@@ -450,7 +450,7 @@ else
 fi
 ```
 then `. /etc/bash.bashrc` to see the changes
-## .other
+## .other packages
 - generate [top](https://en.wikipedia.org/wiki/Top_(software)) command config file
 ```py
         top # open top task manager first

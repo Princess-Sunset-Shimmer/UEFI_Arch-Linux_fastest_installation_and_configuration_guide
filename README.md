@@ -140,7 +140,7 @@ then switch to unpriviliged user and create `.config` directory
 ```py
         su -c "mkdir /home/your_user_name/.config" your_user_name
 ```
-then make a symbolic link that link root's `.config` to unpriviliged user's one
+then symbolically link unpriviliged user's `.config` to root's one
 ```py
         ln -s /home/your_user_name/.config /root/.config
 ```

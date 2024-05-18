@@ -123,6 +123,7 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
 - [improve Storage performance](#improve-Storage-performance "goto improve-Storage-performance")
 - [improve Memory performance](#improve-Memory-performance "goto improve-Memory-performance")
 - [improve CPU performance](#improve-CPU-performance "goto improve-CPU-performance")
+- [language font timezone](#language-font-timezone "goto language-font-timezone")
 - [make linux console more awesome and cooler](#make-linux-console-more-awesome-and-cooler "goto make-linux-console-more-awesome-and-cooler")
 - [other](#other "goto other")
 ## .user setup
@@ -262,6 +263,16 @@ add `mitigations=off` to `options`
 ```lua
 options root=UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw quiet loglevel=0 zswap.enabled=1 mitigations=off
 ```
+## language font timezone
+- set console font
+```py
+        ls /usr/share/kbd/consolefonts          # print available bitmap font files
+        setfont font_name                       # test font temporary
+        echo 'font_name' >> /etc/vconsole.conf  # set font persistenct
+```
+- - - -
+`pacman -Syu terminus-font` to install [terminus console font](https://terminus-font.sourceforge.net/)
+- - - -
 ## .make linux console more awesome and cooler
 - login shell
 
@@ -313,15 +324,6 @@ then you can append your login text art in `/etc/issue` file
 \e[1;32m                                 `|.              ,|_|.  ,|_|`.__/|_||___,/' |_|`+.__./             ,+
 \e[1;33m                                    +.........._________________________________________________,.+'\e[m
 ```
-- set console font
-```py
-        ls /usr/share/kbd/consolefonts          # print available bitmap font files
-        setfont font_name                       # test font temporary
-        echo 'font_name' >> /etc/vconsole.conf  # set font persistenct
-```
-- - - -
-`pacman -Syu terminus-font` to install [terminus console font](https://terminus-font.sourceforge.net/)
-- - - -
 - enhance bash tab completion
 ```sh
 set show-all-if-unmodified on

@@ -125,7 +125,7 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
 - [improve CPU performance](#improve-CPU-performance "goto improve-CPU-performance")
 - [language font timezone](#language-font-timezone "goto language-font-timezone")
 - [make linux console more awesome and cooler](#make-linux-console-more-awesome-and-cooler "goto make-linux-console-more-awesome-and-cooler")
-- [other packages](#other-packages "goto other-packages")
+- [other](#other "goto other")
 ## .user setup
 - set hostname
 ```lua
@@ -397,14 +397,12 @@ and Change the `config.jsonc` file contents to
 remove all user specific config bash file `~/.bashrc`
 then open `/etc/bash.bashrc` and only keep `[[ $- != *i* ]] && return`
 follow the configuration below
-- command alias
+- general command alias
 ```sh
 alias ip='ip --color=always'
 alias grep='grep --color=always'
 alias diff='diff --color=always'
-alias pacman='pacman --color=always'
 alias rm='rm -f'
-alias wget='wget -c'
 alias dd='dd status=progress'
 alias ps='ps -uf'
 
@@ -468,6 +466,16 @@ press key `B` once switch to hilight mode then\
 press key `X` once to hilight tasks sorting column\
 press `Shift` + `W` to generate config file for current user
 - - - -
+- wget
+
+install [wget]()
+```py
+        pacman -Syu wget
+```
+useful wget alias to add into `/etc/bash.bashrc`
+```bash
+alias wget='wget -c'
+```
 - vim minimal configuration
 ```lua
 :set number

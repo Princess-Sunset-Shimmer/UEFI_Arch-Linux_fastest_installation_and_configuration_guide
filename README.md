@@ -123,7 +123,7 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
 - [improve Storage performance](#improve-Storage-performance "goto improve-Storage-performance")
 - [improve Memory performance](#improve-Memory-performance "goto improve-Memory-performance")
 - [improve CPU performance](#improve-CPU-performance "goto improve-CPU-performance")
-- [language font timezone](#language-font-timezone "goto language-font-timezone")
+- [language and timezone](#language-and-timezone "goto language-and-timezone")
 - [make linux console more awesome and cooler](#make-linux-console-more-awesome-and-cooler "goto make-linux-console-more-awesome-and-cooler")
 - [other](#other "goto other")
 ## .user setup

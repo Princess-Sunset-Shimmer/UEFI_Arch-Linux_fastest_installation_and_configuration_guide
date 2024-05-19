@@ -379,7 +379,10 @@ set -g message-style bg=black,fg=white
 set -g clock-mode-colour magenta
 ```
 add above contents to your `/etc/tmux.conf` file\
-then `tmux source-file /etc/tmux.conf` to see the changes
+then
+```lua
+        tmux source-file /etc/tmux.conf
+```
 
 - fastfetch
 

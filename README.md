@@ -342,11 +342,11 @@ then you can append your login text art in `/etc/issue` file
 ```sh
 set show-all-if-unmodified on
 set show-all-if-ambiguous on
-set colored-stats On
-set visible-stats On
-set mark-symlinked-directories On
-set colored-completion-prefix On
-set menu-complete-display-prefix On
+set colored-stats on
+set visible-stats on
+set mark-symlinked-directories on
+set colored-completion-prefix on
+set menu-complete-display-prefix on
 ```
 add above contents to your `/etc/inputrc` file
 - use mouse in console

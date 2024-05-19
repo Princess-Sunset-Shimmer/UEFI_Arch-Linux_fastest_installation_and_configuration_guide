@@ -251,7 +251,7 @@ add `zswap.enabled=1` to `options`
 options root=UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw quiet loglevel=0 zswap.enabled=1
 ```
 ## .improve CPU performance
-- irqbalance
+- irq balance
 ```
         pacman -Syu irqbalance
         systemctl enable irqbalance
@@ -270,7 +270,7 @@ generate and use your appropriate locale
 ```py
         echo 'C.UTF-8 UTF-8' > /etc/locale.gen
         locale-gen
-        echo 'C.UTF-8' > /etc/locale.conf
+        echo 'LANG=C.UTF-8' > /etc/locale.conf
 ```
 replace `C.UTF-8 UTF8` and `C.UTF-8` to your appreciation
 - set console font

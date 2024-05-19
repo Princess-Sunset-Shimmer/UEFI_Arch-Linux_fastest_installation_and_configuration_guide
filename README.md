@@ -263,7 +263,7 @@ add `mitigations=off` to `options`
 ```lua
 options root=UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw quiet loglevel=0 zswap.enabled=1 mitigations=off
 ```
-## language font timezone
+## language and timezone
 - set language
 
 generate and use your appropriate locale
@@ -275,13 +275,18 @@ generate and use your appropriate locale
 replace `C.UTF-8 UTF8` and `C.UTF-8` to your appreciation
 - set console font
 ```py
-        ls /usr/share/kbd/consolefonts          # print available bitmap font files
-        setfont font_name                       # test font temporary
-        echo 'font_name' >> /etc/vconsole.conf  # set font persistenct
+        ls /usr/share/kbd/consolefonts               # print available bitmap font files
+        setfont font_name                            # test font temporary
+        echo 'FONT=font_name' >> /etc/vconsole.conf  # set font persistenct
 ```
 - - - -
 `pacman -Syu terminus-font` to install [terminus console font](https://terminus-font.sourceforge.net/)
 - - - -
+- set input keyboard layout
+```lua
+        echo 'KEYMAP=us' >> /etc/vconsole.conf
+```
+replace `us` to your appreciate keyboard layout
 ## .make linux console more awesome and cooler
 - login shell
 

@@ -340,6 +340,27 @@ then you can append your login text art in `/etc/issue` file
 ```
 - system wide profile configuration
 ```bash
+# This function API is accessible to scripts in /etc/profile.d
+append_path() {
+  case ":$PATH:" in
+    *:"$1":*)
+      ;;
+    *)
+      PATH="${PATH:+$PATH:}$1"
+  esac
+}
+
+export PATH='/usr/local/sbin:/usr/local/bin:/usr/bin'
+if [[ -d /etc/profile.d/ ]]; then
+  for profile in /etc/profile.d/*.sh; do
+    [[ -r $profile ]] && . "$profile"
+  done
+  unset profile
+fi
+[[ $- == *i* ]] && [[ -z $POSIXLY_CORRECT ]] && [[ ${0#-} != sh ]] && [[ -r /etc/bash.bashrc ]] && . /etc/bash.bashrc
+unset -f append_path
+unset TERMCAP
+unset MANPATH
 ```
 - enhance bash tab completion
 ```sh

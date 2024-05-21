@@ -403,7 +403,7 @@ and Change the `config.jsonc` file contents to
 - system wide bash configuration
 
 remove all user specific config bash file `~/.bashrc`
-then open `/etc/bash.bashrc` and only keep `[[ $- != *i* ]] && return`
+then open `/etc/bash.bashrc` and clear up all default contents inside
 follow the configuration below
 - general command alias
 ```sh

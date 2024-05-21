@@ -125,7 +125,7 @@ congratulation, minimal Arch Linux is successfully installed. you can login as r
 - [improve CPU performance](#improve-CPU-performance "goto improve-CPU-performance")
 - [language and timezone](#language-and-timezone "goto language-and-timezone")
 - [make linux console more awesome and cooler](#make-linux-console-more-awesome-and-cooler "goto make-linux-console-more-awesome-and-cooler")
-- [other](#other "goto other")
+- [other packages](#other-packages "goto other-packages")
 ## .user setup
 - set hostname
 ```lua
@@ -339,8 +339,8 @@ then you can append your login text art in `/etc/issue` file
 \e[1;33m                                    +.........._________________________________________________,.+'\e[m
 ```
 - system wide profile configuration
+open `/etc/profile` and change contents to
 ```bash
-# This function API is accessible to scripts in /etc/profile.d
 append_path() {
   case ":$PATH:" in
     *:"$1":*)

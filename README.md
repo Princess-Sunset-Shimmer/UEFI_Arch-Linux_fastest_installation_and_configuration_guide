@@ -264,6 +264,7 @@ add `mitigations=off` to `options`
 options root=UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw quiet loglevel=0 zswap.enabled=1 mitigations=off
 ```
 ## language and timezone
+these are optional configurations
 - set language
 
 generate and use your appropriate locale
@@ -287,6 +288,16 @@ replace `C.UTF-8 UTF8` and `C.UTF-8` to your appreciation
         echo 'KEYMAP=us' >> /etc/vconsole.conf
 ```
 replace `us` to your appreciate keyboard layout
+- timezone
+
+first to list the timezone file you'd like to pickup
+```lua
+        ls -alh /usr/share/zoneinfo | more
+```
+then pick one and symbolically link it to `/etc/localtime`
+```lua
+        ln -sf /usr/share/your_picked_race_zone_file /etc/localtime
+```
 ## .make linux console more awesome and cooler
 - login shell
 

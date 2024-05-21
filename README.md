@@ -338,6 +338,9 @@ then you can append your login text art in `/etc/issue` file
 \e[1;32m                                 `|.              ,|_|.  ,|_|`.__/|_||___,/' |_|`+.__./             ,+
 \e[1;33m                                    +.........._________________________________________________,.+'\e[m
 ```
+- system wide profile configuration
+```bash
+```
 - enhance bash tab completion
 ```sh
 set show-all-if-unmodified on

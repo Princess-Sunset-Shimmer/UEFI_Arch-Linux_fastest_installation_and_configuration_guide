@@ -265,13 +265,14 @@ pacman() {
 - - - -
 `note`: by above pacman() alias, you can do additional commands as below
 ```asm
+INSTALL_PACKAGE:
         pacman upgrade
         pacman install package_name
-
+REMOVE_PACKAGE:
         pacman remove package_name
         pacman autoremove
         pacman clean
-
+QUERY_PACKAGE:
         pacman search keywords
         pacman search group group_name
         pacman info package_name

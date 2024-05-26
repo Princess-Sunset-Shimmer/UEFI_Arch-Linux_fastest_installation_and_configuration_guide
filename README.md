@@ -264,7 +264,7 @@ pacman() {
 ```
 - - - -
 `note`: by above pacman() alias, you can do additional commands as below
-```c
+```lua
 INSTALL_PACKAGE:
         pacman upgrade
         pacman install package_name

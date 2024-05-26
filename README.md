@@ -207,7 +207,7 @@ add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
 edit `/etc/pacman.conf` file:\
 uncomment `ParrallelDownloads = 5` and change the number as you wish\
 add `ILoveCandy`\
-add pacman alias to your `/etc/bash.bashrc` file:
+add below pacman() alias to your `/etc/bash.bashrc` file:
 ```bash
 pacman() {
   case $1 in
@@ -262,6 +262,26 @@ pacman() {
   esac
 }
 ```
+- - - -
+`note`: by above pacman() alias, you can do additional commands as below
+```asm
+        pacman upgrade
+        pacman install package_name
+
+        pacman remove package_name
+        pacman autoremove
+        pacman clean
+
+        pacman search keywords
+        pacman search group group_name
+        pacman info package_name
+        pacman list
+        pacman list installed
+        pacman list available
+        pacman list group
+        pacman list orphan
+```
+- - - -
 ## improve Booting performance
 open `/boot/loader/loader.conf` file\
 add kernel parameters `quiet` and `loglevel=0` to `options`

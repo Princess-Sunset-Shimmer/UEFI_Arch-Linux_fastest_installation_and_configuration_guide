@@ -205,9 +205,63 @@ add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
 ```
 ## .PACkage MANager
 edit `/etc/pacman.conf` file:\
-uncomment `Color` xor insteadly add `alias pacman='pacman --color=always'` to your `/etc/bash.bashrc` file\
 uncomment `ParrallelDownloads = 5` and change the number as you wish\
-add `ILoveCandy`
+add `ILoveCandy`\
+add pacman alias to your `/etc/bash.bashrc` file:
+```bash
+pacman() {
+  case $1 in
+    upgrade)
+      shift 1; command pacman --color=always -Syu $@
+      ;;
+    install)
+      shift 1; command pacman --color=always -S $@
+      ;;
+    remove)
+      shift 1; command pacman --color=always -Runs $@
+      ;;
+    autoremove)
+      orph="$(command pacman -Qdtq)"
+      if [[ -n $2 ]] || [[ -n $orph ]]; then
+        shift 1; command pacman --color=always -Runs $@ $orph
+      else echo '0 package removed'; fi
+      ;;
+    clean)
+      shift 1; command pacman --color=always -Scc $@
+      ;;
+    search)
+      if [[ $2 == group ]]; then
+        shift 2; command pacman --color=always -Sgg $@
+      else shift 1; command pacman --color=always -Ss $@; fi
+      ;;
+    info)
+      shift 1; command pacman --color=always -Sii $@
+      ;;
+    list)
+      case $2 in
+        installed)
+          shift 2; command pacman --color=always -Qet $@
+          ;;
+        available)
+          shift 2; command pacman --color=always -Qs $@
+          ;;
+        orphan)
+          shift 2; command pacman --color=always -Qdt $@
+          ;;
+        group)
+          shift 2; command pacman --color=always -Qg $@
+          ;;
+        *)
+          shift 1; command pacman --color=always -Q $@
+          ;;
+      esac
+      ;;
+    *)
+      command pacman --color=always $@
+      ;;
+  esac
+}
+```
 ## improve Booting performance
 open `/boot/loader/loader.conf` file\
 add kernel parameters `quiet` and `loglevel=0` to `options`

@@ -516,7 +516,7 @@ remove all user specific config bash file `~/.bashrc`
 then open `/etc/bash.bashrc` and clear up all default contents inside
 follow the configuration below
 - general command alias
-```sh
+```bash
 alias ip='ip --color=always'
 alias grep='grep --color=always'
 alias diff='diff --color=always'
@@ -525,27 +525,62 @@ alias dd='dd status=progress'
 alias ps='ps -uf'
 
 ls() {
-        command ls --color=always -alh $@ | sort | grep '^b\|:\|\.\|root\|' | GREP_COLORS='ms=01;34' grep '^d\|-\|>\|/\|_\|' | GREP_COLORS='ms=01;32' grep '^total\|' | GREP_COLORS='ms=01;36' grep '^l\|' | GREP_COLORS='ms=01;33' grep '^c\|'
+  command ls --color=always -FAXlh "$@" |\
+  command grep --color=always '^b\|:\|\.\|root\|' |\
+  GREP_COLORS='ms=01;34'\
+  command grep --color=always '^d\|/\|_\|' |\
+  GREP_COLORS='ms=01;32'\
+  command grep --color=always '^total\|-\|>\|' |\
+  GREP_COLORS='ms=01;36'\
+  command grep --color=always '^l\|' |\
+  GREP_COLORS='ms=01;33'\
+  command grep --color=always '^c\|*\|'
 }
 
 cd() {
-        command cd $@; ls
+ command cd "$@";ls
 }
 
 file() {
-        command file $@ | grep '/\|-\|+\|' | GREP_COLORS='ms=01;34' grep ':\|\.\|,\|#\|)\|(\|_\|'
+  command file "$@" |\
+  command grep --color=always 'block\|/\|-\|+\|' |\
+  GREP_COLORS='ms=01;34'\
+  command grep --color=always 'directory\|:\|\.\|,\|#\|)\|(\|_\|' |\
+  GREP_COLORS='ms=01;36'\
+  command grep --color=always 'link\|' |\
+  GREP_COLORS='ms=01;33'\
+  command grep --color=always 'character\|'
 }
 
 cat() {
-        command cat $@ | grep '\.\|,\|;\|:\|_\|}\|{\|)\|(\|]\|\[\|\\\|\$\|#\|?\|!\|@\|`\|"\|' grep "'\|" | GREP_COLORS='ms=01;34' grep '+\|-\|*\|/\|%\|=\|>\|<\|&\||\|^\|~\|'
+  command cat "$@" |\
+  command grep --color=always '\.\|,\|;\|:\|_\|}\|{\|)\|(\|]\|\[\|\\\|\$\|#\|?\|!\|@\|`\|"\|' |\
+  command grep --color=always "'\|" |\
+  GREP_COLORS='ms=01;34'\
+  command grep --color=always '+\|-\|*\|/\|%\|=\|>\|<\|&\||\|\^\|~\|'
 }
 
 lsblk() {
-        command lsblk $@ | grep ']\|\[\|RM\|RO\|FS\|disk\|%\|' | GREP_COLORS='ms=01;34' grep '^NAME\|SIZE\|TYPE\|SWAP\|\.\|:\|/\|-\|VER\|AVAIL\|UUID\|USE\|'
+  command lsblk "$@" |\
+  command grep --color=always ']\|\[\|RM\|RO\|FS\|disk\|%\|' |\
+  GREP_COLORS='ms=01;34'\
+  command grep --color=always '^NAME\|SIZE\|TYPE\|SWAP\|\.\|:\|/\|-\|VER\|AVAIL\|UUID\|USE\|'
 }
 
 lspci() {
-        command lspci -tv $@ | grep ']\|\[\|+\|-\||\|\\\|/\|' | GREP_COLORS='ms=01;34' grep '\.\|:\|,\|'
+  command lspci -tv "$@" |\
+  command grep --color=always ']\|\[\|+\|-\||\|\\\|/\|' |\
+  GREP_COLORS='ms=01;34'\
+  command grep --color=always '\.\|:\|,\|'
+}
+
+findmnt() {
+  command findmnt "$@" |\
+  command grep --color=always 'TARGET\|SOURCE\|FSTYPE\|OPTIONS\|' |\
+  GREP_COLORS='ms=01;36'\
+  command grep --color=always ',\|=\|' |\
+  GREP_COLORS='ms=01;32'\
+  command grep --color=always '/\|'
 }
 ```
 add above alias to your `/etc/bash.bashrc` file\

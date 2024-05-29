@@ -1,3 +1,4 @@
 {
+  "display": {"color: "yellow", "separator": " <> "}
   "modules": ["os","separator","kernel","shell","terminal","terminalfont","display","cpu","gpu","memory","swap","disk","packages","localip","uptime","battery","separator","colors"]
 }

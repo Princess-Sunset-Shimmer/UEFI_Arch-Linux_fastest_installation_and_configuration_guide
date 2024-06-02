@@ -1,4 +1,4 @@
-minimal ***/\rch Linux*** installation starting right now\
+minimal **/\rch Linux** installation starting right now\
 [installation](#installation "goto installation")\
 [configuration](#configuration "goto configuration")
 # installation
@@ -47,8 +47,8 @@ if you have Multiple-Fast-Drives, then create multiple smaller [SWAP] partitions
         mount --mkdir /dev/your_drive_name1 /mnt/boot
         swapon /dev/your_drive_name2
 ```
-the Order to mount your Partitions or Drives must obay the Hierarchy of File System\
-mount `/` Root-partition to `/mnt/` first, then mount Sub-partition next, and so on
+the **Order** to mount your Partitions or Drives must obay the **Hierarchy** of File-System\
+mount `/` Root-Partition to `/mnt/` first, then mount Sub-Partition next, and so on
 - generate [fstab](https://wiki.archlinux.org/title/fstab) ( File System TABle ) file
 ```c
         mkdir /mnt/etc

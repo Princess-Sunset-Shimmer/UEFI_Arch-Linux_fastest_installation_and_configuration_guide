@@ -540,7 +540,7 @@ ls() {
 }
 
 cd() {
- command cd "$@";ls
+  command cd "$@"; ls
 }
 
 file() {
@@ -586,7 +586,7 @@ findmnt() {
 }
 ```
 add above alias to your `/etc/bash.bashrc` file\
-then `. /etc/bash.bashrc` to see the changes
+then you can run `. /etc/bash.bashrc` to see the changes
 - make command prompt awesome
 
 open `/etc/bash.bashrc` file\
@@ -599,10 +599,10 @@ then
         PS1="\[\e[2B\e[4C\e[1;33;40m__\e[0;31;43m \u \e[1;33;40m\]\n   |__> \[\e[s\e[0;0H\e[0;34;47m <\l> [\w]\e[K\e[u\e[1;33;40m\]"
         ps0='\e[12C\e[1;33m|\\/|\n\e[12C\e[1;31m|  |\e[1;32;43m \h \e[0;31;40m\n\e[13C\\/\n\e[1;37m'
 else
-        clear
+        command clear
 fi
 ```
-then `. /etc/bash.bashrc` to see the changes
+then you can run `. /etc/bash.bashrc` to see the changes
 ## .other packages
 - generate [top](https://en.wikipedia.org/wiki/Top_(software)) command config file
 ```py

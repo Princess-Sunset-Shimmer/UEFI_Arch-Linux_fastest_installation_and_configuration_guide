@@ -71,12 +71,12 @@ you can omit [networkmanager](https://archlinux.org/packages/extra/x86_64/networ
 by this step, you can install other packages such as ***dust, btop, vim, tmux, calc, gcc, cmatrix, fastfetch, wget, rtorrent, elinks, cmus*** and whatever you need
 - - - -
 ## .install Bootloader and enable Microcode updates
-- write your ***boot-entry-file*** for boot-loader
+- write your ***Boot-Entry-File*** for boot-loader
 ```c
         mkdir -P /mnt/boot/loader/entries
         vim /mnt/boot/loader/entries/arch.conf
 ```
-example minimal entry-file contents:
+example minimal Entry-File contents:
 ```
 linux /vmlinuz-linux
 initrd /amd-ucode.img
@@ -86,7 +86,7 @@ options root=UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw
 ```
 `linux` takes path to kernel; path is NOT `/boot/...` because we previously created partition for `/boot`\
 `initrd` [initial ram disk](https://en.wikipedia.org/wiki/Initial_ramdisk); you need to load ***amd-ucode.img*** xor ***intel-ucode.img*** to RAM first before load ***initial-ram-file-system*** image\
-`options` takes kernel parameters; replace `UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX` to your own `/` partition UUID; which you can find in previously generated ***fstab*** file, or you can run `findmnt -o UUID -n /` to show it
+`options` takes kernel parameters; replace `UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX` to your own `/` Root-Partition-UUID; which you can find in previously generated ***fstab*** file, or you can run `findmnt -o UUID -n /` to show it
 
 - write your ***systemd-boot*** config file
 ```c
@@ -97,9 +97,9 @@ example minimal systemd-boot config file contents:
 default arch.conf
 editor no
 ```
-this set default entry file to previously wrote ***arch.conf***, and no boot-entry-editor.\
-you can write more entry files with more kernels than just one
-- install systemd boot-loader
+this set Default-Entry-File to previously wrote ***arch.conf***, and no Boot-Entry-Editor.\
+you can write more Entry-Files with more Kernels than just one
+- install ***Systemd-Boot-Loader***
 ```c
         arch-chroot /mnt
         bootctl install
@@ -114,7 +114,7 @@ you can write more entry files with more kernels than just one
         exit
         reboot
 ```
-congratulation, minimal Arch Linux is successfully installed. you can login as root and configure your brand new Arch Linux now
+congratulation, minimal **/\rch Linux** is successfully installed. you can login as `root` and configure your brand new **/\rch Linux** now
 # configuration
 - [user setup](#basic-setup "goto user-setup")
 - [network](#network "goto network")

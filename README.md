@@ -48,14 +48,14 @@ if you have Multiple-Fast-Drives, then create multiple smaller [SWAP] partitions
         swapon /dev/your_drive_name2
 ```
 the **Order** to mount your Partitions or Drives must obay the **Hierarchy** of File-System\
-mount `/` Root-Partition to `/mnt/` first, then mount Sub-Partition next, and so on
+mount `/` Root-Partition to `/mnt` first, then mount Sub-Partition next, and so on
 - generate [fstab](https://wiki.archlinux.org/title/fstab) ( File System TABle ) file
 ```c
         mkdir /mnt/etc
         genfstab -U /mnt > /mnt/etc/fstab
 ```
 ## .connect internet
-***Just Wire In***
+***--Just-Wire-In-->***
 ## .install Arch Linux
 - install essential packages
 ```c

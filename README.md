@@ -22,7 +22,7 @@ minimal ***/\rch Linux*** installation starting right now\
 ## .Partition, Format, Mount and genfstab for your drive
 - create new partition for drive
     - use `lsblk` to print your drive name first, then
-    - use `cfdisk` to open TUI partition editor then select `GPT`
+    - use `cfdisk` TUI-Partition-Editor to open your drive, then select `GPT`
     - then create partition on your drive as suggested as table below
 
 | Partition             | Mount on       | Size           | Purpose                                  |
@@ -33,7 +33,7 @@ minimal ***/\rch Linux*** installation starting right now\
 
 you can make [SWAP] partition as twice bigger as your Total-System-Memory-Size\
 use `grep MemTotal /proc/meminfo` to check your Total-System-Memory-Size\
-if you have multiple fast drives, then create multiple smaller [SWAP] partitions on multiple fast drives instead of using one giant [SWAP] partition on one drive
+if you have Multiple-Fast-Drives, then create multiple smaller [SWAP] partitions on Multiple-Fast-Drives instead of using one giant [SWAP] partition on one drive
 
 - format partions
 ```c

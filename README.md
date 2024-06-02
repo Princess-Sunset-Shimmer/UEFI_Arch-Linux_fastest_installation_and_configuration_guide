@@ -92,7 +92,7 @@ options root=UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw
 ```c
         vim /mnt/boot/loader/loader.conf
 ```
-example minimal systemd-boot config file contents:
+example minimal Systemd-Boot-Config-File contents:
 ```c
 default arch.conf
 editor no

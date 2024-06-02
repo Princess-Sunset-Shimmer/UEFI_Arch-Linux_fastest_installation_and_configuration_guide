@@ -18,7 +18,7 @@ minimal /\rch Linux installation starting right now\
 ```c
         dd if=/directory/archlinux.iso of=/dev/usb_flash_drive_file_name status=progress
 ```
-- boot your built bootable USB then select `*Arch Linux install medium (x86_64, UEFI)`
+- boot your built ***Bootable-USB*** then select `*Arch Linux install medium (x86_64, UEFI)`
 ## .Partition, Format, Mount and genfstab for your drive
 - create new partition for drive
     - use `lsblk` to print your drive name first, then

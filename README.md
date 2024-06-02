@@ -9,7 +9,7 @@ minimal /\rch Linux installation starting right now\
 - step 4: [install Bootloader and enable Microcode updates](#install-Bootloader-and-enable-Microcode-updates "goto install-Bootloader-and-enable-Microcode-updates")
 - step 5: [finish the installation](#finish-the-installation "goto finish-the-installation")
 ## .Make bootable USB and Boot live environment
-- goto [official download page](https://archlinux.org/download/) to download iso file
+- goto [official download page](https://archlinux.org/download/) to download iso_file
 - check file SHA256
 ```c
         sha256sum /directory/archlinux.iso

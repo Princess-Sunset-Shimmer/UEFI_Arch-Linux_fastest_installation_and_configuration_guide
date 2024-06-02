@@ -62,11 +62,11 @@ mount `/` Root-Partition to `/mnt` first, then mount Sub-Partition next, and so 
         pacstrap -K /mnt base linux linux-firmware sof-firmware amd-ucode networkmanager
 ```
 - - - -
-[base](https://archlinux.org/packages/core/any/base/) is minimal Arch\
-[linux](https://archlinux.org/packages/core/x86_64/linux/) is kernel. Arch base + Linux kernel = Arch Linux\
-you can omit [linux-firmware](https://archlinux.org/packages/core/any/linux-firmware/) if you install arch linux on `VirtualBox`\
-[sof-firmware](https://archlinux.org/packages/extra/x86_64/sof-firmware/) for some newer laptops to get working audio, it's optional for minimal system to run\
-[amd-ucode](https://archlinux.org/packages/core/any/amd-ucode/) provides `AMD microcode`. instead use [intel-ucode](https://archlinux.org/packages/extra/any/intel-ucode/) if you use intel chip\
+[base](https://archlinux.org/packages/core/any/base/) is minimal Arch Base\
+[linux](https://archlinux.org/packages/core/x86_64/linux/) is kernel. Arch Base + Linux kernel = Arch Linux\
+you can omit [linux-firmware](https://archlinux.org/packages/core/any/linux-firmware/) if you install Arch Linux on `VirtualBox`\
+[sof-firmware](https://archlinux.org/packages/extra/x86_64/sof-firmware/) for some newer laptops to get Working-Audio, it's optional for minimal system to run\
+[amd-ucode](https://archlinux.org/packages/core/any/amd-ucode/) provides `AMD microcode`. instead use [intel-ucode](https://archlinux.org/packages/extra/any/intel-ucode/) if you use **intel** chip\
 you can omit [networkmanager](https://archlinux.org/packages/extra/x86_64/networkmanager/) if you only use `systemd [ o < ]` to configure network\
 by this step, you can install other packages such as dust, btop, vim, tmux, calc, gcc, cmatrix, fastfetch, wget, rtorrent, elinks, cmus and whatever you need
 - - - -

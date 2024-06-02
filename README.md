@@ -14,7 +14,7 @@ minimal /\rch Linux installation starting right now\
 ```c
         sha256sum /directory/archlinux.iso
 ```
-- use either GUI utility like `rufus` and `etcher` or use `dd` to write your image-file to your USB-flash-drive
+- use either GUI-Utility like `rufus` and `etcher` or use `dd` to write your image_file to your USB-Flash-Drive
 ```c
         dd if=/directory/archlinux.iso of=/dev/usb_flash_drive_file_name status=progress
 ```
@@ -31,8 +31,8 @@ minimal /\rch Linux installation starting right now\
 | /dev/your_deive_name2 | [SWAP]         | `512M` minium  | for Swaping                              |
 | /dev/your_drive_name3 | `/`            | rest of drive  | for whole /\rch base                     |
 
-you can make [SWAP] partition as twice bigger as your total system memory size\
-use `grep MemTotal /proc/meminfo` to check your total memory size\
+you can make [SWAP] partition as twice bigger as your Total-System-Memory-Size\
+use `grep MemTotal /proc/meminfo` to check your Total-System-Memory-Size\
 if you have multiple fast drives, then create multiple smaller [SWAP] partitions on multiple fast drives instead of using one giant [SWAP] partition on one drive
 
 - format partions

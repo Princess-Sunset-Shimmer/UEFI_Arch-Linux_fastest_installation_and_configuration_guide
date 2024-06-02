@@ -5,7 +5,7 @@ minimal **/\rch Linux** installation starting right now\
 - step 0: [Make bootable USB and Boot live environment](#Make-bootable-USB-and-Boot-live-environment "goto Make-bootable-USB-and-Boot-live-environment")
 - step 1: [Partition, Format, Mount and genfstab for your drive](#Partition,-Format,-Mount-and-genfstab-for-your-drive "goto Partition,-Format,-Mount-and-genfstab-for-your-drive")
 - step 2: [connect internet](#connect-internet "goto connect-internet")
-- step 3: [install Arch linux](#install-Arch-linux "goto install-Arch-linux")
+- step 3: [install Arch Linux](#install-Arch-Linux "goto install-Arch-Linux")
 - step 4: [install Bootloader and enable Microcode updates](#install-Bootloader-and-enable-Microcode-updates "goto install-Bootloader-and-enable-Microcode-updates")
 - step 5: [finish the installation](#finish-the-installation "goto finish-the-installation")
 ## .Make bootable USB and Boot live environment
@@ -56,7 +56,7 @@ mount `/` Root-Partition to `/mnt/` first, then mount Sub-Partition next, and so
 ```
 ## .connect internet
 ***Just Wire In***
-## .install Arch linux
+## .install Arch Linux
 - install essential packages
 ```c
         pacstrap -K /mnt base linux linux-firmware sof-firmware amd-ucode networkmanager

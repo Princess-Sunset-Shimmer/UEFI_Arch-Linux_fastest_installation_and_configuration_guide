@@ -146,13 +146,13 @@ then symbolically link Unpriviliged-User's `.config` to root's one
 ```py
         ln -s /home/your_user_name/.config /root/.config
 ```
-or you can Remove entire `/root` directory and Link entire `/home/your_user_name` to `/root`
+or you can **Remove** entire `/root` directory and **Link** entire `/home/your_user_name` to `/root`
 ```py
         rm -fr root /root
         ln -s /home/your_user_name /root
 ```
 ## .network
-- auto start [network manager](https://archlinux.org/packages/extra/x86_64/networkmanager/)
+- Auto-Start [network manager](https://archlinux.org/packages/extra/x86_64/networkmanager/)
 ```
         systemctl enable NetworkManager
         systemctl restart NetworkManager
@@ -169,7 +169,7 @@ or you can Remove entire `/root` directory and Link entire `/home/your_user_name
 - - - -
 `note`: you can update `/etc/hosts` file by run `hblock` again
 - - - -
-- improve network Performance and Security
+- improve network **Performance** and **Security**
 ```lua
 net.core.netdev_max_backlog=16384
 net.core.somaxconn=8192

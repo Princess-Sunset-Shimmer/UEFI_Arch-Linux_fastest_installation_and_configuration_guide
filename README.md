@@ -148,7 +148,7 @@ then symbolically link Unpriviliged-User's `.config` to root's one
 ```
 or you can **Remove** entire `/root` directory and **Link** entire `/home/your_user_name` to `/root`
 ```py
-        rm -fr root /root
+        rm -fr /root
         ln -s /home/your_user_name /root
 ```
 ## .network

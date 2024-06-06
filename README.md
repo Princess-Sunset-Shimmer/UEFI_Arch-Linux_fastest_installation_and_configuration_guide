@@ -136,7 +136,7 @@ congratulation, minimal **/\rch Linux** is successfully installed. you can login
         useradd -m your_user_name
         passwd user_name
 ```
-remove all `.bash*` for this User
+remove all `.bash*` for this Unprivileged-User
 then switch to Unpriviliged-User and create `.config` directory
 ```py
         rm -f /home/your_user_name/.bash*
@@ -146,13 +146,13 @@ then symbolically link Unpriviliged-User's `.config` to root's one
 ```py
         ln -s /home/your_user_name/.config /root/.config
 ```
-or you can remove entire `/root` directory and link entire `/home/your_user_name` to `/root`
+or you can Remove entire `/root` directory and Link entire `/home/your_user_name` to `/root`
 ```py
         rm -fr root /root
         ln -s /home/your_user_name /root
 ```
 ## .network
-- network manager
+- auto start [network manager]()
 ```
         systemctl enable NetworkManager
         systemctl restart NetworkManager

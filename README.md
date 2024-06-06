@@ -131,20 +131,26 @@ congratulation, minimal **/\rch Linux** is successfully installed. you can login
 ```lua
         echo 'your_new_hostname' > /etc/hostname
 ```
-- create unpriviliged user
+- create Unpriviliged-User
 ```c
         useradd -m your_user_name
         passwd user_name
 ```
-then switch to unpriviliged user and create `.config` directory
+remove all `.bash*` for this User
+then switch to Unpriviliged-User and create `.config` directory
 ```py
+        rm -f /home/your_user_name/.bash*
         su -c "mkdir /home/your_user_name/.config" your_user_name
 ```
-then symbolically link unpriviliged user's `.config` to root's one
+then symbolically link Unpriviliged-User's `.config` to root's one
 ```py
         ln -s /home/your_user_name/.config /root/.config
 ```
-also you can remove entire `/root` directory and link entire `/home/your_user_name` to `/root`
+or you can remove entire `/root` directory and link entire `/home/your_user_name` to `/root`
+```py
+        rm -fr root /root
+        ln -s /home/your_user_name /root
+```
 ## .network
 - network manager
 ```

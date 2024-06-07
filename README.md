@@ -71,12 +71,12 @@ you can omit [networkmanager](https://archlinux.org/packages/extra/x86_64/networ
 by this step, you can install other packages such as ***dust, btop, vim, tmux, calc, gcc, cmatrix, fastfetch, wget, rtorrent, elinks, cmus*** and whatever you need
 - - - -
 ## .install Bootloader and enable Microcode updates
-- write your ***Boot-Entry-File*** for boot-loader
+- write your ***Boot-Entry-File*** for Boot-Loader
 ```c
         mkdir -P /mnt/boot/loader/entries
         vim /mnt/boot/loader/entries/arch.conf
 ```
-example minimal Entry-File contents:
+example minimal **Entry-File** contents:
 ```
 linux /vmlinuz-linux
 initrd /amd-ucode.img
@@ -92,12 +92,12 @@ options root=UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw
 ```c
         vim /mnt/boot/loader/loader.conf
 ```
-example minimal Systemd-Boot-Config-File contents:
+example minimal **Systemd-Boot-Config-File** contents:
 ```c
 default arch.conf
 editor no
 ```
-this set Default-Entry-File to previously wrote ***arch.conf***, and no Boot-Entry-Editor.\
+this set ***Default-Entry-File*** to previously wrote ***arch.conf***, and no ***Boot-Entry-Editor***.\
 you can write more Entry-Files with more Kernels than just one
 - install ***Systemd-Boot-Loader***
 ```c

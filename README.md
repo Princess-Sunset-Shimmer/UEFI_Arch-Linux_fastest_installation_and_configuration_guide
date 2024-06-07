@@ -311,7 +311,7 @@ or you can enable `systemd-boot-update` service for auto updates
 ```c
         systemctl enable fstrim.timer
 ```
-- abandon core dump
+- abandon Core-Dump
 ```lua
 kernel.core_pattern=/dev/null
 ```
@@ -320,7 +320,7 @@ add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
         sysctl -p /etc/sysctl.d/99-sysctl.conf
 ```
 ## .improve Memory performance
-- improve Virtual Memory performance
+- improve Virtual-Memory performance
 ```lua
 vm.dirty_background_ratio=16
 vm.dirty_ratio=32
@@ -330,7 +330,7 @@ add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
 ```c
         sysctl -p /etc/sysctl.d/99-sysctl.conf
 ```
-- turn on swap memory compression
+- turn on Swap-Memory-Compression
 
 open `/boot/loader/loader.conf` file\
 add `zswap.enabled=1` to `options`

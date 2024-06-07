@@ -386,7 +386,7 @@ then pick one and Symbolically **link** it to `/etc/localtime`
         ln -sf /usr/share/your_picked_race_zone_file /etc/localtime
 ```
 ## .make linux console more awesome and cooler
-- login shell
+- login shell **Top-Bar** and **Background**
 
 change your `/etc/issue` file contents to
 ```lua

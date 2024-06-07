@@ -361,7 +361,7 @@ generate and use your appropriate locale
         echo 'LANG=C.UTF-8' > /etc/locale.conf
 ```
 replace `C.UTF-8 UTF8` and `C.UTF-8` to your appreciation
-- set console font
+- set Console-Font
 ```py
         ls /usr/share/kbd/consolefonts               # print available bitmap font files
         setfont font_name                            # test font temporary
@@ -370,18 +370,18 @@ replace `C.UTF-8 UTF8` and `C.UTF-8` to your appreciation
 - - - -
 `pacman -Syu terminus-font` to install [terminus console font](https://terminus-font.sourceforge.net/)
 - - - -
-- set input keyboard layout
+- set Input-Keyboard-Layout
 ```lua
         echo 'KEYMAP=us' >> /etc/vconsole.conf
 ```
-replace `us` to your appreciate keyboard layout
+replace `us` to your appreciate Keyboard-Layout
 - timezone
 
-first to list the timezone file you'd like to pickup
+first to list the ***Timezone-File*** you'd like to pickup
 ```lua
         ls -alh /usr/share/zoneinfo | more
 ```
-then pick one and symbolically link it to `/etc/localtime`
+then pick one and Symbolically **link** it to `/etc/localtime`
 ```lua
         ln -sf /usr/share/your_picked_race_zone_file /etc/localtime
 ```

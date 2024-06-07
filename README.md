@@ -108,7 +108,7 @@ you can write more Entry-Files with more Kernels than just one
         bootctl install
 ```
 ## .finish the installation
-- set root password
+- set **Root-Password**
 ```c
         passwd
 ```
@@ -117,7 +117,8 @@ you can write more Entry-Files with more Kernels than just one
         exit
         reboot
 ```
-congratulation, minimal **/\rch Linux** is successfully installed. you can login as `root` and configure your brand new **/\rch Linux** now
+congratulation, minimal **/\rch Linux** is successfully installed.\
+you can login as `root` and configure your brand new **/\rch Linux** now
 # configuration
 - [user setup](#basic-setup "goto user-setup")
 - [network](#network "goto network")
@@ -218,7 +219,7 @@ add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
 edit `/etc/pacman.conf` file:\
 uncomment `ParrallelDownloads = 5` and change the number as you wish\
 add `ILoveCandy`\
-add below pacman() alias to your `/etc/bash.bashrc` file:
+add below `***pacman() alias***` to your `/etc/bash.bashrc` file:
 ```bash
 pacman() {
   case $1 in
@@ -274,7 +275,7 @@ pacman() {
 }
 ```
 - - - -
-`note`: by above `pacman() alias`, you can do Additional-Commands as below
+`note`: by above `pacman() alias`, you can do ***Additional-Commands*** as below
 ```lua
 INSTALL_PACKAGE:
         pacman upgrade
@@ -296,7 +297,7 @@ QUERY_PACKAGE:
 - - - -
 ## improve Booting performance
 open `/boot/loader/loader.conf` file\
-add kernel parameters `quiet` and `loglevel=0` to `options`
+add Kernel-Parameters `quiet` and `loglevel=0` to `options`
 ```lua
 options root=UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw quiet loglevel=0
 ```

@@ -30,11 +30,12 @@ minimal **/\rch Linux** installation starting right now\
 | /dev/your_drive_name1 | `/boot`        | `256M` minium  | for Kernel, Bootloader, EFI and Firmware |
 | /dev/your_deive_name2 | [SWAP]         | `512M` minium  | for Swaping                              |
 | /dev/your_drive_name3 | `/`            | rest of drive  | for whole /\rch base                     |
-
+- - - -
+`note`:
 you can make **[SWAP]** partition as twice bigger as your ***Total-System-Memory-Size***\
 use `grep MemTotal /proc/meminfo` to check your ***Total-System-Memory-Size***\
 if you have ***Multiple-Fast-Drives***, then create multiple smaller **[SWAP]** partitions on Multiple-Fast-Drives instead of using one giant **[SWAP]** partition on Single-Drive
-
+- - - -
 - format partions
 ```c
         mkfs.fat -F 32 /dev/your_drive_name1
@@ -47,8 +48,9 @@ if you have ***Multiple-Fast-Drives***, then create multiple smaller **[SWAP]** 
         mount --mkdir /dev/your_drive_name1 /mnt/boot
         swapon /dev/your_drive_name2
 ```
-the **Order** to mount your Partitions or Drives must obay the **Hierarchy** of File-System\
-mount `/` ***Root-Partition*** to `/mnt` first, then mount ***Sub-Partition*** next, and so on
+- - - -
+`note`: the **Order** to mount your Partitions or Drives must obay the **Hierarchy** of File-System. mount `/` ***Root-Partition*** to `/mnt` first, then mount ***Sub-Partition*** next, and so on
+- - - -
 - generate [fstab](https://wiki.archlinux.org/title/fstab) ( File System TABle ) file
 ```c
         mkdir /mnt/etc

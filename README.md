@@ -31,8 +31,8 @@ minimal **/\rch Linux** installation starting right now\
 | /dev/your_deive_name2 | [SWAP]         | `512M` minium  | for Swaping                              |
 | /dev/your_drive_name3 | `/`            | rest of drive  | for whole /\rch base                     |
 
-you can make **[SWAP]** partition as twice bigger as your Total-System-Memory-Size\
-use `grep MemTotal /proc/meminfo` to check your Total-System-Memory-Size\
+you can make **[SWAP]** partition as twice bigger as your ***Total-System-Memory-Size***\
+use `grep MemTotal /proc/meminfo` to check your ***Total-System-Memory-Size***\
 if you have ***Multiple-Fast-Drives***, then create multiple smaller **[SWAP]** partitions on Multiple-Fast-Drives instead of using one giant **[SWAP]** partition on Single-Drive
 
 - format partions

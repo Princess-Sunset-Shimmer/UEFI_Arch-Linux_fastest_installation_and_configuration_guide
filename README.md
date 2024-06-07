@@ -9,21 +9,21 @@ minimal **/\rch Linux** installation starting right now\
 - step 4: [install Bootloader and enable Microcode updates](#install-Bootloader-and-enable-Microcode-updates "goto install-Bootloader-and-enable-Microcode-updates")
 - step 5: [finish the installation](#finish-the-installation "goto finish-the-installation")
 ## .Make bootable USB and Boot live environment
-- goto [official download page](https://archlinux.org/download/) to download iso_file
+- goto [official download page](https://archlinux.org/download/) to download **iso_file**
 - check file SHA256
 ```c
         sha256sum /directory/archlinux.iso
 ```
-- use either GUI-Utility like `rufus` and `etcher` or use `dd` to write your image_file to your USB-Flash-Drive
+- use either **GUI-Utility** like `rufus` and `etcher` or use `dd` to write your **image_file** to your ***USB-Flash-Drive***
 ```c
         dd if=/directory/archlinux.iso of=/dev/usb_flash_drive_file_name status=progress
 ```
 - boot your built ***Bootable-USB*** then select `*Arch Linux install medium (x86_64, UEFI)`
 ## .Partition, Format, Mount and genfstab for your drive
 - create new partition for drive
-    - use `lsblk` to print your drive name first, then
-    - use `cfdisk` TUI-Partition-Editor to open your drive, then select `GPT`
-    - then create partition on your drive as suggested as table below
+    - use `lsblk` to know your **Drive-Name** first, then
+    - use `cfdisk` TUI-Partition-Editor to open your Drive, then select `GPT`
+    - then create Partition on your Drive as suggested as table below
 
 | Partition             | Mount on       | Size           | Purpose                                  |
 | :-------------------- | :------------- | :------------- | :--------------------------------------- |

@@ -219,7 +219,7 @@ add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
 edit `/etc/pacman.conf` file:\
 uncomment `ParrallelDownloads = 5` and change the number as you wish\
 add `ILoveCandy`\
-add below `***pacman() alias***` to your `/etc/bash.bashrc` file:
+add below `pacman() alias` to your `/etc/bash.bashrc` file:
 ```bash
 pacman() {
   case $1 in

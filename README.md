@@ -392,7 +392,7 @@ change your `/etc/issue` file contents to
 ```lua
 \e[0;0H\e[0;30;45m <\l> [/\\rch Linux \r]\e[K\e[m
 ```
-then you can append your login text art in `/etc/issue` file
+then you can append your ***Login-Text-Art*** in `/etc/issue` file
 ```lua
 \e[1;36m                                  __,.-------..._
 \e[0;36m                            ,.-+'"" _,..+++++++._`" +._

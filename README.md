@@ -33,7 +33,7 @@ minimal **/\rch Linux** installation starting right now\
 - - - -
 `note`: you can make **[SWAP]** partition as twice bigger as your ***Total-System-Memory-Size***\
 use `grep MemTotal /proc/meminfo` to check your ***Total-System-Memory-Size***\
-if you have ***Multiple-Fast-Drives***, then create multiple smaller **[SWAP]** partitions on Multiple-Fast-Drives instead of using one giant **[SWAP]** partition on Single-Drive
+`note`: if you have ***Multiple-Fast-Drives***, then create multiple smaller **[SWAP]** partitions on Multiple-Fast-Drives instead of using one giant **[SWAP]** partition on Single-Drive
 - - - -
 - format partions
 ```c
@@ -84,7 +84,6 @@ linux /vmlinuz-linux
 initrd /amd-ucode.img
 initrd /initramfs-linux.img
 options root=UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw
-
 ```
 `linux` takes path to kernel; path is NOT `/boot/...` because we previously created partition for `/boot`\
 `initrd` [initial ram disk](https://en.wikipedia.org/wiki/Initial_ramdisk); you need to load ***amd-ucode.img*** xor ***intel-ucode.img*** to RAM first before load ***initial-ram-file-system*** image\
@@ -436,7 +435,7 @@ then you can append your ***Login-Text-Art*** in `/etc/issue` file
 \e[1;32m                                 `|.              ,|_|.  ,|_|`.__/|_||___,/' |_|`+.__./             ,+
 \e[1;33m                                    +.........._________________________________________________,.+'\e[m
 ```
-- system wide profile configuration
+- System-Wide profile configuration
 open `/etc/profile` and change contents to
 ```bash
 append_path() {
@@ -460,7 +459,7 @@ unset -f append_path
 unset TERMCAP
 unset MANPATH
 ```
-- enhance bash tab completion
+- enhance Bash-Tab-Completion
 ```sh
 set show-all-if-unmodified on
 set show-all-if-ambiguous on
@@ -471,18 +470,18 @@ set colored-completion-prefix on
 set menu-complete-display-prefix on
 ```
 add above contents to your `/etc/inputrc` file
-- use mouse in console
+- use Mouse in console
 ```c
         systemctl enable gpm
         systemctl start gpm
 ```
-- tmux terminal multiplexer
+- tmux Terminal-Multiplexer
 
 install tmux
 ```sh
         pacman -Syu tmux
 ```
-create system wide config file for tmux
+create System-Wide tmux Config-File 
 ```sh
         vim /etc/tmux.conf
 ```
@@ -508,11 +507,11 @@ then
 
 - fastfetch
 
-install fastfetch
+install [fastfetch]()
 ```py
         pacman -Syu fastfetch
 ```
-generate config file to `/home/your_user_name/.config/fastfetch/config.jsonc`
+generate Config-File to `/home/your_user_name/.config/fastfetch/config.jsonc`
 ```py
         fastfetch --gen-config
 ```
@@ -525,9 +524,8 @@ and Change the `config.jsonc` file contents to
 ```
 - system wide bash configuration
 
-remove all user specific config bash file `~/.bashrc`
-then open `/etc/bash.bashrc` and clear up all default contents inside
-follow the configuration below
+ensure all User-Specific bash Config-File `~/.bashrc` have been removed\
+then open `/etc/bash.bashrc` and Clear up all Default-Contents inside and Follow the configuration below
 - general command alias
 ```bash
 alias ip='ip --color=always'

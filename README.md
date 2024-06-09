@@ -385,7 +385,7 @@ then pick one and Symbolically **link** it to `/etc/localtime`
         ln -sf /usr/share/your_picked_race_zone_file /etc/localtime
 ```
 ## .make linux console more awesome and cooler
-- login shell **Top-Bar** and **Background**
+- Login-Shell **Top-Bar** and **Background**
 
 change your `/etc/issue` file contents to
 ```lua
@@ -613,6 +613,23 @@ else
 fi
 ```
 then you can run `. /etc/bash.bashrc` to see the changes
+- interactive shell Top-Bar
+```bash
+tbar() {
+  bat_percent=$(cat /sys/class/power_supply/BAT0/capacity)
+  bat_format="\e[0;34;47m100% [II}"
+  ((bat_percent<100))&&bat_format=" \e[0;34;47m$bat_percent% [II\e[0;30;47m}"
+  ((bat_percent<64))&&bat_format=" \e[0;33;47m$bat_percent% [I\e[0;30;47mI}"
+  ((bat_percent<32))&&bat_format=" \e[0;31;47m$bat_percent% [\e[0;30;47mII}"
+  echo -e "\n\e[1B\e[2A\e[s\e[0;0H\e[0;34;47m\e[K <$tty_name> [$(pwd)]\e[0;${tbar_mid}H$(date +"%I:%M %p")\e[0;${tbar_right}H$bat_format\e[u"
+}
+
+PROMPT_COMMAND=tbar
+```
+add Above-Contents to `/etc/bash.bashrc`\
+and if you use ***tmux*** then append Contents-Below
+```bash
+```
 ## .other packages
 - generate [top](https://en.wikipedia.org/wiki/Top_(software)) command config file
 ```py

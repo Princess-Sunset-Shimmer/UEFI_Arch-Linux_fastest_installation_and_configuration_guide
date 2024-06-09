@@ -436,6 +436,7 @@ then you can append your ***Login-Text-Art*** in `/etc/issue` file
 \e[1;33m                                    +.........._________________________________________________,.+'\e[m
 ```
 - System-Wide profile configuration
+
 open `/etc/profile` and change contents to
 ```bash
 append_path() {
@@ -469,7 +470,7 @@ set mark-symlinked-directories on
 set colored-completion-prefix on
 set menu-complete-display-prefix on
 ```
-add above contents to your `/etc/inputrc` file
+add Above-Contents to your `/etc/inputrc` file
 - use Mouse in console
 ```c
         systemctl enable gpm
@@ -499,7 +500,7 @@ set -g window-status-format "#[fg=magenta] #I "
 set -g message-style bg=black,fg=white
 set -g clock-mode-colour magenta
 ```
-add above contents to your `/etc/tmux.conf` file\
+add Above-Contents to your `/etc/tmux.conf` file\
 then
 ```lua
         tmux source-file /etc/tmux.conf

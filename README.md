@@ -680,6 +680,6 @@ alias wget='wget -c'
 :set incsearch
 :set hlsearch
 ```
-add above contents to your `/etc/vimrc` file
+add Above-Contents to your `/etc/vimrc` file
 - - - -
 Licence: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)

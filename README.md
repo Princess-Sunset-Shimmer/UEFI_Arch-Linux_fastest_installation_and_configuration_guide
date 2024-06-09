@@ -210,7 +210,7 @@ net.ipv4.conf.all.secure_redirects=0
 net.ipv4.conf.default.secure_redirects=0
 net.ipv4.icmp_echo_ignore_all=1
 ```
-add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
+add Above-Contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
 ```c
         sysctl -p /etc/sysctl.d/99-sysctl.conf
 ```
@@ -325,7 +325,7 @@ vm.dirty_background_ratio=16
 vm.dirty_ratio=32
 vm.vfs_cache_pressure=32
 ```
-add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
+add Above-Contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
 ```c
         sysctl -p /etc/sysctl.d/99-sysctl.conf
 ```
@@ -350,7 +350,7 @@ add `mitigations=off` to `options`
 options root=UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw quiet loglevel=0 zswap.enabled=1 mitigations=off
 ```
 ## language and timezone
-these are optional configurations
+these are **optional** configurations
 - set language
 
 generate and use your appropriate locale
@@ -522,6 +522,10 @@ and Change the `config.jsonc` file contents to
   "display": {"color": "yellow", "separator": " <> "}
   "modules": ["os","separator","kernel","shell","terminal","terminalfont","display","cpu","gpu","memory","swap","disk","packages","localip","uptime","battery","separator","colors"]
 }
+```
+add below alias to show fastfetch after clear
+```bash
+alias clear='clear;tput cup 4 0;fastfetch'
 ```
 - system wide bash configuration
 

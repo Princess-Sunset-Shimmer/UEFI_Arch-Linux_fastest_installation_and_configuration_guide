@@ -478,7 +478,7 @@ add Above-Contents to your `/etc/inputrc` file
 ```
 - tmux Terminal-Multiplexer
 
-install tmux
+install [tmux](https://archlinux.org/packages/extra/x86_64/tmux/)
 ```sh
         pacman -Syu tmux
 ```
@@ -505,7 +505,6 @@ then
 ```lua
         tmux source-file /etc/tmux.conf
 ```
-
 - fastfetch
 
 install [fastfetch](https://archlinux.org/packages/extra/x86_64/fastfetch/)
@@ -527,7 +526,7 @@ add below alias to show fastfetch after clear
 ```bash
 alias clear='clear;tput cup 4 0;fastfetch'
 ```
-- system wide bash configuration
+- System-Wide bash configuration
 
 ensure all User-Specific bash Config-File `~/.bashrc` have been removed\
 then open `/etc/bash.bashrc` and Clear up all Default-Contents inside and Follow the configuration below

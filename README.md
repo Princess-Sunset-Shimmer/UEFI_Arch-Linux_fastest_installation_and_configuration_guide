@@ -90,11 +90,11 @@ options root=UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw
 `options` takes **Kernel-Parameters**; replace `UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX` to your own `/` ***Root-Partition-UUID***;\
 which you can find it in previously generated ***fstab*** file, or you can run `findmnt -o UUID -n /` to show it
 
-- write your ***systemd-boot*** config file
+- write your ***Systemd-Boot*** Config-File
 ```c
         vim /mnt/boot/loader/loader.conf
 ```
-example minimal **Systemd-Boot-Config-File** contents:
+example minimal **Systemd-Boot** Config-File contents:
 ```c
 default arch.conf
 editor no

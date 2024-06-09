@@ -659,9 +659,9 @@ press key `B` once switch to hilight mode then\
 press key `X` once to hilight tasks sorting column\
 press `Shift` + `W` to generate config file for current user
 - - - -
-- [wget](https://archlinux.org/packages/extra/x86_64/wget/)
+- wget
 
-install wget
+install [wget](https://archlinux.org/packages/extra/x86_64/wget/)
 ```py
         pacman -Syu wget
 ```

@@ -617,7 +617,7 @@ else
 fi
 ```
 then you can run `. /etc/bash.bashrc` to see the changes
-- interactive shell Top-Bar
+- Interactive-Shell **Top-Bar**
 ```bash
 tbar() {
   bat_percent=$(cat /sys/class/power_supply/BAT0/capacity)

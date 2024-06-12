@@ -539,6 +539,7 @@ alias rm='rm -f'
 alias dd='dd status=progress'
 alias ps='ps -uf'
 alias pwd="pwd -LP | command grep --color=always '/\|'"
+alias I='su -c'
 
 ls() {
   command ls --color=always -FAXlh "$@" |\

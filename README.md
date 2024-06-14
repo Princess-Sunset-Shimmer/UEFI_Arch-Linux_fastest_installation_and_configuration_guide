@@ -294,7 +294,7 @@ QUERY_PACKAGE:
         pacman list orphan
 ```
 - - - -
-optionally install [pacman-contrib]() to extend ***pacman*** functionality
+optionally install [pacman-contrib](https://archlinux.org/packages/extra/x86_64/pacman-contrib/) to extend ***pacman*** functionality
 ```
         pacman -Syu pacman-contrib
 ```

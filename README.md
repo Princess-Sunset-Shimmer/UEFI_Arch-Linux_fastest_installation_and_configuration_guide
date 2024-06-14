@@ -624,6 +624,10 @@ fi
 then you can run `. /etc/bash.bashrc` to see the changes
 - Interactive-Shell **Top-Bar**
 ```bash
+tbar_mid=$( (( $(tput cols) - 6 >> 1 )) )
+tbar_right=$( (( $(tput cols) - 9 )) )
+tty_name=$(tty | sed 's#/dev/##')
+
 tbar() {
   bat_percent=$(cat /sys/class/power_supply/BAT0/capacity)
   bat_format="\e[0;34;47m100% [II}"

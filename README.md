@@ -294,6 +294,10 @@ QUERY_PACKAGE:
         pacman list orphan
 ```
 - - - -
+optionally install [pacman-contrib]() to extend ***pacman*** functionality
+```
+        pacman -Syu pacman-contrib
+```
 ## improve Booting performance
 open `/boot/loader/loader.conf` file\
 add Kernel-Parameters `quiet` and `loglevel=0` to `options`

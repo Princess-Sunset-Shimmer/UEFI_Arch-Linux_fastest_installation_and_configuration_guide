@@ -528,7 +528,7 @@ and Change the `config.jsonc` file contents to
 ```
 add below alias to show fastfetch after clear
 ```bash
-alias clear='clear;tput cup 4 0;fastfetch'
+alias clear='clear; tput cup 4 0; fastfetch'
 ```
 - System-Wide bash configuration
 

@@ -390,7 +390,14 @@ then pick one and Symbolically **link** it to `/etc/localtime`
         ln -sf /usr/share/your_picked_race_zone_file /etc/localtime
 ```
 ## .sound system
-
+to get Working-Audio for [alsa]() supported application, you need install [pipewire-alsa]()
+```py
+        pacman -Syu pipewire-alsa
+```
+to get Working-Audio for [pulse]() supported application, you need install [pipewire-pulse]()
+```py
+        pacman -Syu pipewire-pulse
+```
 ## .make linux console more awesome and cooler
 - Login-Shell **Top-Bar** and **Background**
 

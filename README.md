@@ -64,10 +64,10 @@ mount `/` ***Root-Partition*** to `/mnt` first, then mount ***Sub-Partition*** n
         pacstrap -K /mnt base linux linux-firmware sof-firmware amd-ucode networkmanager
 ```
 - - - -
-[base](https://archlinux.org/packages/core/any/base/) is minimal Arch Base\
-[linux](https://archlinux.org/packages/core/x86_64/linux/) is kernel. Arch Base + Linux kernel = Arch Linux\
-you can omit [linux-firmware](https://archlinux.org/packages/core/any/linux-firmware/) if you install Arch Linux on `VirtualBox`\
-[sof-firmware](https://archlinux.org/packages/extra/x86_64/sof-firmware/) for some newer laptops to get Working-Audio, it's optional for minimal system to run\
+[base](https://archlinux.org/packages/core/any/base/) is minimal Arch_Base\
+[linux](https://archlinux.org/packages/core/x86_64/linux/) is kernel. Arch_Base + Linux_Kernel = Arch_Linux\
+you can omit [linux-firmware](https://archlinux.org/packages/core/any/linux-firmware/) if you install Arch_Linux on `VirtualBox`\
+[sof-firmware](https://archlinux.org/packages/extra/x86_64/sof-firmware/) for some newer laptops to get Working-Audio, it's **Optional** for Minimal-System to get Working-Audio\
 [amd-ucode](https://archlinux.org/packages/core/any/amd-ucode/) provides `AMD microcode`. instead use [intel-ucode](https://archlinux.org/packages/extra/any/intel-ucode/) if you use **intel** chip\
 you can omit [networkmanager](https://archlinux.org/packages/extra/x86_64/networkmanager/) if you only use `systemd [ o < ]` to configure network\
 by this step, you can install other packages such as ***dust, btop, vim, tmux, calc, gcc, cmatrix, fastfetch, wget, rtorrent, elinks, cmus*** and whatever you need
@@ -127,6 +127,7 @@ you can login as `root` and configure your brand new **/\rch Linux** now
 - [improve Memory performance](#improve-Memory-performance "goto improve-Memory-performance")
 - [improve CPU performance](#improve-CPU-performance "goto improve-CPU-performance")
 - [language and timezone](#language-and-timezone "goto language-and-timezone")
+- [sound system](#sound-system "goto sound-system")
 - [make linux console more awesome and cooler](#make-linux-console-more-awesome-and-cooler "goto make-linux-console-more-awesome-and-cooler")
 - [other packages](#other-packages "goto other-packages")
 ## .user setup
@@ -388,6 +389,8 @@ then pick one and Symbolically **link** it to `/etc/localtime`
 ```lua
         ln -sf /usr/share/your_picked_race_zone_file /etc/localtime
 ```
+## .sound system
+
 ## .make linux console more awesome and cooler
 - Login-Shell **Top-Bar** and **Background**
 

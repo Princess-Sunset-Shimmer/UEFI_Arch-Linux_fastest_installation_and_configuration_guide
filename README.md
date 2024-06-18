@@ -678,7 +678,7 @@ tbar() {
 PROMPT_COMMAND=tbar
 ```
 add Above-Contents to `/etc/bash.bashrc`\
-and if you use ***tmux*** then append Contents-Below
+and if you use `tmux` then append Contents-Below
 ```bash
 if [[ -n $TMUX ]]; then
   PROMPT_COMMAND=''

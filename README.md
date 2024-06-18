@@ -688,7 +688,7 @@ fi
 ```
 then run `. /etc/bash.bashrc` to see the changes
 ## .other packages
-- generate [top](https://en.wikipedia.org/wiki/Top_(software)) command config file
+- generate [top](https://en.wikipedia.org/wiki/Top_(software)) command Config-File
 ```py
         top # open top task manager first
 ```

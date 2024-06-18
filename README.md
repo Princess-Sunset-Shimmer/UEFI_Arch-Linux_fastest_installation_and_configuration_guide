@@ -627,10 +627,14 @@ lsblk() {
 }
 
 lspci() {
-  command lspci -tv "$@" |\
+  command lspci -tvvv "$@" |\
   command grep --color=always ']\|\[\|+\|-\||\|\\\|/\|' |\
   GREP_COLORS='ms=01;34'\
-  command grep --color=always '\.\|:\|,\|'
+  command grep --color=always '\.\|:\|,\|' |\
+  GREP_COLORS='ms=01;35'\
+  command grep --color=always 'Audio\|' |\
+  GREP_COLORS='ms=01;36'\
+  command grep --color=always 'USB\|'
 }
 
 findmnt() {

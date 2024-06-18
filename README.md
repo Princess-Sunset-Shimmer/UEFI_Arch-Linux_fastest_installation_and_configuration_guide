@@ -532,8 +532,35 @@ generate Config-File to `/home/your_user_name/.config/fastfetch/config.jsonc`
 and Change the `config.jsonc` file contents to
 ```jsonc
 {
-  "display": {"color": "yellow", "separator": " <> "}
-  "modules": ["os","separator","kernel","shell","terminal","terminalfont","display","cpu","gpu","memory","swap","disk","packages","localip","uptime","battery","separator","colors"]
+"logo": {
+    "source": "arch",
+    "color": {"1": "red", "2": "yellow"}
+    },
+"display": {
+    "color": {"separator": "blue", "output": "white"},
+    "separator": " | "
+    },
+"modules": [ 
+    {"type": "kernel", "key": " /\\rch Linux", "keyColor": "magenta"},
+    {"type": "custom", "format": ">-----------<+>----------------------------------<", "outputColor": "blue"},
+    {"type": "uptime", "key": "   Uptime   ", "keyColor": "green"},
+    {"type": "shell", "key": "   Shell    ", "keyColor": "green"},
+    {"type": "terminal", "key": "   Terminal ", "keyColor": "green"},
+    {"type": "terminalfont", "key": "   Font     ", "keyColor": "green"},
+    {"type": "packages", "key": "   Packages ", "keyColor": "green"},
+    {"type": "localip", "key": "   Local IP ", "keyColor": "green"},
+    {"type": "custom", "format": ">-----------<+>----------------------------------<", "outputColor": "blue"},
+    {"type": "display", "key": "   Display  ", "keyColor": "cyan"},
+    {"type": "cpu", "key": "   CPU      ", "keyColor": "cyan"},
+    {"type": "gpu", "key": "   GPU      ", "keyColor": "cyan"},
+    {"type": "memory", "key": "   RAM      ", "keyColor": "cyan"},
+    {"type": "swap", "key": "   SWAP     ", "keyColor": "cyan"},
+    {"type": "disk", "key": "   Disk     ", "keyColor": "cyan"},
+    {"type": "battery", "key": "   Battery  ", "keyColor": "cyan"},
+    {"type": "custom", "format": ">-----------<+>----------------------------------<", "outputColor": "blue"},
+    "break",
+    {"type":"colors", "paddingLeft": 9}
+    ]
 }
 ```
 add below alias to show fastfetch after clear

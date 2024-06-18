@@ -563,10 +563,11 @@ and Change the `config.jsonc` file contents to
     ]
 }
 ```
-add below alias to show fastfetch after clear
+add Below-Alias to `/etc/bash.bashrc`
 ```bash
 alias clear='clear; tput cup 4 0; fastfetch'
 ```
+then you use `clear` command as `fastfetch`. even you can feed `fastfetch` --options to `clear`
 - System-Wide bash configuration
 
 ensure all User-Specific bash Config-File `~/.bashrc` have been removed\

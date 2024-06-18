@@ -319,7 +319,7 @@ or you can enable `systemd-boot-update` service for auto updates
 ```lua
 kernel.core_pattern=/dev/null
 ```
-add above contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
+add Above-Contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
 ```c
         sysctl -p /etc/sysctl.d/99-sysctl.conf
 ```

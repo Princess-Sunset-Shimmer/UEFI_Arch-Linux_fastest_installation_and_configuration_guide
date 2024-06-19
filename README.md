@@ -532,32 +532,29 @@ generate Config-File to `/home/your_user_name/.config/fastfetch/config.jsonc`
 and Change the `config.jsonc` file contents to
 ```jsonc
 {
-"logo": {
-    "source": "arch",
-    "color": {"1": "red", "2": "yellow"}
-    },
+"logo": {"source": "arch2"},
 "display": {
-    "color": {"separator": "blue", "output": "white"},
+    "color": {"separator": "yellow", "output": "cyan"},
     "separator": " | "
     },
 "modules": [ 
-    {"type": "kernel", "key": " /\\rch Linux", "keyColor": "magenta"},
-    {"type": "custom", "format": ">-----------<+>----------------------------------<", "outputColor": "blue"},
+    {"type": "kernel", "key": " /\\rch Linux", "keyColor": "blue"},
+    {"type": "custom", "format": ">-----------<+>----------------------------------<", "outputColor": "yellow"},
     {"type": "uptime", "key": "   Uptime   ", "keyColor": "green"},
     {"type": "shell", "key": "   Shell    ", "keyColor": "green"},
     {"type": "terminal", "key": "   Terminal ", "keyColor": "green"},
     {"type": "terminalfont", "key": "   Font     ", "keyColor": "green"},
     {"type": "packages", "key": "   Packages ", "keyColor": "green"},
     {"type": "localip", "key": "   Local IP ", "keyColor": "green"},
-    {"type": "custom", "format": ">-----------<+>----------------------------------<", "outputColor": "blue"},
-    {"type": "display", "key": "   Display  ", "keyColor": "cyan"},
-    {"type": "cpu", "key": "   CPU      ", "keyColor": "cyan"},
-    {"type": "gpu", "key": "   GPU      ", "keyColor": "cyan"},
-    {"type": "memory", "key": "   RAM      ", "keyColor": "cyan"},
-    {"type": "swap", "key": "   SWAP     ", "keyColor": "cyan"},
-    {"type": "disk", "key": "   Disk     ", "keyColor": "cyan"},
-    {"type": "battery", "key": "   Battery  ", "keyColor": "cyan"},
-    {"type": "custom", "format": ">-----------<+>----------------------------------<", "outputColor": "blue"},
+    {"type": "custom", "format": ">-----------<+>----------------------------------<", "outputColor": "yellow"},
+    {"type": "display", "key": "   Display  ", "keyColor": "magenta"},
+    {"type": "cpu", "key": "   CPU      ", "keyColor": "magenta"},
+    {"type": "gpu", "key": "   GPU      ", "keyColor": "magenta"},
+    {"type": "memory", "key": "   RAM      ", "keyColor": "magenta"},
+    {"type": "swap", "key": "   SWAP     ", "keyColor": "magenta"},
+    {"type": "disk", "key": "   Disk     ", "keyColor": "magenta"},
+    {"type": "battery", "key": "   Battery  ", "keyColor": "magenta"},
+    {"type": "custom", "format": ">-----------<+>----------------------------------<", "outputColor": "yellow"},
     "break",
     {"type":"colors", "paddingLeft": 9}
     ]

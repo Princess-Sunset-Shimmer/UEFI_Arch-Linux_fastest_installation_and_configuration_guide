@@ -645,6 +645,11 @@ findmnt() {
   GREP_COLORS='ms=01;32'\
   command grep --color=always '/\|'
 }
+
+sha256sum() {
+  command sha256sum "$@"
+  command echo -e '\e[1;32;40m----------------------------------------------------------------\e[m\n'
+}
 ```
 add above alias to your `/etc/bash.bashrc` file\
 then you can run `. /etc/bash.bashrc` to see the changes

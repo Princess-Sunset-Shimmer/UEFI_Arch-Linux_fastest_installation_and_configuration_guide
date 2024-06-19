@@ -490,7 +490,7 @@ add Above-Contents to your `/etc/inputrc` file
         systemctl enable gpm
         systemctl start gpm
 ```
-- tmux Terminal-Multiplexer
+- tmux Terminal-MUltipleXer
 
 install [tmux](https://archlinux.org/packages/extra/x86_64/tmux/)
 ```sh

@@ -532,7 +532,7 @@ generate Config-File to `/home/your_user_name/.config/fastfetch/config.jsonc`
 and Change the `config.jsonc` file contents to
 ```jsonc
 {
-"logo": {"source": "arch2"},
+"logo": {"source": "arch3"},
 "display": {
     "color": {"separator": "yellow", "output": "cyan"},
     "separator": " | "

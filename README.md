@@ -403,7 +403,7 @@ to get Working-Audio for [pulse]() supported application, you need install [pipe
 
 change your `/etc/issue` file contents to
 ```lua
-\e[0;0H\e[0;30;45m <\l> [/\\rch Linux \r]\e[K\e[m
+\e[0;0H\e[0;30;45m <\l> [\e[1;36;45m/\\ \e[1;37;45march\e[1;36;45mlinux\e[0;30;45m \r]\e[K\e[m
 ```
 then you can append your ***Login-Text-Art*** in `/etc/issue` file
 ```lua

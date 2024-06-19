@@ -539,14 +539,14 @@ and Change the `config.jsonc` file contents to
     },
 "modules": [ 
     {"type": "kernel", "key": " /\\rch Linux", "keyColor": "blue"},
-    {"type": "custom", "format": ">-----------<+>----------------------------------<", "outputColor": "yellow"},
+    {"type": "custom", "format": ">-----------<+>----------------------------------<", "outputColor": "separator"},
     {"type": "uptime", "key": "   Uptime   ", "keyColor": "green"},
     {"type": "shell", "key": "   Shell    ", "keyColor": "green"},
     {"type": "terminal", "key": "   Terminal ", "keyColor": "green"},
     {"type": "terminalfont", "key": "   Font     ", "keyColor": "green"},
     {"type": "packages", "key": "   Packages ", "keyColor": "green"},
     {"type": "localip", "key": "   Local IP ", "keyColor": "green"},
-    {"type": "custom", "format": ">-----------<+>----------------------------------<", "outputColor": "yellow"},
+    {"type": "custom", "format": ">-----------<+>----------------------------------<", "outputColor": "separator"},
     {"type": "display", "key": "   Display  ", "keyColor": "magenta"},
     {"type": "cpu", "key": "   CPU      ", "keyColor": "magenta"},
     {"type": "gpu", "key": "   GPU      ", "keyColor": "magenta"},
@@ -554,7 +554,7 @@ and Change the `config.jsonc` file contents to
     {"type": "swap", "key": "   SWAP     ", "keyColor": "magenta"},
     {"type": "disk", "key": "   Disk     ", "keyColor": "magenta"},
     {"type": "battery", "key": "   Battery  ", "keyColor": "magenta"},
-    {"type": "custom", "format": ">-----------<+>----------------------------------<", "outputColor": "yellow"},
+    {"type": "custom", "format": ">-----------<+>----------------------------------<", "outputColor": "separator"},
     "break",
     {"type":"colors", "paddingLeft": 9}
     ]

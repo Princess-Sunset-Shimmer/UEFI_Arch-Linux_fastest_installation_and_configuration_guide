@@ -567,7 +567,8 @@ and Change the `config.jsonc` file contents to
 }
 ```
 - - - -
-`note` 
+`note`: Thanks for [Carter Li](https://github.com/CarterLi) and other Related-Developers, Configuration like Above has been added to Official-Fastfetch-Exsamples\
+now you can directly test it by run `fastfetch --load-config examples/22.jsonc` along with trying out other developer's config too
 - - - -
 - System-Wide bash configuration
 

@@ -529,7 +529,7 @@ add Below-Alias to `/etc/bash.bashrc`
 ```bash
 alias clear='clear; tput cup 4 0; fastfetch'
 ```
-then you can use `clear` command as `fastfetch`. even you can feed `fastfetch` **--options** to `clear`\
+then you can use `clear` command as `fastfetch`. you even can feed `fastfetch` **--options** to `clear`\
 \
 generate Config-File to `/home/your_user_name/.config/fastfetch/config.jsonc`
 ```py

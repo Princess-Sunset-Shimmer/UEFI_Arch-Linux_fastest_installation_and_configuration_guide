@@ -398,6 +398,10 @@ to get Working-Audio for [pulse]() supported application, you need install [pipe
 ```py
         pacman -Syu pipewire-pulse
 ```
+you can **Optionally** install [alsa-utils]( ) to use `alsamixer`
+```py
+        pacman -Syu alsa-utils
+```
 ## .make linux console more awesome and cooler
 - Login-Shell **Top-Bar** and **Background**
 

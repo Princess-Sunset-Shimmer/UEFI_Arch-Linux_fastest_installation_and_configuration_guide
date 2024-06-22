@@ -347,7 +347,7 @@ options root=UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw quiet loglevel=0 zswap
         pacman -Syu irqbalance
         systemctl enable irqbalance
 ```
-- turn off [meltdown spectre attack](https://meltdownattack.com/) mitigations
+- turn off [<_meltdown_spectre_attack_>](https://meltdownattack.com/) mitigations
 
 open `/boot/loader/loader.conf` file\
 add `mitigations=off` to `options`

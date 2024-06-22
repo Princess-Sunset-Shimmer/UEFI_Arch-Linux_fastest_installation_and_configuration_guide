@@ -371,9 +371,10 @@ replace `C.UTF-8 UTF8` and `C.UTF-8` to your appreciation
         setfont font_name                            # test font temporary
         echo 'FONT=font_name' >> /etc/vconsole.conf  # set font persistenct
 ```
-- - - -
-`pacman -Syu terminus-font` to install [terminus console font](https://terminus-font.sourceforge.net/)
-- - - -
+Optionally install [terminus-font](https://terminus-font.sourceforge.net/) for more Font choices
+```py
+        pacman -Syu terminus-font
+```
 - set Input-Keyboard-Layout
 ```lua
         echo 'KEYMAP=us' >> /etc/vconsole.conf

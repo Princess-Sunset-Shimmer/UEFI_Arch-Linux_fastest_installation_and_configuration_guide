@@ -411,7 +411,7 @@ you can **Optionally** install [alsa-utils](https://archlinux.org/packages/extra
 
 change your `/etc/issue` file contents to
 ```lua
-\e[0;0H\e[0;30;45m <\l> [\e[1;36;45m/\\ \e[1;37;45march\e[1;36;45mlinux\e[0;30;45m \r]\e[K\e[m
+\e[0;0H\e[0;30;45m <\l> [\e[1;36;45m/\\ \e[1;37;45march\e[1;36;45mlinux\e[0;36;45m \r\e[0;30;45m]\e[K\e[m
 ```
 then you can append your ***Login-Text-Art*** in `/etc/issue` file
 ```lua
@@ -471,13 +471,16 @@ append_path() {
 }
 
 export PATH='/usr/local/sbin:/usr/local/bin:/usr/bin'
+
 if [[ -d /etc/profile.d/ ]]; then
   for profile in /etc/profile.d/*.sh; do
     [[ -r $profile ]] && . "$profile"
   done
   unset profile
 fi
+
 [[ $- == *i* ]] && [[ -z $POSIXLY_CORRECT ]] && [[ ${0#-} != sh ]] && [[ -r /etc/bash.bashrc ]] && . /etc/bash.bashrc
+
 unset -f append_path
 unset TERMCAP
 unset MANPATH

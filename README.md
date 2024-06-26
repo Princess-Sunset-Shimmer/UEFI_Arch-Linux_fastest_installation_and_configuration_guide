@@ -217,7 +217,7 @@ add Above-Contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
 ```
 ## .PACkage MANager
 edit `/etc/pacman.conf` file:\
-uncomment `ParrallelDownloads = 5` and change the number as you wish\
+uncomment `ParrallelDownloads = 5` and Change the Number as you Wish\
 add `ILoveCandy`\
 add below `pacman() alias` to your `/etc/bash.bashrc` file:
 ```bash

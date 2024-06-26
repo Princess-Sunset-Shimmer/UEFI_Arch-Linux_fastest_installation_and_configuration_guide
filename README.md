@@ -457,50 +457,6 @@ then you can append your ***Login-Text-Art*** in `/etc/issue` file
 \e[1;32m                                 `|.              ,|_|.  ,|_|`.__/|_||___,/' |_|`+.__./             ,+
 \e[1;33m                                    +.........._________________________________________________,.+'\e[m
 ```
-- System-Wide profile configuration
-
-open `/etc/profile` and change contents to
-```bash
-append_path() {
-  case ":$PATH:" in
-    *:"$1":*)
-      ;;
-    *)
-      PATH="${PATH:+$PATH:}$1"
-  esac
-}
-
-export PATH='/usr/local/sbin:/usr/local/bin:/usr/bin'
-
-if [[ -d /etc/profile.d/ ]]; then
-  for profile in /etc/profile.d/*.sh; do
-    [[ -r $profile ]] && . "$profile"
-  done
-  unset profile
-fi
-
-[[ $- == *i* ]] && [[ -z $POSIXLY_CORRECT ]] && [[ ${0#-} != sh ]] && [[ -r /etc/bash.bashrc ]] && . /etc/bash.bashrc
-
-unset -f append_path
-unset TERMCAP
-unset MANPATH
-```
-- enhance Bash-Tab-Completion
-```sh
-set show-all-if-unmodified on
-set show-all-if-ambiguous on
-set colored-stats on
-set visible-stats on
-set mark-symlinked-directories on
-set colored-completion-prefix on
-set menu-complete-display-prefix on
-```
-add Above-Contents to your `/etc/inputrc` file
-- use Mouse in console
-```c
-        systemctl enable gpm
-        systemctl start gpm
-```
 - tmux Terminal-MUltipleXer
 
 install [tmux](https://archlinux.org/packages/extra/x86_64/tmux/)
@@ -609,6 +565,50 @@ now Change the `config.jsonc` file contents to
 `note`: Thanks for [Carter Li](https://github.com/CarterLi) and other Related-Developers, Configuration like Above has been added to ***Official-Fastfetch-Exsamples***\
 now you can directly test it by run `fastfetch --load-config examples/22.jsonc` along with trying out other developer's config too
 - - - -
+- enhance Bash-Tab-Completion
+```sh
+set show-all-if-unmodified on
+set show-all-if-ambiguous on
+set colored-stats on
+set visible-stats on
+set mark-symlinked-directories on
+set colored-completion-prefix on
+set menu-complete-display-prefix on
+```
+add Above-Contents to your `/etc/inputrc` file
+- use Mouse in console
+```c
+        systemctl enable gpm
+        systemctl start gpm
+```
+- System-Wide ***profile*** configuration
+
+open `/etc/profile` and change contents to
+```bash
+append_path() {
+  case ":$PATH:" in
+    *:"$1":*)
+      ;;
+    *)
+      PATH="${PATH:+$PATH:}$1"
+  esac
+}
+
+export PATH='/usr/local/sbin:/usr/local/bin:/usr/bin'
+
+if [[ -d /etc/profile.d/ ]]; then
+  for profile in /etc/profile.d/*.sh; do
+    [[ -r $profile ]] && . "$profile"
+  done
+  unset profile
+fi
+
+[[ $- == *i* ]] && [[ -z $POSIXLY_CORRECT ]] && [[ ${0#-} != sh ]] && [[ -r /etc/bash.bashrc ]] && . /etc/bash.bashrc
+
+unset -f append_path
+unset TERMCAP
+unset MANPATH
+```
 - System-Wide bash configuration
 
 ensure all User-Specific bash Config-File `~/.bashrc` have been removed\

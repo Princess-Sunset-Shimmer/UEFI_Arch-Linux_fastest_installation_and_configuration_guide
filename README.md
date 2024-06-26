@@ -544,21 +544,40 @@ alias clear='clear; tput cup 4 0; fastfetch'
 then you can use `clear` command as `fastfetch`.\
 you even can feed `fastfetch` **--options** to `clear` command
 - - - -
-create file `/home/your_user_name/.config/fastfetch/logo`\
-then draw /\\rch Cutie-Mark out (i means Arch-Logo )
-```py
-        vim /home/your_user_name/.config/fastfetch/logo
-```
-```lua
-```
 generate Config-File to `/home/your_user_name/.config/fastfetch/config.jsonc`
 ```py
         fastfetch --gen-config
 ```
-and Change the `config.jsonc` file contents to
+and Create file `/home/your_user_name/.config/fastfetch/logo`
+```py
+        vim /home/your_user_name/.config/fastfetch/logo
+```
+then Draw /\\rch Cutie-Mark out ( i means Arch-Logo )
+```lua
+                  .
+                 / \
+                /   \
+               /     \
+              /       \
+             />,       \
+            /  `*.      \
+           /      `      \
+          /               \
+         /                 \
+$2        /      ,.-*-..      \
+       /      ,/'   `\.      \
+      /      .|'     `|.   _  \
+     /       :|.     ,|;    `+.\
+    /        .\:     ;/,      "<\
+   /     __,--+"     "+--.__     \
+  /  _,+'"                 "'+._  \
+ /,-'                           `-.\
+'                                   '
+```
+now Change the `config.jsonc` file contents to
 ```jsonc
 {
-"logo": {"source": "arch3"},
+"logo": {"source": "/home/your_user_name/.config/fastfetch/logo"},
 "display": {
     "color": {"separator": "yellow", "output": "cyan"},
     "separator": " | "

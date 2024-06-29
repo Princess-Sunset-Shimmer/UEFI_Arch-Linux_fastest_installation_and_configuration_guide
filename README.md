@@ -618,7 +618,9 @@ then open `/etc/bash.bashrc` and Clear up all Default-Contents inside and Follow
 alias ip='ip --color=always'
 alias grep='grep --color=always'
 alias diff='diff --color=always'
-alias rm='rm -f'
+alias cp='cp -v'
+alias mv='mv -v'
+alias rm='rm -vf'
 alias dd='dd status=progress'
 alias ps='ps -uf'
 alias pwd="pwd -LP | command grep --color=always '/\|'"

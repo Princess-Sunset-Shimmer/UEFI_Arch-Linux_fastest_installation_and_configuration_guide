@@ -664,9 +664,9 @@ cat() {
 
 lsblk() {
   command lsblk "$@" |\
-  command grep --color=always ']\|\[\|RM\|RO\|FS\|disk\|%\|' |\
+  command grep --color=always ']\|\[\|RM\|RO\|FS\|disk\|%\|\.\|:\|-\|' |\
   GREP_COLORS='ms=01;34'\
-  command grep --color=always '^NAME\|SIZE\|TYPE\|SWAP\|\.\|:\|/\|-\|VER\|AVAIL\|UUID\|USE\|'
+  command grep --color=always '^NAME\|SIZE\|TYPE\|SWAP\|VER\|AVAIL\|UUID\|USE\|/\|└\|├\|─\|'
 }
 
 lspci() {

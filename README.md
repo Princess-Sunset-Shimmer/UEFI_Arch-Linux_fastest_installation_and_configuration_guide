@@ -216,6 +216,7 @@ add Above-Contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
         sysctl -p /etc/sysctl.d/99-sysctl.conf
 ```
 ## .PACkage MANager
+- basic improvement
 edit `/etc/pacman.conf` file:\
 uncomment `ParrallelDownloads = 5` and Change the Number as you Wish\
 add `ILoveCandy`\
@@ -327,6 +328,19 @@ PACMAN_INFORMATION:
 optionally install [pacman-contrib](https://archlinux.org/packages/extra/x86_64/pacman-contrib/) to extend ***pacman*** functionality
 ```
         pacman -Syu pacman-contrib
+```
+- reflector
+install [reflector]()
+```py
+        pacman -Syu reflector
+```
+change `` file contents as suggestion as below
+```
+
+```
+auto update Pacman-Mirrorlist
+```
+
 ```
 ## improve Booting performance
 open `/boot/loader/loader.conf` file\

@@ -217,6 +217,7 @@ add Above-Contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
 ```
 ## .PACkage MANager
 - basic improvement
+
 edit `/etc/pacman.conf` file:\
 uncomment `ParrallelDownloads = 5` and Change the Number as you Wish\
 add `ILoveCandy`\
@@ -330,13 +331,17 @@ optionally install [pacman-contrib](https://archlinux.org/packages/extra/x86_64/
         pacman -Syu pacman-contrib
 ```
 - reflector
-install [reflector]()
+install [reflector](https://archlinux.org/packages/extra/any/reflector/)
 ```py
         pacman -Syu reflector
 ```
-change `` file contents as suggestion as below
+change `/etc/xdg/reflector/reflector.conf` file contents as suggestion as below
 ```
-
+--save /etc/pacman.d/mirrorlist
+--protocol https
+--ipv4
+--latest 8
+--sort rate
 ```
 auto update Pacman-Mirrorlist
 ```

@@ -222,55 +222,81 @@ add `ILoveCandy`\
 add below `pacman() alias` to your `/etc/bash.bashrc` file:
 ```bash
 pacman() {
+  command echo -e "\e[0;34;40m -===================================================================-
+  \e[0;31;40m ,-.\e[0;36;40m   _ __   __ _  ___ _ _ __   __ _ _ _    \e[1;33;40m,--.
+  \e[0;31;40m| OO|\e[0;36;40m | '_ \\ / _\` |/ __| ' \`  \`:/ _\` | ' \`: \e[1;33;40m/ _,-\` ,-. ,-. ,-. ,''.
+  \e[0;31;40m|   |\e[0;36;40m | |_) | (_| | (__| || || | (_| | || | \e[1;33;40m\\  \`-, '-' '-' '-' '..'
+  \e[0;31;40m'^^^'\e[0;36;40m | .__/ \\__,_|\\___|_||_||_|\\__,_|_||_|  \e[1;33;40m\`--'
+       \e[0;36;40m |_|\e[0;34;40m
+ -===================================================================-\e[m"
   case $1 in
-    upgrade)
-      shift 1; command pacman --color=always -Syu $@
-      ;;
+    upgrade|update)
+      shift 1; command pacman --color=always -Syu $@ ;;
     install)
-      shift 1; command pacman --color=always -S $@
-      ;;
-    remove)
-      shift 1; command pacman --color=always -Runs $@
-      ;;
+      shift 1
+      if [[ $@ == *.pkg.tar.zst* ]]
+        then command pacman --color=always -U $@
+        else command pacman --color=always -S $@
+      fi ;;
+    remove|purge|uninstall)
+      shift 1; command pacman --color=always -Runs $@ ;;
     autoremove)
       orph="$(command pacman -Qdtq)"
-      if [[ -n $2 ]] || [[ -n $orph ]]; then
-        shift 1; command pacman --color=always -Runs $@ $orph
-      else echo '0 package removed'; fi
-      ;;
+      if [[ -n $2 ]] || [[ -n $orph ]]
+        then shift 1; command pacman --color=always -Runs $@ $orph
+        else echo '0 package removed'
+      fi ;;
     clean)
-      shift 1; command pacman --color=always -Scc $@
-      ;;
+      shift 1; command pacman --color=always -Scc $@ ;;
     search)
-      if [[ $2 == group ]]; then
-        shift 2; command pacman --color=always -Sgg $@
-      else shift 1; command pacman --color=always -Ss $@; fi
-      ;;
-    info)
-      shift 1; command pacman --color=always -Sii $@
-      ;;
+      if [[ $2 == group ]]
+        then shift 2; command pacman --color=always -Sgg $@
+        else shift 1; command pacman --color=always -Ss $@
+      fi ;;
+    info|show)
+      shift 1; command pacman --color=always -Sii $@ ;;
     list)
       case $2 in
         installed)
-          shift 2; command pacman --color=always -Qet $@
-          ;;
+          shift 2; command pacman --color=always -Qet $@ ;;
         available)
-          shift 2; command pacman --color=always -Qs $@
-          ;;
+          shift 2; command pacman --color=always -Qs $@ ;;
         orphan)
-          shift 2; command pacman --color=always -Qdt $@
-          ;;
+          shift 2; command pacman --color=always -Qdt $@ ;;
         group)
-          shift 2; command pacman --color=always -Qg $@
-          ;;
+          shift 2; command pacman --color=always -Qg $@ ;;
         *)
-          shift 1; command pacman --color=always -Q $@
-          ;;
-      esac
+          shift 1; command pacman --color=always -Q $@ ;;
+      esac ;;
+    version|--version|-V)
+      command pacman -V \
+        | GREP_COLORS='ms=01;33' command grep --color=always "\.\|-\|/\|_\|'\|" \
+        | GREP_COLORS='ms=01;33' command grep --color=always '\\\|' ;;
+    help|--help|-h)
+      shift 1;
+      if [[ -z $@ ]]; then
+        command echo -e "\e[0;32;40mnew pacman alias:\e[0;34;40m_______________________|________________\e[m
+    pacman upgrade [package(s)]\e[0;34;40m.........|..\e[mupgrade System and install New Package
+    pacman install <package(s)>\e[0;34;40m.........|..\e[minstall New Package
+    pacman remove <package(s)>\e[0;34;40m..........|..\e[mpurge Package and Dependency
+    pacman autoremove [package(s)]\e[0;34;40m......|..\e[mremove Package and Orphan
+    pacman clean\e[0;34;40m........................|..\e[mclean all cach
+    pacman search [keyword(s)]\e[0;34;40m..........|..\e[msearch by keyword
+    pacman info [package(s)]\e[0;34;40m............|..\e[mshow detail info of package
+    pacman list [package(s)]\e[0;34;40m............|..\e[mlist all installed package
+    pacman list installed [package(s)]\e[0;34;40m..|..\e[mlist all explicit installed package
+    pacman list avaiable [package(s)]\e[0;34;40m...|..\e[mlist all avaiable package
+    pacman list orphan [package(s)]\e[0;34;40m.....|..\e[mlist orphan package
+    pacman list group [group(s)]\e[0;34;40m........|..\e[mlist package group
+    pacman version\e[0;34;40m......................|..\e[mshow pacman version
+    pacman help [option(s)]\e[0;34;40m.............|..\e[mshow help sheat of option
+\e[0;34;40m----------------------------------------|----------------\e[m"
+      fi
+        command pacman -h $@ ;;
+    '')
       ;;
     *)
-      command pacman --color=always $@
-      ;;
+      command pacman --color=always $@ ;;
   esac
 }
 ```

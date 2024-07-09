@@ -319,6 +319,9 @@ QUERY_PACKAGE:
         pacman list available
         pacman list group
         pacman list orphan
+PACMAN_INFORMATION:
+        pacman version
+        pacman help
 ```
 - - - -
 optionally install [pacman-contrib](https://archlinux.org/packages/extra/x86_64/pacman-contrib/) to extend ***pacman*** functionality

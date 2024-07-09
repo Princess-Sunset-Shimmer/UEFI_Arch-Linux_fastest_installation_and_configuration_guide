@@ -294,7 +294,7 @@ pacman() {
     pacman help [option(s)]\e[0;34;40m.............|..\e[mshow help sheat of option
 \e[0;34;40m----------------------------------------|----------------\e[m"
       fi
-        command pacman -h $@ ;;
+      command pacman -h $@ ;;
     '')
       ;;
     *)
@@ -345,8 +345,10 @@ change `/etc/xdg/reflector/reflector.conf` file contents as suggestion as below
 ```
 auto update Pacman-Mirrorlist
 ```
-
+        systemctl enable reflector.service reflector.timer
 ```
+- Chaotic-AUR
+
 ## improve Booting performance
 open `/boot/loader/loader.conf` file\
 add Kernel-Parameters `quiet` and `loglevel=0` to `options`

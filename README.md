@@ -150,7 +150,7 @@ then symbolically link Unpriviliged-User's `.config` to root's one
 ```py
         ln -s /home/your_user_name/.config /root/.config
 ```
-xor you can **Remove** entire `/root` directory and **Link** entire `/home/your_user_name` to `/root`
+***xor*** you can **Remove** entire `/root` directory and **Link** entire `/home/your_user_name` to `/root`
 ```py
         rm -fr /root
         ln -s /home/your_user_name /root

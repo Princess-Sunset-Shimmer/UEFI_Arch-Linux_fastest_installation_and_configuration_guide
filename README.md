@@ -593,7 +593,7 @@ then Draw /\\rch Cutie-Mark out ( i means Arch-Logo )
            /      `      \
           /               \
          /                 \
-$2        /      ,.-*-..      \
+$2        /      ,.-+-..      \
        /      ,/'   `\.      \
       /      .|'     `|.   _  \
      /       :|.     ,|;    `+.\

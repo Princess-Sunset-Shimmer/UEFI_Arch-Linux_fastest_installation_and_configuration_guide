@@ -294,7 +294,7 @@ pacman() {
     pacman help [option(s)]\e[0;34;40m.............|..\e[mshow help sheat of option
 \e[0;34;40m----------------------------------------|----------------\e[m"
       fi
-      command pacman -h $@ ;;
+      command pacman -h $@ | command grep --color=always '\-\|' ;;
     '')
       ;;
     *)

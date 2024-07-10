@@ -350,19 +350,28 @@ auto update Pacman-Mirrorlist
 - Chaotic-AUR
 
 you can get Good-Packages from [Chaotic-AUR](https://aur.chaotic.cx/)\
-first
+first, Retrieve and Sign Primary-Key for Chaotic-AUR
+```lua
+        pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
+        pacman-key --lsign-key 3056513887B78AEB
 ```
+then, install Chaotic-AUR Keyring and Mirrorlist
+```lua
+        pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
+        pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
 ```
-then
-```
-```
-and
-```
+and Enable Chaotic-AUR repository by append Below-Contents to `/etc/pacman.conf` file
+```lua
+[chaotic-aur]
+Include = /etc/pacman.d/chaotic-mirrorlist
 ```
 the Packages from ***Chaotic-AUR*** might require Packages from ***multilib***\
 you might need to enable ***multilib*** too
+```lua
+[multilib]
+Include = /etc/pacman.d/mirrorlist
 ```
-```
+uncomment Above-Contents in `/etc/pacman.conf` file
 ## improve Booting performance
 open `/boot/loader/loader.conf` file\
 add Kernel-Parameters `quiet` and `loglevel=0` to `options`

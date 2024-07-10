@@ -349,6 +349,20 @@ auto update Pacman-Mirrorlist
 ```
 - Chaotic-AUR
 
+you can get Good-Packages from [Chaotic-AUR](https://aur.chaotic.cx/)\
+first
+```
+```
+then
+```
+```
+and
+```
+```
+the Packages from ***Chaotic-AUR*** might require Packages from ***multilib***\
+you might need to enable ***multilib*** too
+```
+```
 ## improve Booting performance
 open `/boot/loader/loader.conf` file\
 add Kernel-Parameters `quiet` and `loglevel=0` to `options`

@@ -349,9 +349,9 @@ auto update Pacman-Mirrorlist
 ```
 - Chaotic-AUR
 
-you can get Good-Packages from [Chaotic-AUR](https://aur.chaotic.cx/)\
+you can get Good-Packages from [Chaotic-AUR](https://aur.chaotic.cx/) repository\
 first, Retrieve and Sign Primary-Key for Chaotic-AUR
-```lua
+```py
         pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
         pacman-key --lsign-key 3056513887B78AEB
 ```

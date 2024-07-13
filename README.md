@@ -246,7 +246,7 @@ pacman() {
       orph="$(command pacman -Qdtq)"
       if [[ -n $2 ]] || [[ -n $orph ]]
         then shift 1; command pacman --color=always -Runs $@ $orph
-        else echo '0 package removed'
+        else echo ' 0 package removed'
       fi ;;
     clean)
       shift 1; command pacman --color=always -Scc $@ ;;
@@ -331,6 +331,7 @@ optionally install [pacman-contrib](https://archlinux.org/packages/extra/x86_64/
         pacman -Syu pacman-contrib
 ```
 - reflector
+
 install [reflector](https://archlinux.org/packages/extra/any/reflector/)
 ```py
         pacman -Syu reflector

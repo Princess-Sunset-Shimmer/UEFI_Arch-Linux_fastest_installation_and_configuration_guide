@@ -829,7 +829,9 @@ press `Shift` + `V` to get COMMAND hierarchy view\
 press key `D` once to set refresh delay, lower to 0.1 or higher above 3.0\
 press key `B` once switch to hilight mode then\
 press key `X` once to hilight tasks sorting column\
-press `Shift` + `W` to generate config file for current user
+press `Shift` + `W` to generate config file for current user\
+
+top Config-File is generated to `~/.config/procps/toprc`
 - - - -
 - wget
 
@@ -841,6 +843,18 @@ useful wget alias to add into `/etc/bash.bashrc`
 ```bash
 alias wget='wget -c'
 ```
+- less
+
+install [less]()
+```py
+        pacman -Syu less
+```
+less alias
+```bash
+alias less='less -r'
+alias more='less -r'
+```
+append Above-Contents to `/etc/bash.bashrc`
 - vim minimal configuration
 ```lua
 :set number

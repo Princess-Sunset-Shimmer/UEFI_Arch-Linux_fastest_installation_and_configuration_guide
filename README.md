@@ -261,25 +261,19 @@ pacman() {
       shift 1; command pacman --color=always -Sii $@ ;;
     list)
       case $2 in
-        installed)
-          shift 2; command pacman --color=always -Qet $@ ;;
-        available)
-          shift 2; command pacman --color=always -Qs $@ ;;
-        orphan)
-          shift 2; command pacman --color=always -Qdt $@ ;;
-        group)
-          shift 2; command pacman --color=always -Qg $@ ;;
-        *)
-          shift 1; command pacman --color=always -Q $@ ;;
+        installed) shift 2; command pacman --color=always -Qet $@ ;;
+        available) shift 2; command pacman --color=always -Qs $@ ;;
+        orphan)    shift 2; command pacman --color=always -Qdt $@ ;;
+        group)     shift 2; command pacman --color=always -Qg $@ ;;
+        *)         shift 1; command pacman --color=always -Q $@ ;;
       esac ;;
     version|--version|-V)
       command pacman -V \
         | GREP_COLORS='ms=01;33' command grep --color=always "\.\|-\|/\|_\|'\|" \
         | GREP_COLORS='ms=01;33' command grep --color=always '\\\|' ;;
     help|--help|-h)
-      shift 1;
-      if [[ -z $@ ]]; then
-        command echo -e "\e[0;32;40mnew pacman alias:\e[0;34;40m_______________________|________________\e[m
+      shift 1
+      [[ -z $@ ]] && command echo -e "\e[0;32;40mnew pacman alias:\e[0;34;40m_______________________|________________\e[m
     pacman upgrade [package(s)]\e[0;34;40m.........|..\e[mupgrade System and install New Package
     pacman install <package(s)>\e[0;34;40m.........|..\e[minstall New Package
     pacman remove <package(s)>\e[0;34;40m..........|..\e[mpurge Package and Dependency
@@ -295,12 +289,9 @@ pacman() {
     pacman version\e[0;34;40m......................|..\e[mshow pacman version
     pacman help [option(s)]\e[0;34;40m.............|..\e[mshow help sheat of option
 \e[0;34;40m----------------------------------------|----------------\e[m"
-      fi
       command pacman -h $@ | command grep --color=always '\-\|' ;;
-    '')
-      ;;
-    *)
-      command pacman --color=always $@ ;;
+    '') ;;
+    *)  command pacman --color=always $@ ;;
   esac
 }
 ```

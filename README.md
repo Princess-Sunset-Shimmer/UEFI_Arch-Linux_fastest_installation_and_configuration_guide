@@ -146,11 +146,11 @@ then switch to Unpriviliged-User and create `.config` directory
         rm -f /home/your_user_name/.bash*
         su -c "mkdir /home/your_user_name/.config" your_user_name
 ```
-then symbolically link Unpriviliged-User's `.config` to root's one
+then add Unpriviliged-User to Secondar-Group `audio,video,storage`
 ```py
-        ln -s /home/your_user_name/.config /root/.config
+        usermod -aG audio,video,storage your_user_name
 ```
-***xor*** you can **Remove** entire `/root` directory and **Link** entire `/home/your_user_name` to `/root`
+and you can **Remove** entire `/root` directory and **Link** entire `/home/your_user_name` to `/root`
 ```py
         rm -fr /root
         ln -s /home/your_user_name /root

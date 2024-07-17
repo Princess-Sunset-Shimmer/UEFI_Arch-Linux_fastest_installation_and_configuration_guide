@@ -235,7 +235,7 @@ pacman() {
  -===================================================================-\e[m"
   case $1 in
     upgrade|update)
-      shift 1; command pacman --color=always -Syu $@ ;;
+      shift 1; command pacman --color=always -Syyu $@ ;;
     install)
       shift 1
       if [[ $@ == *.pkg.tar.zst* ]]
@@ -870,5 +870,38 @@ append Above-Contents to `/etc/bash.bashrc`
 :set hlsearch
 ```
 add Above-Contents to your `/etc/vimrc` file
+- cal and calcurse
+install [calcurse]() first
+```py
+        pacman -Syu calcurse
+```
+then append below Cal-Alias to `/etc/bash.bashrc`
+```bash
+cal() {
+  case $1 in
+    -1|month|--month|single|--single|one|--one)
+      command echo -e '\e[m-C-C-C-C-C-C-C-C-C-C-.\n---------------------|'
+      command cal --color=always -1
+      command echo -e '\e[m_____________________|' ;;
+    -3|three|--three|triple|--triple)
+      command echo -e '\e[m-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-.\n-----------------------------------------------------------------|'
+      command cal --color=always -3
+      command echo -e '\e[m_________________________________________________________________|' ;;
+    -y|-12|year|--year)
+      command echo -e '\e[m-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-.\n-------------------------------------------------------------------|\e[1;31;40m'
+      command cal --color=always -y
+      command echo -e '\e[m___________________________________________________________________|' ;;
+    help|--help|-h)
+      command echo -e 'Options:\e[1;35;40m- - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - - - - - - - - -\e[1;37;40m
+  -1, month, single, one, --month, --single, --one  \e[1;35;40m| \e[1;37;40mshow single month calendar
+  -3, three, --three                                \e[1;35;40m| \e[1;37;40mshow triple month calendar
+  -y, -12, year, --year                             \e[1;35;40m| \e[1;37;40mshow twelve month calendar
+\e[1;35;40m- - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - - - - - - - - -\e[m'
+      command calcurse -h | command sed 's#calcurse#cal#g' | command grep --color=always '\-\|' ;;
+    *)
+      command calcurse "$@" ;;
+    esac
+}
+```
 - - - -
 Licence: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)

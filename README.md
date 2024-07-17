@@ -170,9 +170,11 @@ and you can **Remove** entire `/root` directory and **Link** entire `/home/your_
         pacman -Syu hblock
         hblock
 ```
-- - - -
-`note`: you can update `/etc/hosts` file by run `hblock` again
-- - - -
+you can manually update `/etc/hosts` file by run `hblock` again\
+or you can enable `hblock.timer` for Auto-Update
+```py
+        systemctl enable hblock.timer
+```
 - improve network **Performance** and **Security**
 ```lua
 net.core.netdev_max_backlog=16384
@@ -379,8 +381,8 @@ add Kernel-Parameters `quiet` and `loglevel=0` to `options`
 ```lua
 options root=UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw quiet loglevel=0
 ```
-you can manually update systemd-boot by run command `bootctl update`
-or you can enable `systemd-boot-update` service for auto updates
+you can manually update systemd-boot by run command `bootctl update`\
+or you can enable `systemd-boot-update` service for Auto-Update
 ```c
         systemctl enable systemd-boot-update
 ```

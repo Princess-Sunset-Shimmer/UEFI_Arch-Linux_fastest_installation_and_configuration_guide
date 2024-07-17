@@ -119,7 +119,7 @@ you can write more Entry-Files with more Kernels than just one
 congratulation, minimal **/\rch Linux** is successfully installed.\
 you can login as `root` and configure your brand new **/\rch Linux** now
 # configuration
-- [user setup](#basic-setup "goto user-setup")
+- [user setup](#user-setup "goto user-setup")
 - [network](#network "goto network")
 - [PACkage MANager](#PACkage-MANager "goto PACkage-MANager")
 - [improve Booting performance](#improve-Booting-performance "goto improve-Booting-performance")

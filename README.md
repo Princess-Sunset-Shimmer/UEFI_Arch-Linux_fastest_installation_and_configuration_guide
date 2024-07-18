@@ -535,6 +535,7 @@ create System-Wide tmux Config-File
         vim /etc/tmux.conf
 ```
 ```sh
+set -g default-terminal screen-256color
 set -g pane-border-status bottom
 set -g pane-border-style fg=white
 set -g pane-active-border-style fg=brightcyan

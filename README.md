@@ -866,7 +866,18 @@ install [calcurse]() first
 ```py
         pacman -Syu calcurse
 ```
-then append below Cal-Alias to `/etc/bash.bashrc`
+then Create a Directory `/etc/terminal-colors.d`
+```
+        mkdir /etc/terminal-colors.d
+```
+and Make a File `/etc/terminal-colors.d/cal.scheme` with Below-Contents
+```lua
+header 1;33;40
+today 0;30;42
+workday 1;37;40
+weekend 0;31;40
+```
+finally Append below Cal-Alias to `/etc/bash.bashrc`
 ```bash
 cal() {
   case $1 in

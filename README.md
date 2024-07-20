@@ -146,7 +146,7 @@ then switch to Unpriviliged-User and create `.config` directory
         rm -f /home/your_user_name/.bash*
         su -c "mkdir /home/your_user_name/.config" your_user_name
 ```
-then add Unpriviliged-User to Secondar-Group `audio,video,storage`
+then add Unpriviliged-User to Secondary-Group `audio,video,storage`
 ```py
         usermod -aG audio,video,storage your_user_name
 ```

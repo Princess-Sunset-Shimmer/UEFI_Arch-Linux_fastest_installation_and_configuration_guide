@@ -791,7 +791,7 @@ tbar() {
   ((bat_percent < 100)) && bat_format=" \e[0;34;47m$bat_percent% [II\e[0;30;47m}"
   ((bat_percent < 64)) && bat_format=" \e[0;33;47m$bat_percent% [I\e[0;30;47mI}"
   ((bat_percent < 32)) && bat_format=" \e[0;31;47m$bat_percent% [\e[0;30;47mII}"
-  echo -e "\n\e[1B\e[2A\e[s\e[0;0H\e[0;34;47m\e[K <$tty_name> [$(pwd)]\e[0;${tbar_mid}H$(date +"%I:%M %p")\e[0;${tbar_right}H$bat_format\e[u"
+  echo -e "\n\e[1B\e[2A\e[s\e[0;0H\e[0;34;47m\e[K <$tty_name> [$(command pwd -LP)]\e[0;${tbar_mid}H$(date +"%I:%M %p")\e[0;${tbar_right}H$bat_format\e[u"
 }
 
 PROMPT_COMMAND=tbar

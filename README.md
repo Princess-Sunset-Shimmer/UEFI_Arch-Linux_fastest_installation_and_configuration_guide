@@ -727,15 +727,15 @@ then run `. /etc/bash.bashrc` to see the changes
 ## .other packages
 - general command alias
 ```bash
-alias ip='ip --color=always'
-alias grep='grep --color=always'
-alias diff='diff --color=always'
+alias ip='ip --color=auto'
+alias grep='grep --color=auto'
+alias diff='diff --color=auto'
+alias pwd="pwd -LP | command grep --color=auto '/\|'"
 alias cp='cp -v'
 alias mv='mv -v'
 alias rm='rm -vf'
 alias dd='dd status=progress'
 alias ps='ps -uf'
-alias pwd="pwd -LP | command grep --color=always '/\|'"
 alias I='su -c'
 
 ls() {

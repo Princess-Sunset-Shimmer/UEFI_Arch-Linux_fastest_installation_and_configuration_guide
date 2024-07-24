@@ -680,6 +680,51 @@ unset MANPATH
 
 ensure all User-Specific bash Config-File `~/.bashrc` have been removed\
 then open `/etc/bash.bashrc` and Clear up all Default-Contents inside and Follow the configuration below
+
+- make Command-Prompt awesome
+
+open `/etc/bash.bashrc` file\
+write `PS1` and `PS0` configuration to
+```sh
+PS1="\[\e[4C\e[0;36;40m__\e[1;35;44m \u \e[0;36;40m\]\n   |__> \[\e[1;36;40m\]"
+PS0='\e[12C\e[1;32m|\\/|\n\e[12C\e[1;36m|  |\e[1;32;44m \h \e[1;34;40m\n\e[13C\\/\n\e[1;37m'
+if [[ $EUID == 0 ]]
+then
+  PS1="\[\e[4C\e[0;31;40m__\e[0;31;43m \u \e[0;31;40m\]\n   |__> \[\e[1;33;40m\]"
+  PS0='\e[12C\e[1;33m|\\/|\n\e[12C\e[1;31m|  |\e[1;32;43m \h \e[0;31;40m\n\e[13C\\/\n\e[1;37m'
+else
+  command clear
+fi
+```
+then you can run `. /etc/bash.bashrc` to see the changes
+- Interactive-Shell **Top-Bar**
+```bash
+tbar_mid=$((($COLUMNS - 6 >> 1)))
+tbar_right=$((($COLUMNS - 9)))
+tty_name=$(tty | sed 's#/dev/##')
+
+tbar() {
+  local bat_percent=$(cat /sys/class/power_supply/BAT0/capacity)
+  local bat_format="\e[0;34;47m100% [II}"
+  ((bat_percent < 100)) && bat_format=" \e[0;34;47m$bat_percent% [II\e[0;30;47m}"
+  ((bat_percent < 64)) && bat_format=" \e[0;33;47m$bat_percent% [I\e[0;30;47mI}"
+  ((bat_percent < 32)) && bat_format=" \e[0;31;47m$bat_percent% [\e[0;30;47mII}"
+  echo -e "\n\e[1B\e[2A\e[s\e[0;0H\e[0;34;47m\e[K <$tty_name> [$(command pwd -LP)]\e[0;${tbar_mid}H$(date +"%I:%M %p")\e[0;${tbar_right}H$bat_format\e[u"
+}
+
+PROMPT_COMMAND=tbar
+```
+add Above-Contents to `/etc/bash.bashrc`\
+and if you use `tmux` then append Contents-Below
+```bash
+if [[ -n $TMUX ]]; then
+  PROMPT_COMMAND=''
+  PS1="\[\e[2B\e[4C\e[0;36;40m__\e[1;35;44m \u \e[0;36;40m\]\n   |__> \[\e[s\e[0;0H\e[0;34;47m\e[K <\l> [\w]\e[u\e[1;36;40m\]"
+  [[ $EUID == 0 ]] && PS1="\[\e[2B\e[4C\e[0;31;40m__\e[0;31;43m \u \e[0;31;40m\]\n   |__> \[\e[s\e[0;0H\e[0;34;47m\e[K <\l> [\w]\e[u\e[1;33;40m\]"
+fi
+```
+then run `. /etc/bash.bashrc` to see the changes
+## .other packages
 - general command alias
 ```bash
 alias ip='ip --color=always'
@@ -763,50 +808,6 @@ sha256sum() {
 ```
 add above alias to your `/etc/bash.bashrc` file\
 then you can run `. /etc/bash.bashrc` to see the changes
-- make Command-Prompt awesome
-
-open `/etc/bash.bashrc` file\
-write `PS1` and `PS0` configuration to
-```sh
-PS1="\[\e[4C\e[0;36;40m__\e[1;35;44m \u \e[0;36;40m\]\n   |__> \[\e[1;36;40m\]"
-PS0='\e[12C\e[1;32m|\\/|\n\e[12C\e[1;36m|  |\e[1;32;44m \h \e[1;34;40m\n\e[13C\\/\n\e[1;37m'
-if [[ $EUID == 0 ]]
-then
-  PS1="\[\e[4C\e[0;31;40m__\e[0;31;43m \u \e[0;31;40m\]\n   |__> \[\e[1;33;40m\]"
-  PS0='\e[12C\e[1;33m|\\/|\n\e[12C\e[1;31m|  |\e[1;32;43m \h \e[0;31;40m\n\e[13C\\/\n\e[1;37m'
-else
-  command clear
-fi
-```
-then you can run `. /etc/bash.bashrc` to see the changes
-- Interactive-Shell **Top-Bar**
-```bash
-tbar_mid=$((($COLUMNS - 6 >> 1)))
-tbar_right=$((($COLUMNS - 9)))
-tty_name=$(tty | sed 's#/dev/##')
-
-tbar() {
-  local bat_percent=$(cat /sys/class/power_supply/BAT0/capacity)
-  local bat_format="\e[0;34;47m100% [II}"
-  ((bat_percent < 100)) && bat_format=" \e[0;34;47m$bat_percent% [II\e[0;30;47m}"
-  ((bat_percent < 64)) && bat_format=" \e[0;33;47m$bat_percent% [I\e[0;30;47mI}"
-  ((bat_percent < 32)) && bat_format=" \e[0;31;47m$bat_percent% [\e[0;30;47mII}"
-  echo -e "\n\e[1B\e[2A\e[s\e[0;0H\e[0;34;47m\e[K <$tty_name> [$(command pwd -LP)]\e[0;${tbar_mid}H$(date +"%I:%M %p")\e[0;${tbar_right}H$bat_format\e[u"
-}
-
-PROMPT_COMMAND=tbar
-```
-add Above-Contents to `/etc/bash.bashrc`\
-and if you use `tmux` then append Contents-Below
-```bash
-if [[ -n $TMUX ]]; then
-  PROMPT_COMMAND=''
-  PS1="\[\e[2B\e[4C\e[0;36;40m__\e[1;35;44m \u \e[0;36;40m\]\n   |__> \[\e[s\e[0;0H\e[0;34;47m\e[K <\l> [\w]\e[u\e[1;36;40m\]"
-  [[ $EUID == 0 ]] && PS1="\[\e[2B\e[4C\e[0;31;40m__\e[0;31;43m \u \e[0;31;40m\]\n   |__> \[\e[s\e[0;0H\e[0;34;47m\e[K <\l> [\w]\e[u\e[1;33;40m\]"
-fi
-```
-then run `. /etc/bash.bashrc` to see the changes
-## .other packages
 - generate [top](https://en.wikipedia.org/wiki/Top_(software)) command Config-File
 ```py
         top # open top task manager first

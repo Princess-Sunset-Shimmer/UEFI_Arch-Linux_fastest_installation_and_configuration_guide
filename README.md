@@ -245,7 +245,7 @@ pacman() {
     remove|purge|uninstall)
       shift 1; command pacman --color=always -Runs $@ ;;
     autoremove)
-      orph="$(command pacman -Qdtq)"
+      local orph="$(command pacman -Qdtq)"
       if [[ -n $2 ]] || [[ -n $orph ]]
         then shift 1; command pacman --color=always -Runs $@ $orph
         else echo ' 0 package removed'

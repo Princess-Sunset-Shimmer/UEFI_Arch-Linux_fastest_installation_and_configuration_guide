@@ -268,7 +268,7 @@ pacman() {
         *)        shift 1; command pacman --color=always -Qs $@ ;;
       esac ;;
     version|--version|-V)
-      command pacman -V \
+      command pacman -V\
         | GREP_COLORS='ms=01;33' command grep --color=always "\.\|-\|/\|_\|'\|" \
         | GREP_COLORS='ms=01;33' command grep --color=always '\\\|' ;;
     help|--help|-h)

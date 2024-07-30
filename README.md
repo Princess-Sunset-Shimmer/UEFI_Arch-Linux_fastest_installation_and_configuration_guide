@@ -261,7 +261,7 @@ pacman() {
       shift 1; command pacman --color=always -Sii $@ ;;
     list)
       case $2 in
-        explicit) shift 2; command pacman --color=always -Qet $@ ;;
+        explicit) shift 2; command pacman --color=always -Qe $@ ;;
         all)      shift 2; command pacman --color=always -Qs $@ ;;
         orphan)   shift 2; command pacman --color=always -Qdt $@ ;;
         group)    shift 2; command pacman --color=always -Qg $@ ;;
@@ -308,9 +308,8 @@ QUERY_PACKAGE:
         pacman search keywords
         pacman search group group_name
         pacman info package_name
-        pacman list
-        pacman list installed
-        pacman list available
+        pacman list all
+        pacman list explicit
         pacman list group
         pacman list orphan
 PACMAN_INFORMATION:

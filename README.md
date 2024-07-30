@@ -261,11 +261,11 @@ pacman() {
       shift 1; command pacman --color=always -Sii $@ ;;
     list)
       case $2 in
-        installed) shift 2; command pacman --color=always -Qet $@ ;;
-        available) shift 2; command pacman --color=always -Qs $@ ;;
-        orphan)    shift 2; command pacman --color=always -Qdt $@ ;;
-        group)     shift 2; command pacman --color=always -Qg $@ ;;
-        *)         shift 1; command pacman --color=always -Q $@ ;;
+        explicit) shift 2; command pacman --color=always -Qet $@ ;;
+        all)      shift 2; command pacman --color=always -Qs $@ ;;
+        orphan)   shift 2; command pacman --color=always -Qdt $@ ;;
+        group)    shift 2; command pacman --color=always -Qg $@ ;;
+        *)        shift 1; command pacman --color=always -Qs $@ ;;
       esac ;;
     version|--version|-V)
       command pacman -V \
@@ -282,8 +282,7 @@ pacman() {
     pacman search [keyword(s)]\e[0;34;40m..........|..\e[msearch by keyword
     pacman info [package(s)]\e[0;34;40m............|..\e[mshow detail info of package
     pacman list [package(s)]\e[0;34;40m............|..\e[mlist all installed package
-    pacman list installed [package(s)]\e[0;34;40m..|..\e[mlist all explicit installed package
-    pacman list avaiable [package(s)]\e[0;34;40m...|..\e[mlist all avaiable package
+    pacman list explicit [package(s)]\e[0;34;40m...|..\e[mlist all explicit installed package
     pacman list orphan [package(s)]\e[0;34;40m.....|..\e[mlist orphan package
     pacman list group [group(s)]\e[0;34;40m........|..\e[mlist package group
     pacman version\e[0;34;40m......................|..\e[mshow pacman version

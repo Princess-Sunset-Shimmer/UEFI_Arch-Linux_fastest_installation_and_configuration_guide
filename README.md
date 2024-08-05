@@ -150,7 +150,7 @@ then add Unpriviliged-User to Secondary-Group `audio,video,storage`
 ```py
         usermod -aG audio,video,storage your_user_name
 ```
-and you can **Remove** entire `/root` directory and **Link** entire `/home/your_user_name` to `/root`
+and you can **Remove** entire `/root` directory and **Make** a Link-File of entire `/home/your_user_name` to `/root`
 ```py
         rm -fr /root
         ln -s /home/your_user_name /root

@@ -262,11 +262,26 @@ pacman() {
       shift 1; command pacman --color=always -Sii $@ ;;
     list)
       case $2 in
-        explicit) shift 2; command pacman --color=always -Qe $@ ;;
-        all)      shift 2; command pacman --color=always -Qs $@ ;;
-        orphan)   shift 2; command pacman --color=always -Qdt $@ ;;
-        group)    shift 2; command pacman --color=always -Qg $@ ;;
-        *)        shift 1; command pacman --color=always -Qs $@ ;;
+        explicit|--explicit|user-installed|--user-installed|manual-installed|--manual-installed)
+          shift 2
+          if [[ -z $@ ]]
+            then command pacman --color=always -Qe
+            else command pacman --color=always -Qlkk $@
+          fi ;;
+        all|--all|installed|--installed)
+          shift 2
+          if [[ -z $@ ]]
+            then command pacman --color=always -Qs
+            else command pacman --color=always -Qlkk $@
+          fi ;;
+        orphan) shift 2; command pacman --color=always -Qdt $@ ;;
+        group)  shift 2; command pacman --color=always -Qg $@ ;;
+        *)
+          shift 1
+          if [[ -z $@ ]]
+            then command pacman --color=always -Qs
+            else command pacman --color=always -Qlkk $@
+          fi ;;
       esac ;;
     version|--version|-V)
       command pacman -V\

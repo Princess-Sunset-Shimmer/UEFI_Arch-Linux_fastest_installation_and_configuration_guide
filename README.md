@@ -276,7 +276,8 @@ pacman() {
           fi ;;
         orphan) shift 2; command pacman --color=always -Qdt $@ ;;
         group)  shift 2; command pacman --color=always -Qg $@ ;;
-        *)shift 1
+        *)
+          shift 1
           if [[ -z $@ ]]
             then command pacman --color=always -Qs
             else command pacman --color=always -Qlkk $@
@@ -304,7 +305,7 @@ pacman() {
 \e[0;34;40m----------------------------------------|----------------\e[m"
       command pacman -h $@ | command grep --color=always '\-\|' ;;
     '') ;;
-    *)command pacman --color=always $@ ;;
+    *) command pacman --color=always $@ ;;
   esac
 }
 ```

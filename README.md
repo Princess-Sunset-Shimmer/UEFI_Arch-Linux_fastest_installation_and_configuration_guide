@@ -256,7 +256,8 @@ pacman() {
       case $2 in
         group|--group)
           shift 2; command pacman --color=always -Sgg $@
-        *)shift 1; command pacman --color=always -Ss $@
+        *)
+          shift 1; command pacman --color=always -Ss $@
       esac ;;
     info|show)
       shift 1; command pacman --color=always -Sii $@ ;;
@@ -274,8 +275,10 @@ pacman() {
             then command pacman --color=always -Qs
             else command pacman --color=always -Qlkk $@
           fi ;;
-        orphan) shift 2; command pacman --color=always -Qdt $@ ;;
-        group)  shift 2; command pacman --color=always -Qg $@ ;;
+        orphan)
+          shift 2; command pacman --color=always -Qdt $@ ;;
+        group)
+          shift 2; command pacman --color=always -Qg $@ ;;
         *)
           shift 1
           if [[ -z $@ ]]
@@ -304,8 +307,10 @@ pacman() {
     pacman help [option(s)]\e[0;34;40m.............|..\e[mshow help sheat of option
 \e[0;34;40m----------------------------------------|----------------\e[m"
       command pacman -h $@ | command grep --color=always '\-\|' ;;
-    '') ;;
-    *) command pacman --color=always $@ ;;
+    '')
+      ;;
+    *)
+      command pacman --color=always $@ ;;
   esac
 }
 ```

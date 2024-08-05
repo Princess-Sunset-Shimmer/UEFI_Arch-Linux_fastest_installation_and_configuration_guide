@@ -571,85 +571,6 @@ then
 ```lua
         tmux source-file /etc/tmux.conf
 ```
-- fastfetch
-
-install [fastfetch](https://archlinux.org/packages/extra/x86_64/fastfetch/)
-```py
-        pacman -Syu fastfetch
-```
-add Below-Alias to `/etc/bash.bashrc`
-```bash
-alias clear='clear; tput cup 4 0; fastfetch'
-```
-- - - -
-then you can use `clear` command as `fastfetch`.\
-you even can feed `fastfetch` **--options** to `clear` command
-- - - -
-generate Config-File to `/home/your_user_name/.config/fastfetch/config.jsonc`
-```py
-        fastfetch --gen-config
-```
-and Create file `/home/your_user_name/.config/fastfetch/logo`
-```py
-        vim /home/your_user_name/.config/fastfetch/logo
-```
-then Draw /\\rch Cutie-Mark out ( i means Arch-Logo )
-```lua
-                  .
-                 / \
-                /   \
-               /     \
-              /       \
-             />,       \
-            /  `*.      \
-           /      `      \
-          /               \
-         /                 \
-$2        /      ,.-+-..      \
-       /      ,/'   `\.      \
-      /      .|'     `|.   _  \
-     /       :|.     ,|;    `+.\
-    /        .\:     ;/,      "<\
-   /     __,--+"     "+--.__     \
-  /  _,+'"                 "'+._  \
- /,-'                           `-.\
-'                                   '
-```
-now Change the `config.jsonc` file contents to
-```jsonc
-{
-"logo": {"source": "/home/your_user_name/.config/fastfetch/logo"},
-"display": {
-    "color": {"separator": "yellow", "output": "cyan"},
-    "separator": " | "
-    },
-"modules": [ 
-    {"type": "kernel", "key": " /\\rch Linux", "keyColor": "blue"},
-    {"type": "custom", "format": ">-----------<+>----------------------------------<", "outputColor": "separator"},
-    {"type": "uptime", "key": "   Uptime   ", "keyColor": "green"},
-    {"type": "shell", "key": "   Shell    ", "keyColor": "green"},
-    {"type": "terminal", "key": "   Terminal ", "keyColor": "green"},
-    {"type": "terminalfont", "key": "   Font     ", "keyColor": "green"},
-    {"type": "packages", "key": "   Packages ", "keyColor": "green"},
-    {"type": "localip", "key": "   Local IP ", "keyColor": "green"},
-    {"type": "custom", "format": ">-----------<+>----------------------------------<", "outputColor": "separator"},
-    {"type": "display", "key": "   Display  ", "keyColor": "magenta"},
-    {"type": "cpu", "key": "   CPU      ", "keyColor": "magenta"},
-    {"type": "gpu", "key": "   GPU      ", "keyColor": "magenta"},
-    {"type": "memory", "key": "   RAM      ", "keyColor": "magenta"},
-    {"type": "swap", "key": "   SWAP     ", "keyColor": "magenta"},
-    {"type": "disk", "key": "   Disk     ", "keyColor": "magenta"},
-    {"type": "battery", "key": "   Battery  ", "keyColor": "magenta"},
-    {"type": "custom", "format": ">-----------<+>----------------------------------<", "outputColor": "separator"},
-    "break",
-    {"type":"colors", "paddingLeft": 9}
-    ]
-}
-```
-- - - -
-`note`: Thanks for [Carter Li](https://github.com/CarterLi) and other Related-Developers, Configuration like Above has been added to ***Official-Fastfetch-Exsamples***\
-now you can directly test it by run `fastfetch --load-config examples/22.jsonc` along with trying out other developer's config too
-- - - -
 - enhance Bash-Tab-Completion
 ```sh
 set show-all-if-unmodified on
@@ -826,6 +747,85 @@ sha256sum() {
 ```
 add above alias to your `/etc/bash.bashrc` file\
 then you can run `. /etc/bash.bashrc` to see the changes
+- fastfetch
+
+install [fastfetch](https://archlinux.org/packages/extra/x86_64/fastfetch/)
+```py
+        pacman -Syu fastfetch
+```
+add Below-Alias to `/etc/bash.bashrc`
+```bash
+alias clear='clear; tput cup 4 0; fastfetch'
+```
+- - - -
+then you can use `clear` command as `fastfetch`.\
+you even can feed `fastfetch` **--options** to `clear` command
+- - - -
+generate Config-File to `/home/your_user_name/.config/fastfetch/config.jsonc`
+```py
+        fastfetch --gen-config
+```
+and Create file `/home/your_user_name/.config/fastfetch/logo`
+```py
+        vim /home/your_user_name/.config/fastfetch/logo
+```
+then Draw /\\rch Cutie-Mark out ( i means Arch-Logo )
+```lua
+                  .
+                 / \
+                /   \
+               /     \
+              /       \
+             />,       \
+            /  `*.      \
+           /      `      \
+          /               \
+         /                 \
+$2        /      ,.-+-..      \
+       /      ,/'   `\.      \
+      /      .|'     `|.   _  \
+     /       :|.     ,|;    `+.\
+    /        .\:     ;/,      "<\
+   /     __,--+"     "+--.__     \
+  /  _,+'"                 "'+._  \
+ /,-'                           `-.\
+'                                   '
+```
+now Change the `config.jsonc` file contents to
+```jsonc
+{
+"logo": {"source": "/home/your_user_name/.config/fastfetch/logo"},
+"display": {
+    "color": {"separator": "yellow", "output": "cyan"},
+    "separator": " | "
+    },
+"modules": [ 
+    {"type": "kernel", "key": " /\\rch Linux", "keyColor": "blue"},
+    {"type": "custom", "format": ">-----------<+>----------------------------------<", "outputColor": "separator"},
+    {"type": "uptime", "key": "   Uptime   ", "keyColor": "green"},
+    {"type": "shell", "key": "   Shell    ", "keyColor": "green"},
+    {"type": "terminal", "key": "   Terminal ", "keyColor": "green"},
+    {"type": "terminalfont", "key": "   Font     ", "keyColor": "green"},
+    {"type": "packages", "key": "   Packages ", "keyColor": "green"},
+    {"type": "localip", "key": "   Local IP ", "keyColor": "green"},
+    {"type": "custom", "format": ">-----------<+>----------------------------------<", "outputColor": "separator"},
+    {"type": "display", "key": "   Display  ", "keyColor": "magenta"},
+    {"type": "cpu", "key": "   CPU      ", "keyColor": "magenta"},
+    {"type": "gpu", "key": "   GPU      ", "keyColor": "magenta"},
+    {"type": "memory", "key": "   RAM      ", "keyColor": "magenta"},
+    {"type": "swap", "key": "   SWAP     ", "keyColor": "magenta"},
+    {"type": "disk", "key": "   Disk     ", "keyColor": "magenta"},
+    {"type": "battery", "key": "   Battery  ", "keyColor": "magenta"},
+    {"type": "custom", "format": ">-----------<+>----------------------------------<", "outputColor": "separator"},
+    "break",
+    {"type":"colors", "paddingLeft": 9}
+    ]
+}
+```
+- - - -
+`note`: Thanks for [Carter Li](https://github.com/CarterLi) and other Related-Developers, Configuration like Above has been added to ***Official-Fastfetch-Exsamples***\
+now you can directly test it by run `fastfetch --load-config examples/22.jsonc` along with trying out other developer's config too
+- - - -
 - generate [top](https://en.wikipedia.org/wiki/Top_(software)) command Config-File
 ```py
         top # open top task manager first

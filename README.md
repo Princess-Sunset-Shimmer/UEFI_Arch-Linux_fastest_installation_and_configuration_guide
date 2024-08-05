@@ -276,8 +276,7 @@ pacman() {
           fi ;;
         orphan) shift 2; command pacman --color=always -Qdt $@ ;;
         group)  shift 2; command pacman --color=always -Qg $@ ;;
-        *)
-          shift 1
+        *)shift 1
           if [[ -z $@ ]]
             then command pacman --color=always -Qs
             else command pacman --color=always -Qlkk $@

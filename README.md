@@ -694,11 +694,6 @@ unset -f append_path
 unset TERMCAP
 unset MANPATH
 ```
-- System-Wide bash configuration
-
-ensure all User-Specific bash Config-File `~/.bashrc` have been removed\
-then open `/etc/bash.bashrc` and Clear up all Default-Contents inside and Follow the configuration below
-
 - make Command-Prompt awesome
 
 open `/etc/bash.bashrc` file\
@@ -743,6 +738,11 @@ fi
 ```
 then run `. /etc/bash.bashrc` to see the changes
 ## .other packages
+- System-Wide bash configuration
+
+ensure all User-Specific bash Config-File `~/.bashrc` have been removed\
+then open `/etc/bash.bashrc` and Clear up all Default-Contents inside and Follow the configuration below
+
 - general command alias
 ```bash
 alias ip='ip --color=auto'

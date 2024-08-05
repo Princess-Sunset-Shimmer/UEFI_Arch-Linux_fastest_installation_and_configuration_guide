@@ -253,10 +253,11 @@ pacman() {
     clean)
       shift 1; command pacman --color=always -Scc $@ ;;
     search)
-      if [[ $2 == group ]]
-        then shift 2; command pacman --color=always -Sgg $@
-        else shift 1; command pacman --color=always -Ss $@
-      fi ;;
+      case $2 in
+        group|--group)
+          shift 2; command pacman --color=always -Sgg $@
+        *)shift 1; command pacman --color=always -Ss $@
+      esac ;;
     info|show)
       shift 1; command pacman --color=always -Sii $@ ;;
     list)
@@ -272,8 +273,7 @@ pacman() {
         | GREP_COLORS='ms=01;33' command grep --color=always "\.\|-\|/\|_\|'\|" \
         | GREP_COLORS='ms=01;33' command grep --color=always '\\\|' ;;
     help|--help|-h)
-      shift 1
-      [[ -z $@ ]] && command echo -e "\e[0;32;40mnew pacman alias:\e[0;34;40m_______________________|________________\e[m
+      shift 1; [[ -z $@ ]] && command echo -e "\e[0;32;40mnew pacman alias:\e[0;34;40m_______________________|________________\e[m
     pacman upgrade [package(s)]\e[0;34;40m.........|..\e[mupgrade System and install New Package
     pacman install <package(s)>\e[0;34;40m.........|..\e[minstall New Package
     pacman remove <package(s)>\e[0;34;40m..........|..\e[mpurge Package and Dependency
@@ -290,7 +290,7 @@ pacman() {
 \e[0;34;40m----------------------------------------|----------------\e[m"
       command pacman -h $@ | command grep --color=always '\-\|' ;;
     '') ;;
-    *)  command pacman --color=always $@ ;;
+    *)command pacman --color=always $@ ;;
   esac
 }
 ```

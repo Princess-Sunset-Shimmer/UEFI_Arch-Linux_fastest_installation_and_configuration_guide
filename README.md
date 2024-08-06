@@ -748,7 +748,7 @@ sha256sum() {
   command echo -e '\e[1;32;40m----------------------------------------------------------------\e[m\n'
 }
 ```
-the `find` alias requires [fzf]() and [vim]() be installed
+the `find` alias requires [fzf](https://archlinux.org/packages/extra/x86_64/fzf/) and [vim]() be installed
 ```bash
 find() {
   local line=$(command printf '%*s' $((($COLUMNS - 8))) | command tr ' ' _)
@@ -768,7 +768,7 @@ find() {
   [[ -n $files ]] && vim $files
 }
 ```
-below alias require [fzf]() be installed
+below alias require [fzf](https://archlinux.org/packages/extra/x86_64/fzf/) be installed
 ```bash
 history() {
   case $1 in
@@ -933,7 +933,13 @@ alias less='less -r'
 alias more='less -r'
 ```
 append Above-Contents to `/etc/bash.bashrc`
-- vim minimal configuration
+- vim
+
+install [vim]()
+```py
+        pacman -Syu vim
+```
+minimal configuration
 ```lua
 :set number
 :set nowrap

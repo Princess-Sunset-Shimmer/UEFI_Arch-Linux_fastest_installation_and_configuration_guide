@@ -768,7 +768,7 @@ find() {
   [[ -n $files ]] && vim $files
 }
 ```
-below alias require [fzf](https://archlinux.org/packages/extra/x86_64/fzf/) be installed
+Below-Alias require [fzf](https://archlinux.org/packages/extra/x86_64/fzf/) be installed
 ```bash
 history() {
   case $1 in
@@ -811,7 +811,7 @@ kill() {
   esac
 }
 ```
-add above alias to your `/etc/bash.bashrc` file\
+add Above-Alias to your `/etc/bash.bashrc` file\
 then you can run `. /etc/bash.bashrc` to see the changes
 - fastfetch
 

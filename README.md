@@ -884,7 +884,7 @@ now Change the `config.jsonc` file contents to
     {"type": "battery", "key": "   Battery  ", "keyColor": "magenta"},
     {"type": "custom", "format": ">-----------<+>----------------------------------<", "outputColor": "separator"},
     "break",
-    {"type":"colors", "paddingLeft": 9}
+    {"type":"colors", "symbol": "block", "paddingLeft": 9}
     ]
 }
 ```

@@ -711,7 +711,8 @@ cat() {
       command grep --color=always '\.\|,\|;\|:\|_\|}\|{\|)\|(\|]\|\[\|\\\|\$\|#\|?\|!\|@\|`\|"\|' |\
       command grep --color=always "'\|" | GREP_COLORS='ms=01;34'\
       command grep --color=always '+\|-\|*\|/\|%\|=\|>\|<\|&\||\|\^\|~\|' ;;
-    *)command cat "$@" ;;
+    *)
+      command cat "$@" ;;
   esac
 }
 
@@ -749,6 +750,23 @@ sha256sum() {
 ```
 the `find` alias requires [fzf]() and [vim]() be installed
 ```bash
+find() {
+  local line=$(command printf '%*s' $((($COLUMNS - 8))) | command tr ' ' _)
+  local files=$(\
+    command find "$@" 2> /dev/null |\
+    command grep --color=always '\.\|' | GREP_COLORS='ms=01;34'\
+    command grep --color=always '/\|' |\
+    command fzf -m --ansi -e --cycle --color=16 --layout=reverse-list --header=$line --border --border-label=$line\
+      --preview="
+        printf '\e[1;35;40m'
+        file {}
+        echo -e '\e[0;36;40m'$line
+        printf '\e[0;31;40m'
+        [[ -f {} ]] && cat -n {} | GREP_COLORS='ms=01;32' grep --color=always '[0-9]\|' | grep --color=always '+\|-\|*\|/\|%\|=\|>\|<\|&\||\|\^\|~\|'"\
+      --preview-window=up,50% --preview-label=$line --preview-label-pos=bottom
+  )
+  [[ -n $files ]] && vim $files
+}
 ```
 add above alias to your `/etc/bash.bashrc` file\
 then you can run `. /etc/bash.bashrc` to see the changes

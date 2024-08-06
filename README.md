@@ -705,11 +705,14 @@ file() {
 }
 
 cat() {
-  command cat "$@" |\
-  command grep --color=always '\.\|,\|;\|:\|_\|}\|{\|)\|(\|]\|\[\|\\\|\$\|#\|?\|!\|@\|`\|"\|' |\
-  command grep --color=always "'\|" |\
-  GREP_COLORS='ms=01;34'\
-  command grep --color=always '+\|-\|*\|/\|%\|=\|>\|<\|&\||\|\^\|~\|'
+  case $@ in
+    *-c*|*--color*) 
+      command cat -n $(command echo $@ | command sed 's#--color##g' | command sed 's#-c##g') |\
+      command grep --color=always '\.\|,\|;\|:\|_\|}\|{\|)\|(\|]\|\[\|\\\|\$\|#\|?\|!\|@\|`\|"\|' |\
+      command grep --color=always "'\|" | GREP_COLORS='ms=01;34'\
+      command grep --color=always '+\|-\|*\|/\|%\|=\|>\|<\|&\||\|\^\|~\|' ;;
+    *)command cat "$@" ;;
+  esac
 }
 
 lsblk() {
@@ -743,6 +746,9 @@ sha256sum() {
   command sha256sum "$@"
   command echo -e '\e[1;32;40m----------------------------------------------------------------\e[m\n'
 }
+```
+the `find` alias requires [fzf]() and [vim]() be installed
+```bash
 ```
 add above alias to your `/etc/bash.bashrc` file\
 then you can run `. /etc/bash.bashrc` to see the changes

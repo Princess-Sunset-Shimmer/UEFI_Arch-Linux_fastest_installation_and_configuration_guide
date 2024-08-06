@@ -768,6 +768,49 @@ find() {
   [[ -n $files ]] && vim $files
 }
 ```
+below alias require [fzf]() be installed
+```bash
+history() {
+  case $1 in
+    '') local hcmd=$(\
+      command history |\
+      command grep --color=always '[0-9]\|' |\
+      command fzf --ansi --color=16 -e --layout=reverse-list --cycle --border --header=$(\
+      command printf '%*s' $((($COLUMNS - 8))) |\
+      command tr ' ' -) |\
+      command awk '{$1=""}1'); if [[ -n $hcmd ]]; then command printf '\n'; $hcmd; fi ;;
+    -h|help|--help)
+      command history --help |\
+      command grep --color=always '\[\|\]\|\-\|' ;;
+    *)
+      command history $@ ;;
+  esac
+}
+kill() {
+  case $1 in
+    -l|-L)
+      shift 1
+      command kill -l $@ |\
+      command grep --color=always '[0-9]\|' ;;
+    -h|help|--help)
+      command kill --help |\
+      command grep --color=always '\-\|\[\|\]\||\|' ;;
+    *)
+      if [[ -n $2 ]]
+        then command kill $@
+        else
+          local pid=$(\
+            command ps -aux |\
+            command fzf -m -e --color=16 --cycle --layout=reverse-list --border\
+              --header=$(command printf '%*s' $((($COLUMNS - 8))) |\
+            command tr ' ' -) |\
+            command awk '{print $2}'
+          )
+          [[ -n $pid ]] && command kill $1 $pid
+      fi ;;
+  esac
+}
+```
 add above alias to your `/etc/bash.bashrc` file\
 then you can run `. /etc/bash.bashrc` to see the changes
 - fastfetch

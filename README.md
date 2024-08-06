@@ -748,7 +748,7 @@ sha256sum() {
   command echo -e '\e[1;32;40m----------------------------------------------------------------\e[m\n'
 }
 ```
-the `find` alias requires [fzf](https://archlinux.org/packages/extra/x86_64/fzf/) and [vim]() be installed
+the `find` alias requires [fzf](https://archlinux.org/packages/extra/x86_64/fzf/) and [vim](https://archlinux.org/packages/extra/x86_64/vim/) be installed
 ```bash
 find() {
   local line=$(command printf '%*s' $((($COLUMNS - 8))) | command tr ' ' _)
@@ -935,7 +935,7 @@ alias more='less -r'
 append Above-Contents to `/etc/bash.bashrc`
 - vim
 
-install [vim]()
+install [vim](https://archlinux.org/packages/extra/x86_64/vim/)
 ```py
         pacman -Syu vim
 ```

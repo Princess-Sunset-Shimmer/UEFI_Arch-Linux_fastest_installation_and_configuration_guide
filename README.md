@@ -821,6 +821,31 @@ install [fzf]()
 ```py
         pacman -Syu fzf
 ```
+fzf alias
+```bash
+fzf() {
+  case $@ in
+    -h|*help*|*--help*)
+      command fzf -h |\
+      command grep --color=always '\-\|\[\|\]\|' ;;
+    *--no-logo*)
+      command fzf -m --ansi --cycle --color=16 --layout=reverse-list --border\
+      --header=$(command printf '%*s' $((($COLUMNS - 8))) | command tr ' ' '=')\
+      $(command echo "$@" | command sed 's#--no-logo##g') ;;
+    *)
+      command fzf -m --ansi --cycle --color=16 --layout=reverse-list --border\
+      --header=$(command printf '%*s' $((($COLUMNS - 8))) | command tr ' ' '=') --preview="echo -e \"\
+  \e[1;32;40m          _._     \e[1;37;40m  _._
+  \e[1;32;40m         j7~*^    \e[1;37;40m j7~*^
+  \e[1;31;40m zx   \e[1;32;40m  a0bo aod/ \e[1;37;40ma0bo
+  \e[1;31;40m \\\`*b.\e[1;32;40m    M\\\"  \\\`Z7\e[1;37;40m   M\\\"
+  \e[1;31;40m j7/  \e[1;32;40m  ,N'  /7   \e[1;37;40m,N'
+  \e[1;31;40m \\\`'  \e[1;32;40m   ;U  /Ebad\e[1;37;40m ;U
+\e[0;30;47m command-line FuZzy Finder \e[m\"" --preview-window=up,7 $@ ;;
+  esac
+}
+```
+put Above-Alias to `/etc/bash.bashrc`
 - fastfetch
 
 install [fastfetch](https://archlinux.org/packages/extra/x86_64/fastfetch/)

@@ -815,6 +815,12 @@ kill() {
 ```
 add Above-Alias to your `/etc/bash.bashrc` file\
 then you can run `. /etc/bash.bashrc` to see the changes
+- fzf
+
+install [fzf]()
+```py
+        pacman -Syu fzf
+```
 - fastfetch
 
 install [fastfetch](https://archlinux.org/packages/extra/x86_64/fastfetch/)
@@ -955,6 +961,7 @@ minimal configuration
 ```
 add Above-Contents to your `/etc/vimrc` file
 - cal and calcurse
+
 install [calcurse]() first
 ```py
         pacman -Syu calcurse

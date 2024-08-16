@@ -767,7 +767,7 @@ find() {
         [[ -f {} ]] && cat -n {} | GREP_COLORS='ms=01;32' grep --color=always '[0-9]\|' | grep --color=always '+\|-\|*\|/\|%\|=\|>\|<\|&\||\|\^\|~\|'"\
       --preview-window=up,50% --preview-label=$line --preview-label-pos=bottom
   )
-  [[ -n $files ]] && vim $files
+  if [[ -f $files ]]; then command vim $files; else command echo "$files"; fi
 }
 ```
 Below-Alias require [fzf](https://archlinux.org/packages/extra/x86_64/fzf/) be installed
@@ -780,7 +780,8 @@ history() {
       command fzf --ansi --color=16 -e --layout=reverse-list --cycle --border --header=$(\
       command printf '%*s' $((($COLUMNS - 8))) |\
       command tr ' ' -) |\
-      command awk '{$1=""}1'); if [[ -n $hcmd ]]; then command printf '\n'; $hcmd; fi ;;
+      command awk '{$1=""}1')
+      command printf '\n'; $hcmd ;;
     -h|help|--help)
       command history --help |\
       command grep --color=always '\[\|\]\|\-\|' ;;

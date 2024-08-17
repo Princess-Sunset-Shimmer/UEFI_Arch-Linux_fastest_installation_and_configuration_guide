@@ -781,7 +781,7 @@ history() {
       command printf '%*s' $((($COLUMNS - 8))) |\
       command tr ' ' -) |\
       command awk '{$1=""}1')
-      command printf '\n'; $hcmd ;;
+      command printf '\n'; eval $hcmd ;;
     -h|help|--help)
       command history --help |\
       command grep --color=always '\[\|\]\|\-\|' ;;

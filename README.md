@@ -637,11 +637,10 @@ fi
 then you can run `. /etc/bash.bashrc` to see the changes
 - Interactive-Shell **Top-Bar**
 ```bash
-tbar_mid=$((($COLUMNS - 6 >> 1)))
-tbar_right=$((($COLUMNS - 9)))
-tty_name=$(tty | sed 's#/dev/##')
-
 tbar() {
+  local tbar_mid=$((($COLUMNS - 6 >> 1)))
+  local tbar_right=$((($COLUMNS - 9)))
+  local tty_name=$(tty | sed 's#/dev/##')
   local bat_percent=$(cat /sys/class/power_supply/BAT0/capacity)
   local bat_format="\e[0;34;47m100% [II}"
   ((bat_percent < 100)) && bat_format=" \e[0;34;47m$bat_percent% [II\e[0;30;47m}"

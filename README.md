@@ -893,12 +893,12 @@ $2        /      ,.-+-..      \
 now Change the `config.jsonc` file contents to
 ```jsonc
 {
-"logo": {"source": "/home/your_user_name/.config/fastfetch/logo"},
-"display": {
+  "logo": {"source": "/home/your_user_name/.config/fastfetch/logo"},
+  "display": {
     "color": {"separator": "yellow", "output": "cyan"},
     "separator": " | "
-    },
-"modules": [ 
+  },
+  "modules": [
     {"type": "kernel", "key": " /\\rch Linux", "keyColor": "blue"},
     {"type": "custom", "format": ">-----------<+>----------------------------------<", "outputColor": "separator"},
     {"type": "uptime", "key": "   Uptime   ", "keyColor": "green"},
@@ -918,7 +918,7 @@ now Change the `config.jsonc` file contents to
     {"type": "custom", "format": ">-----------<+>----------------------------------<", "outputColor": "separator"},
     "break",
     {"type":"colors", "symbol": "block", "paddingLeft": 9}
-    ]
+  ]
 }
 ```
 - - - -

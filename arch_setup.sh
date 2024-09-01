@@ -10,6 +10,7 @@ remove_and_link_root_directory='on'
 network_manager_auto_start='on'
 network_optimization='on'
 hblock='on'
+hblock_auto_update='on'
 
 # BOOT #=====================================================================#
 
@@ -23,11 +24,13 @@ bootloader_auto_update='on'
 
 side_channel_attack_mitigation='off'
 irq_balance='on'
+ananicy_cpp='on'
 
 # RAM #======================================================================#
 
 virtual_memory_optimization='on'
 swap_memory_compression='on'
+preload='on'
 
 # STORAGE #==================================================================#
 
@@ -55,7 +58,6 @@ login_shell_text_graph='on'
 
 interactive_shell_top_bar='on'
 
-general_alias='on'
 enhance_tab_completion='on'
 mouse='off'
 
@@ -76,6 +78,14 @@ parallel_download='on'
 architecture=""
 pacman_contrib='on'
 pacman_alias='on'
+pacman_fzf_alias='on'
+
+chaotic_aur='on'
+multilib='off'
+
+reflector='on'
+reflector_customization='on'
+reflector_autostart='on'
 
 # DEVOLEPER UTILITIES #======================================================#
 
@@ -90,13 +100,19 @@ enhance_search='on'
 expand_tab='on'
 indent_size='4'
 
-gcc='on'
-
+base_devel='on'
+cmake='on'
+git='on'
 github_cli='on'
 
 calc='on'
 
 # SYSTEM UTILITIES #=========================================================#
+
+general_alias='on'
+
+fzf='on'
+fzf_alias='on'
 
 customize_top='on'
 
@@ -106,16 +122,17 @@ dust='on'
 
 tldr='on'
 
-less='off'
+less='on'
 less_alias='on'
 
 fastfetch='on'
 interactive_shell_fastfetch='on'
-fastfetch_clear='on'
+fastfetch_clear_alias='on'
 customize_fastfetch='on'
-fastfetch_logo="arch3"
+fastfetch_style="1"
 customize_arch_logo='on'
-fastfetch_separator=" | "
+fastfetch_logo="arch3"
+fastfetch_separator="[> "
 fastfetch_separator_color="yellow"
 fastfetch_system_name_color="blue"
 fastfetch_system_info_color="cyan"
@@ -131,20 +148,29 @@ transmission_remote='on'
 
 # MEDIA UTILITIES #==========================================================#
 
-ffmpeg='on'
+mpv='on'
+youtube_dl='on'
 
-cmus='on'
-customize_cmus='on'
+ytfzf='on'
+
+cmus='off'
+
+cava='on'
 
 # OTHER PACKAGES #===========================================================#
 
-cmatrix='off'
+cmatrix='on'
+
+calcurse='on'
+cal_colors='on'
+cal_alias='on'
 
 #============================================================================#
 
 command echo -e '\e[1;36;40m ***\e[1;34;40m generating <_pacman_> Config-File\e[1;36;40m ***\e[m'
 if [[ ${progress_bar} == off ]]; then progress_bar='NoProgressBar'; else progress_bar='ILoveCandy'; fi
 if [[ -n ${architecture} ]]; then architecture="Architecture = ${architecture}"; else architecture='Architecture = auto'; fi
+[[ ${pacman_fzf_alias} == on ]] && pacman_alias='off'
 command cat << EOF > /etc/pacman.conf
 [options]
 HoldPkg = pacman glibc
@@ -161,33 +187,65 @@ Include = /etc/pacman.d/mirrorlist
 [extra]
 Include = /etc/pacman.d/mirrorlist
 EOF
+if [[ ${chaotic_aur} == on ]]; then
+    command pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
+    command pacman-ley --lsign-key 3056513887B78AEB
+    command pacman -U --color=always --noconfirm https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst
+    if command pacman -U --color=always --noconfirm https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst; then
+        command cat << 'EOF' >> /etc/pacman.conf
+[chaotic-aur]
+Include = /etc/pacman.d/chaotic-mirrorlist
+EOF
+    else
+        command echo -e '\e[0;31;40m Setup Fail: unsuccessfully append Chaotic-AUR repo\e[m'
+        command exit 1
+    fi
+else
+    command pacman -Runs --color=always --noconfirm chaotic-keyring chaotic-mirrorlist
+fi
+[[ ${multilib} == on ]] && command cat << 'EOF' >> /etc/pacman.conf
+[multilib]
+Include = /etc/pacman.d/mirrorlist
+EOF
 command cat /etc/pacman.conf
 
 command echo -e '\e[1;36;40m ***\e[1;34;40m installing Packages\e[1;36;40m ***\e[m'
 if [[ ${hblock} == on ]]; then hblock=' hblock'; else hblock=''; fi
 if [[ ${irq_balance} == on ]]; then irq_balance=' irqbalance'; else irq_balance=''; fi
+if [[ ${ananicy_cpp} == on ]]; then ananicy_cpp=' ananicy-cpp'; else ananicy_cpp=''; fi
+if [[ ${preload} == on ]]; then preload=' preload'; else preload=''; fi
 if [[ ${nano} == on ]]; then nano=' nano'; else nano=''; fi
-if [[ ${vim} == on ]]; then vim=' vim'; else vim=''; fi
-if [[ ${gcc} == on ]]; then gcc=' gcc'; else gcc=''; fi
+if [[ ${vim} == on ]] || [[ ${general_alias} == on ]]; then vim=' vim'; else vim=''; fi
+if [[ ${base_devel} == on ]]; then base_devel=' base-devel'; else base_devel=''; fi
+if [[ ${cmake} == on ]]; then cmake=' cmake'; else cmake='';fi
+if [[ ${git} == on ]]; then git=' git'; else git=''; fi
 if [[ ${github_cli} == on ]]; then github_cli=' github-cli'; else github_cli=''; fi
 if [[ ${calc} == on ]]; then calc=' calc'; else calc=''; fi
+if [[ ${fzf} == on ]] || [[ ${general_alias} == on ]] || [[ ${pacman_fzf_alias} == on ]]; then fzf=' fzf'; else fzf=''; fi
 if [[ ${wget} == on ]]; then wget=' wget'; else wget=''; fi
-if [[ ${transmission_remote} == on ]]; transmission_remote=' transmission-cli'; else transmission_remote=''; fi
+if [[ ${transmission_remote} == on ]]; then transmission_remote=' transmission-cli'; else transmission_remote=''; fi
 if [[ ${pipewire_pulse} == on ]]; then pipewire_pulse=' pipewire-pulse'; else pipewire_pulse=''; fi
 if [[ ${pipewire_alsa} == on ]]; then pipewire_alsa=' pipewire-alsa'; else pipewire_alsa=''; fi
 if [[ ${alsa_utils} == on ]]; then alsa_utils=' alsa-utils'; else alsa_utils=''; fi
 if [[ ${sof_firmware} == on ]]; then sof_firmware=' sof-firmware'; else sof_firmware=''; fi
 if [[ ${pacman_contrib} == on ]]; then pacman_contrib=' pacman-contrib'; else pacman_contrib=''; fi
+if [[ ${reflector} == on ]]; then reflector=' reflector'; else reflector=''; fi
 if [[ ${btop} == on ]]; then btop=' btop'; else btop=''; fi
 if [[ ${dust} == on ]]; then dust=' dust'; else dust=''; fi
 if [[ ${tldr} == on ]]; then tldr=' tldr'; else tldr=''; fi
 if [[ ${less} == on ]]; then less=' less'; else less=''; fi
 if [[ ${fastfetch} == on ]]; then fastfetch=' fastfetch'; else fastfetch=''; fi
 if [[ ${tmux} == on ]]; then tmux=' tmux'; else tmux=''; fi
-if [[ ${ffmpeg} == on ]]; then ffmpeg=' ffmpeg'; else ffmpeg=''; fi
+if [[ ${mpv} == on ]]; then mpv=' mpv'; else mpv=''; fi
+if [[ ${youtube_dl} == on ]]; then youtube_dl=' youtube-dl-git'; else youtube_dl=''; fi
+if [[ ${ytfzf} == on ]]; then ytfzf=' ytfzf'; else ytfzf=''; fi
 if [[ ${cmus} == on ]]; then cmus=' cmus'; else cmus=''; fi
+if [[ ${cava} == on ]]; then cava=' cava'; else cava=''; fi
 if [[ ${cmatrix} == on ]]; then cmatrix=' cmatrix'; else cmatrix=''; fi
-if command pacman -Syu --color=always --noconfirm${hblock}${irq_balance}${nano}${vim}${gcc}${github_cli}${calc}${wget}${transmission_remote}${pipewire_alsa}${alsa_utils}${sof_firmware}${pacman_contrib}${btop}${dust}${tldr}${less}${fastfetch}${tmux}${ffmpeg}${cmus}${cmatrix}
+if [[ ${calcurse} == on ]]; then calcurse=' calcurse'; else calcurse=''; fi
+if command pacman -Syyu --color=always --noconfirm${hblock}${irq_balance}${nano}${vim}${base_devel}${cmake}${git}${github_cli}${calc}\
+${fzf}${wget}${transmission_remote}${pipewire_alsa}${alsa_utils}${sof_firmware}${pacman_contrib}${reflector}\
+${btop}${dust}${tldr}${less}${fastfetch}${tmux}${mpv}${youtube_dl}${ytfzf}${cmus}${cava}${cmatrix}${calcurse}${ananicy_cpp}${preload}
 then command echo -e '\e[1;32;40m packages successfully be installed\e[m'
 else command echo -e '\e[0;31;40m Setup Fail: <_pacman_> did not finish work\e[m'; command exit 1; fi
 
@@ -204,9 +262,11 @@ if [[ ${remove_and_link_root_directory} == on ]]
 
 command echo -e '\e[1;36;40m ***\e[1;34;40m configuring Packages\e[1;36;40m ***\e[m'
 if [[ -z ${hblock} ]]
-    then command pacman -Runs --color=always --noconfirm hblock; command echo '' > /etc/hosts
+    then command pacman -Runs --color=always --noconfirm hblock; command echo '' > /etc/hosts; hblock_auto_update='off'
     else command hblock; fi
 [[ -z ${irq_balance} ]] && command pacman -Runs --color=always --noconfirm irqbalance
+[[ -z ${ananicy_cpp} ]] && command pacman -Runs --color=always --noconfirm ananicy-cpp
+[[ -z ${preload} ]] && command pacman -Runs --color=always --noconfirm preload
 [[ -z ${nano} ]] && command pacman -Runs --color=always --noconfirm nano
 if [[ -z ${vim} ]]; then command pacman --Runs --color=always --noconfirm vim
 else
@@ -219,9 +279,12 @@ else
     [[ ${enhance_search} == on ]] && command echo -e ':set incsearch\n:set hlsearch' >> /etc/vimrc
     command ls --color=always -l /etc/vimrc
 fi
-[[ -z ${gcc} ]] && command pacman -Runs --color=always --noconfirm gcc
+[[ -z ${base_devel} ]] && command pacman -Runs --color=always --noconfirm base-devel
+[[ -z ${cmake} ]] && command pacman -Runs --color=always --noconfirm cmake
+[[ -z ${git} ]] && command pacman -Runs --color=always --noconfirm git
 [[ -z ${github_cli} ]] && command pacman -Runs --color=always --noconfirm github-cli
 [[ -z ${calc} ]] && command pacman -Runs --color=always --noconfirm calc
+if [[ -z ${fzf} ]]; then fzf_alias='off'; command pacman -Runs --color=always --noconfirm fzf; fi
 if [[ -z ${wget} ]]; then command pacman -Runs --color=always --noconfirm wget; wget_alias='off'; fi
 [[ -z ${transmission_remote} ]] && command pacman -Runs --color=always --noconfirm transmission-cli
 [[ -z ${dust} ]] && command pacman -Runs --color=always --noconfirm dust
@@ -230,24 +293,30 @@ if [[ -z ${wget} ]]; then command pacman -Runs --color=always --noconfirm wget; 
 [[ -z ${alsa_utils} ]] && command pacman -Runs --color=always --noconfirm alsa-utils
 [[ -z ${sof_firmware} ]] && command pacman -Runs --color=always --noconfirm sof-firmware
 [[ -z ${pacman_contrib} ]] && command pacman -Runs --color=always pacman-contrib
-if [[ -z ${btop} ]]; then command pacman -Runs --color=always --noconfirm btop; command rm -fr /home/"${user_name}"/.config/btop; fi
+if [[ -z ${reflector} ]]
+    then command pacman -Runs --color=always reflector
+    else [[ ${reflector_customization} == on ]] && command cat << 'EOF' > /etc/xdg/reflector/reflector.conf
+--save /etc/pacman.d/mirrorlist
+--protocol https
+--ipv4
+--latest 8
+--sort rate
+EOF
+fi
+if [[ -z ${btop} ]]; then
+    command pacman -Runs --color=always --noconfirm btop
+    command rm -vfr /home/"${user_name}"/.config/btop
+fi
 [[ -z ${tldr} ]] && command pacman -Runs --color=always --noconfirm tldr
 if [[ -z ${less} ]]; then command pacman -Runs --color=always --noconfirm less; less_alias='off'; fi
 if [[ -z ${fastfetch} ]]; then
     command pacman -Runs --color=always --noconfirm fastfetch
-    customize_fastfetch='off'; interactive_shell_fastfetch='off'; fastfetch_clear='off'
-    [[ -e /home/"${user_name}/.config/fastfetch" ]] && command rm -fr /home/"${user_name}"/.config/fastfetch
-    else if [[ ${customize_fastfetch} == on ]]; then
-        [[ -z ${fastfetch_logo} ]] && fastfetch_logo='arch3'
-        [[ -z ${fastfetch_separator} ]] && fastfetch_separator=' | '
-        [[ -z ${fastfetch_separator_color} ]] && fastfetch_separator_color='yellow'
-        [[ -z ${fastfetch_system_name_color} ]] && fastfetch_system_name_color='blue'
-        [[ -z ${fastfetch_system_info_color} ]] && fastfetch_system_info_color='cyan'
-        [[ -z ${fastfetch_software_info_color} ]] && fastfetch_software_info_color='green'
-        [[ -z ${fastfetch_hardware_info_color} ]] && fastfetch_hardware_info_color='magenta'
-        command su -c "mkdir /home/\"${user_name}\"/.config/fastfetch" "${user_name}"
-        if [[ ${customize_arch_logo} == on ]]; then
-            command cat << 'EOF' | command cat > "/home/${user_name}/.config/fastfetch/logo"
+    customize_fastfetch='off'; interactive_shell_fastfetch='off'; fastfetch_clear_alias='off'
+    [[ -e /home/"${user_name}/.config/fastfetch" ]] && command rm -vfr /home/"${user_name}"/.config/fastfetch
+elif [[ ${customize_fastfetch} == on ]]; then
+    command su -c "mkdir /home/\"${user_name}\"/.config/fastfetch" "${user_name}"
+    if [[ ${customize_arch_logo} == on ]]; then
+        command cat << 'EOF' | command cat > "/home/${user_name}/.config/fastfetch/logo"
                   .
                  / \
                 /   \
@@ -258,7 +327,7 @@ if [[ -z ${fastfetch} ]]; then
            /      `      \
           /               \
          /                 \
-$2        /      ,.-*-..      \
+$2        /      ,.-+-..      \
        /      ,/'   `\.      \
       /      .|'     `|.   _  \
      /       :|.     ,|;    `+.\
@@ -268,47 +337,98 @@ $2        /      ,.-*-..      \
  /,-'                           `-.\
 '                                   '
 EOF
-            command chown "${user_name}":"${user_name}" /home/"${user_name}"/.config/fastfetch/logo
-            fastfetch_logo="/home/${user_name}/.config/fastfetch/logo"
-        fi
-        command cat << EOF > "/home/${user_name}/.config/fastfetch/config.jsonc"
+        command chown "${user_name}":"${user_name}" /home/"${user_name}"/.config/fastfetch/logo
+        fastfetch_logo="/home/${user_name}/.config/fastfetch/logo"
+    fi
+    case ${fastfetch_style} in
+        1)
+            [[ -z ${fastfetch_logo} ]] && fastfetch_logo='arch3'
+            [[ -z ${fastfetch_separator} ]] && fastfetch_separator='[> '
+            [[ -z ${fastfetch_separator_color} ]] && fastfetch_separator_color='yellow'
+            [[ -z ${fastfetch_system_name_color} ]] && fastfetch_system_name_color='blue'
+            [[ -z ${fastfetch_system_info_color} ]] && fastfetch_system_info_color='cyan'
+            [[ -z ${fastfetch_software_info_color} ]] && fastfetch_software_info_color='green'
+            [[ -z ${fastfetch_hardware_info_color} ]] && fastfetch_hardware_info_color='magenta'
+            command cat << EOF > "/home/${user_name}/.config/fastfetch/config.jsonc"
 {
-"logo": {"source": "${fastfetch_logo}"},
-"display": {
-    "color": {"separator": "${fastfetch_separator_color}", "output": "${fastfetch_system_info_color}"},
-    "separator": "${fastfetch_separator}"
-    },
-"modules": [ 
-    {"type": "kernel", "key": " /\\\\rch Linux", "keyColor": "${fastfetch_system_name_color}"},
-    {"type": "custom", "format": ">-----------<+>----------------------------------<", "outputColor": "separator"},
-    {"type": "uptime", "key": "   Uptime   ", "keyColor": "${fastfetch_software_info_color}"},
-    {"type": "shell", "key": "   Shell    ", "keyColor": "${fastfetch_software_info_color}"},
-    {"type": "terminal", "key": "   Terminal ", "keyColor": "${fastfetch_software_info_color}"},
-    {"type": "terminalfont", "key": "   Font     ", "keyColor": "${fastfetch_software_info_color}"},
-    {"type": "packages", "key": "   Packages ", "keyColor": "${fastfetch_software_info_color}"},
-    {"type": "localip", "key": "   Local IP ", "keyColor": "${fastfetch_software_info_color}"},
-    {"type": "custom", "format": ">-----------<+>----------------------------------<", "outputColor": "separator"},
-    {"type": "display", "key": "   Display  ", "keyColor": "${fastfetch_hardware_info_color}"},
-    {"type": "cpu", "key": "   CPU      ", "keyColor": "${fastfetch_hardware_info_color}"},
-    {"type": "gpu", "key": "   GPU      ", "keyColor": "${fastfetch_hardware_info_color}"},
-    {"type": "memory", "key": "   RAM      ", "keyColor": "${fastfetch_hardware_info_color}"},
-    {"type": "swap", "key": "   SWAP     ", "keyColor": "${fastfetch_hardware_info_color}"},
-    {"type": "disk", "key": "   Disk     ", "keyColor": "${fastfetch_hardware_info_color}"},
-    {"type": "battery", "key": "   Battery  ", "keyColor": "${fastfetch_hardware_info_color}"},
-    {"type": "custom", "format": ">-----------<+>----------------------------------<", "outputColor": "separator"},
+  "logo":{"source":"${fastfetch_logo}"},
+  "display":{
+    "color":{"separator":"${fastfetch_separator_color}", "output":"${fastfetch_system_info_color}"},
+    "separator":"${fastfetch_separator}",
+    "bar":{"charElapsed":"I", "charTotal":"_", "borderLeft":"{", "borderRight":"}", "width":16}
+  },
+  "modules":[ 
+    {"type":"kernel", "key":"   /\\\\rch  ", "keyColor":"${fastfetch_system_name_color}"},
+    {"type":"custom", "format":"/~~~~~~~~~~\\\\___________________________/", "outputColor":"separator"},
+    {"type":"uptime", "key":"  Uptime    ", "keyColor":"${fastfetch_software_info_color}"},
+    {"type":"shell", "key":"  Shell     ", "keyColor":"${fastfetch_software_info_color}"},
+    {"type":"terminal", "key":"  Terminal  ", "keyColor":"${fastfetch_software_info_color}"},
+    {"type":"terminalfont", "key":"  Font      ", "keyColor":"${fastfetch_software_info_color}"},
+    {"type":"packages", "key":"  Packages  ", "keyColor":"${fastfetch_software_info_color}"},
+    {"type":"localip", "key":"  Local IP  ", "keyColor":"${fastfetch_software_info_color}"},
+    {"type":"custom", "format":"\\\\__________/~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\\\", "outputColor":"separator"},
+    {"type":"display", "key":"  Display ", "keyColor":"${fastfetch_hardware_info_color}", "format":"{7} {1}x{2} ({13} ppi) {3}Hz"},
+    {"type":"cpu", "key":"  CPU     ", "keyColor":"${fastfetch_hardware_info_color}", "format":"{1} ({3}C{4}T) {6} ~ {7}"},
+    {"type":"gpu", "key":"  GPU     ", "keyColor":"${fastfetch_hardware_info_color}", "format":"{6} {2}"},
+    {"type":"memory", "key":"  RAM     ", "keyColor":"${fastfetch_hardware_info_color}", "format":"{4} {3} > {1} / {2} >"},
+    {"type":"swap", "key":"  SWAP    ", "keyColor":"${fastfetch_hardware_info_color}", "format":"{4} {3} > {1} / {2} >"},
+    {"type":"disk", "key":"  Disk    ", "keyColor":"${fastfetch_hardware_info_color}", "format":"{13} {3} > {1} / {2} > {9} >"},
+    {"type":"battery", "key":"  Battery ", "keyColor":"${fastfetch_hardware_info_color}", "format":"{10} {4} > {5} >"},
+    {"type":"custom", "format":"/~~~~~~~~~~\\\\______________________________________________________/", "outputColor":"separator"},
     "break",
-    {"type":"colors", "paddingLeft": 9}
-    ]
+    {"type":"colors", "paddingLeft":8}
+  ]
 }
 EOF
-        command chown "${user_name}":"${user_name}" /home/"${user_name}"/.config/fastfetch/config.jsonc
-        command ls --color=always -l /home/"${user_name}"/.config/fastfetch/config.jsonc
-    fi
+            ;;
+        *)
+            [[ -z ${fastfetch_logo} ]] && fastfetch_logo='arch3'
+            [[ -z ${fastfetch_separator} ]] && fastfetch_separator=' | '
+            [[ -z ${fastfetch_separator_color} ]] && fastfetch_separator_color='yellow'
+            [[ -z ${fastfetch_system_name_color} ]] && fastfetch_system_name_color='blue'
+            [[ -z ${fastfetch_system_info_color} ]] && fastfetch_system_info_color='cyan'
+            [[ -z ${fastfetch_software_info_color} ]] && fastfetch_software_info_color='green'
+            [[ -z ${fastfetch_hardware_info_color} ]] && fastfetch_hardware_info_color='magenta'
+            command cat << EOF > "/home/${user_name}/.config/fastfetch/config.jsonc"
+{
+  "logo":{"source":"${fastfetch_logo}"},
+  "display":{
+    "color":{"separator":"${fastfetch_separator_color}", "output":"${fastfetch_system_info_color}"},
+    "separator":"${fastfetch_separator}"
+  },
+  "modules":[ 
+    {"type":"kernel", "key":" /\\\\rch Linux", "keyColor":"${fastfetch_system_name_color}"},
+    {"type":"custom", "format":">-----------<+>----------------------------------<", "outputColor":"separator"},
+    {"type":"uptime", "key":"   Uptime   ", "keyColor":"${fastfetch_software_info_color}"},
+    {"type":"shell", "key":"   Shell    ", "keyColor":"${fastfetch_software_info_color}"},
+    {"type":"terminal", "key":"   Terminal ", "keyColor":"${fastfetch_software_info_color}"},
+    {"type":"terminalfont", "key":"   Font     ", "keyColor":"${fastfetch_software_info_color}"},
+    {"type":"packages", "key":"   Packages ", "keyColor":"${fastfetch_software_info_color}"},
+    {"type":"localip", "key":"   Local IP ", "keyColor":"${fastfetch_software_info_color}"},
+    {"type":"custom", "format":">-----------<+>----------------------------------<", "outputColor":"separator"},
+    {"type":"display", "key":"   Display  ", "keyColor":"${fastfetch_hardware_info_color}", "format":"{7} {1}x{2} ({13} ppi) {3}Hz"},
+    {"type":"cpu", "key":"   CPU      ", "keyColor":"${fastfetch_hardware_info_color}", "format":"{1} ({3}C{4}T) {6} ~ {7}"},
+    {"type":"gpu", "key":"   GPU      ", "keyColor":"${fastfetch_hardware_info_color}", "format":"{6} {2}"},
+    {"type":"memory", "key":"   RAM      ", "keyColor":"${fastfetch_hardware_info_color}", "format":"{4} {3} > {1} / {2} >"},
+    {"type":"swap", "key":"   SWAP     ", "keyColor":"${fastfetch_hardware_info_color}", "format":"{4} {3} > {1} / {2} >"},
+    {"type":"disk", "key":"   Disk     ", "keyColor":"${fastfetch_hardware_info_color}", "format": "{13} {3} > {1} / {2} > {9} >"},
+    {"type":"battery", "key":"   Battery  ", "keyColor":"${fastfetch_hardware_info_color}", "format": "{10} {4} > {5} >"},
+    {"type":"custom", "format":">-----------<+>----------------------------------<", "outputColor":"separator"},
+    "break",
+    {"type":"colors", "symbole":"block", "paddingLeft":9}
+  ]
+}
+EOF
+            ;;
+    esac
+    command chown "${user_name}":"${user_name}" /home/"${user_name}"/.config/fastfetch/config.jsonc
+    command cat -n /home/"${user_name}"/.config/fastfetch/logo | command grep --color=always '[0-9]\|'
+    command ls --color=always -l /home/"${user_name}"/.config/fastfetch/config.jsonc
 fi
 if [[ -z ${tmux} ]]; then
     command pacman -Runs --color=always --noconfirm tmux; [[ -e /etc/tmux.conf ]] && command rm -f /etc/tmux.conf
-    else if [[ ${customize_tmux} == on ]]; then
-        command cat << 'EOF' > /etc/tmux.conf
+elif [[ ${customize_tmux} == on ]]; then
+    command cat << 'EOF' > /etc/tmux.conf
 set -g pane-border-status bottom
 set -g pane-border-style fg=white
 set -g pane-active-border-style fg=brightcyan
@@ -322,240 +442,82 @@ set -g window-status-format "#[fg=magenta] #I "
 set -g message-style bg=black,fg=white
 set -g clock-mode-colour magenta
 EOF
-        command ls --color=always -l /etc/tmux.conf
-        command tmux source-file /etc/tmux.conf
-    fi
+    command ls --color=always -l /etc/tmux.conf
+    command tmux source-file /etc/tmux.conf
 fi
-[[ -z ${cmatrix} ]] && command pacman -Runs --color=always --noconfirm cmatrix
-[[ -z ${ffmpeg} ]] && command pacman -Runs --color=always --noconfirm ffmpeg
-if [[ -z ${cmus} ]]; then
-    command pacman -Runs --color=always --noconfirm cmus; [[ -e /home/"${user_name}"/.config/cmus ]] && command rm -fr /home/"${user_name}"/.config/cmus
+if [[ -z ${mpv} ]];then
+    command pacman -Runs --color=always --noconfirm mpv
+    command rm -vfr /home/"${user_name}"/.config/mpv
 else
-    command su -c "mkdir /home/\"${user_name}\"/.config/cmus" "${user_name}"
-    if [[ ${customize_cmus} == on ]]; then
-        command cat << EOF > "/home/${user_name}/.config/cmus/autosave"
-set aaa_mode=all
-set altformat_current= %F 
-set altformat_playlist= %f%= %d 
-set altformat_title=%f
-set altformat_trackwin= %f%= %d 
-set auto_expand_albums_follow=true
-set auto_expand_albums_search=true
-set auto_expand_albums_selcur=true
-set auto_reshuffle=true
-set buffer_seconds=10
-set color_cmdline_attr=default
-set color_cmdline_bg=default
-set color_cmdline_fg=default
-set color_cur_sel_attr=default
-set color_error=lightred
-set color_info=lightyellow
-set color_separator=green
-set color_statusline_attr=default
-set color_statusline_bg=gray
-set color_statusline_fg=black
-set color_titleline_attr=default
-set color_titleline_bg=cyan
-set color_titleline_fg=blue
-set color_trackwin_album_attr=bold
-set color_trackwin_album_bg=default
-set color_trackwin_album_fg=default
-set color_win_attr=default
-set color_win_bg=default
-set color_win_cur=lightyellow
-set color_win_cur_attr=default
-set color_win_cur_sel_attr=default
-set color_win_cur_sel_bg=magenta
-set color_win_cur_sel_fg=lightyellow
-set color_win_dir=lightblue
-set color_win_fg=default
-set color_win_inactive_cur_sel_attr=default
-set color_win_inactive_cur_sel_bg=gray
-set color_win_inactive_cur_sel_fg=lightyellow
-set color_win_inactive_sel_attr=default
-set color_win_inactive_sel_bg=yellow
-set color_win_inactive_sel_fg=black
-set color_win_sel_attr=default
-set color_win_sel_bg=magenta
-set color_win_sel_fg=lightgreen
-set color_win_title_attr=default
-set color_win_title_bg=blue
-set color_win_title_fg=white
-set confirm_run=true
-set continue=true
-set continue_album=true
-set device=/dev/cdrom
-set display_artist_sort_name=false
-set dsp.alsa.device=default
-set dsp.jack.resampling_quality=2
-set dsp.jack.server_name=
-set dsp.oss.device=
-set follow=true
-set format_clipped_text=…
-set format_current= %a - %l%! - %n. %t%= %y 
-set format_playlist= %-21%a %3n. %t%= %y %d %{?X!=0?%3X ?    }
-set format_playlist_va= %-21%A %3n. %t (%a)%= %y %d %{?X!=0?%3X ?    }
-set format_statusline= %{status} %{?show_playback_position?%{position} %{?duration?/ %{duration} }?%{?duration?%{duration} }}- %{total} %{?bpm>0?at %{bpm} BPM }%{?volume>=0?vol: %{?lvolume!=rvolume?%{lvolume},%{rvolume} ?%{volume} }}%{?stream?buf: %{buffer} }%{?show_current_bitrate & bitrate>=0? %{bitrate} kbps }%=%{?repeat_current?repeat current?%{?play_library?%{playlist_mode} from %{?play_sorted?sorted }library?playlist}} | %1{continue}%1{follow}%1{repeat}%1{shuffle} 
-set format_title=%a - %l - %t (%y)
-set format_trackwin=%3n. %t%= %y %d 
-set format_trackwin_album= %l %= %{albumduration} 
-set format_trackwin_va=%3n. %t (%a)%= %y %d 
-set format_treewin=  %l
-set format_treewin_artist=%a
-set icecast_default_charset=ISO-8859-1
-set id3_default_charset=ISO-8859-1
-set input.cue.priority=50
-set input.flac.priority=50
-set input.modplug.priority=50
-set input.vorbis.priority=50
-set input.wav.priority=50
-set lib_add_filter=
-set lib_sort=albumartist date album discnumber tracknumber title filename play_count
-set mixer.alsa.channel=PCM
-set mixer.alsa.device=default
-set mixer.oss.channel=PCM
-set mixer.oss.device=
-set mixer.pulse.restore_volume=1
-set mouse=false
-set mpris=true
-set output_plugin=alsa
-set passwd=
-set pause_on_output_change=false
-set pl_sort=
-set play_library=true
-set play_sorted=false
-set repeat=true
-set repeat_current=false
-set replaygain=disabled
-set replaygain_limit=true
-set replaygain_preamp=0.000000
-set resume=false
-set rewind_offset=5
-set scroll_offset=2
-set set_term_title=true
-set show_all_tracks=true
-set show_current_bitrate=false
-set show_hidden=false
-set show_playback_position=true
-set show_remaining_time=false
-set shuffle=tracks
-set skip_track_info=false
-set smart_artist_sort=true
-set softvol=false
-set softvol_state=0 0
-set start_view=tree
-set status_display_program=
-set stop_after_queue=false
-set time_show_leading_zero=true
-set tree_width_max=0
-set tree_width_percent=33
-set wrap_search=true
-bind browser backspace browser-up
-bind browser i toggle show_hidden
-bind browser space win-activate
-bind browser u win-update
-bind common ! push shell 
-bind common + vol +10%
-bind common , seek -1m
-bind common - vol -10%
-bind common . seek +1m
-bind common / search-start
-bind common 1 view tree
-bind common 2 view sorted
-bind common 3 view playlist
-bind common 4 view queue
-bind common 5 view browser
-bind common 6 view filters
-bind common 7 view settings
-bind common = vol +10%
-bind common ? search-b-start
-bind common B player-next-album
-bind common C toggle continue
-bind common D win-remove
-bind common E win-add-Q
-bind common F push filter 
-bind common G win-bottom
-bind common I echo {}
-bind common L push live-filter 
-bind common M toggle play_library
-bind common N search-prev
-bind common P win-mv-before
-bind common U win-update-cache
-bind common Z player-prev-album
-bind common [ vol +1% +0
-bind common ] vol +0 +1%
-bind common ^B win-page-up
-bind common ^C echo Type :quit<enter> to exit cmus.
-bind common ^D win-half-page-down
-bind common ^E win-scroll-down
-bind common ^F win-page-down
-bind common ^L refresh
-bind common ^R toggle repeat_current
-bind common ^U win-half-page-up
-bind common ^Y win-scroll-up
-bind common a win-add-l
-bind common b player-next
-bind common c player-pause
-bind common delete win-remove
-bind common down win-down
-bind common e win-add-q
-bind common end win-bottom
-bind common enter win-activate
-bind common f toggle follow
-bind common g win-top
-bind common h seek -5
-bind common home win-top
-bind common i win-sel-cur
-bind common j win-down
-bind common k win-up
-bind common l seek +5
-bind common left seek -5
-bind common m toggle aaa_mode
-bind common mlb_click_bar player-pause
-bind common mlb_click_selected win-activate
-bind common mouse_scroll_down win-down
-bind common mouse_scroll_down_bar seek -5
-bind common mouse_scroll_down_title right-view
-bind common mouse_scroll_up win-up
-bind common mouse_scroll_up_bar seek +5
-bind common mouse_scroll_up_title left-view
-bind common n search-next
-bind common o toggle play_sorted
-bind common p win-mv-after
-bind common page_down win-page-down
-bind common page_up win-page-up
-bind common q quit -i
-bind common r toggle repeat
-bind common right seek +5
-bind common s toggle shuffle
-bind common space win-toggle
-bind common t toggle show_remaining_time
-bind common tab win-next
-bind common u update-cache
-bind common up win-up
-bind common v player-stop
-bind common x player-play
-bind common y win-add-p
-bind common z player-prev
-bind common { vol -1% -0
-bind common } vol -0 -1%
-fset 90s=date>=1990&date<2000
-fset classical=genre="Classical"
-fset missing-tag=!stream&(artist=""|album=""|title=""|tracknumber=-1|date=-1)
-fset mp3=filename="*.mp3"
-fset ogg=filename="*.ogg"
-fset ogg-or-mp3=ogg|mp3
-fset unheard=play_count=0
-factivate
+    command su -c "mkdir /home/\"${user_name}\"/.config/mpv" "${user_name}"
+fi
+[[ -z ${youtube_dl} ]] && command pacman -Runs --color=always --noconfirm youtube-dl-git
+[[ -z ${ytfzf} ]] && command pacman -Runs --color=always --noconfirm ytfzf
+if [[ -z ${cmus} ]]; then
+    command pacman -Runs --color=always --noconfirm cmus
+    [[ -e /home/"${user_name}"/.config/cmus ]] && command rm -vfr /home/"${user_name}"/.config/cmus
+fi
+[[ -z ${cava} ]] && command pacman -Runs --color=always --noconfirm cava
+[[ -z ${cmatrix} ]] && command pacman -Runs --color=always --noconfirm cmatrix
+if [[ -z ${calcurse} ]]; then
+    cal_alias='off'
+    command pacman -Runs --color=always --noconfirm calcurse
+    command rm -vfr /home/"${user_name}"/.config/calcurse
+fi
+if [[ ${cal_colors} == on ]]; then
+    command mkdir /etc/terminal-colors.d
+    command cat << 'EOF' > /etc/terminal-colors.d/cal.scheme
+header 1;33;40
+today 0;30;42
+workday 1;37;40
+weekend 0;31;40
 EOF
-        command chown "${user_name}":"${user_name}" /home/"${user_name}"/.config/cmus/autosave
-        command ls --color=always -l /home/"${user_name}"/.config/cmus/autosave
-    fi
+fi
+if [[ ${customize_top} == on ]]; then
+    command su -c "mkdir /home/\"${user_name}\"/.config/procps" "${user_name}"
+    command cat << EOF > "/home/${user_name}/.config/procps/toprc"
+top's Config File (Linux processes with windows)
+Id:k, Mode_altscr=0, Mode_irixps=1, Delay_time=1.0, Curwin=0
+Def	fieldscur=  75   81  103  105  119  123  129  137  111  117  115  139   76   78   82   84   86   88   90   92 
+		    94   96   98  100  106  108  112  120  124  126  130  132  134  140  142  144  146  148  150  152 
+		   154  156  158  160  162  164  166  168  170  172  174  176  178  180  182  184  186  188  190  192 
+		   194  196  198  200  202  204  206  208  210  212  214  216  218  220  222  224  226  228  230  232 
+		   234  236  238  240  242  244  246  248  250  252  254  256  258  260  262  264  266  268  270  272 
+	winflags=195382, sortindx=21, maxtasks=0, graph_cpus=2, graph_mems=1, double_up=0, combine_cpus=0, core_types=0
+	summclr=1, msgsclr=3, headclr=1, taskclr=3
+Job	fieldscur=  75   77  115  111  117   80  103  105  137  119  123  128  120   79  139   82   84   86   88   90 
+		    92   94   96   98  100  106  108  112  124  126  130  132  134  140  142  144  146  148  150  152 
+		   154  156  158  160  162  164  166  168  170  172  174  176  178  180  182  184  186  188  190  192 
+		   194  196  198  200  202  204  206  208  210  212  214  216  218  220  222  224  226  228  230  232 
+		   234  236  238  240  242  244  246  248  250  252  254  256  258  260  262  264  266  268  270  272 
+	winflags=195892, sortindx=0, maxtasks=0, graph_cpus=0, graph_mems=0, double_up=0, combine_cpus=0, core_types=0
+	summclr=6, msgsclr=6, headclr=7, taskclr=6
+Mem	fieldscur=  75  117  119  120  123  125  127  129  131  154  132  156  135  136  102  104  111  139   76   78 
+		    80   82   84   86   88   90   92   94   96   98  100  106  108  112  114  140  142  144  146  148 
+		   150  152  158  160  162  164  166  168  170  172  174  176  178  180  182  184  186  188  190  192 
+		   194  196  198  200  202  204  206  208  210  212  214  216  218  220  222  224  226  228  230  232 
+		   234  236  238  240  242  244  246  248  250  252  254  256  258  260  262  264  266  268  270  272 
+	winflags=195892, sortindx=21, maxtasks=0, graph_cpus=0, graph_mems=0, double_up=0, combine_cpus=0, core_types=0
+	summclr=5, msgsclr=5, headclr=4, taskclr=5
+Usr	fieldscur=  75   77   79   81   85   97  115  111  117  137  139   82   86   88   90   92   94   98  100  102 
+		   104  106  108  112  118  120  122  124  126  128  130  132  134  140  142  144  146  148  150  152 
+		   154  156  158  160  162  164  166  168  170  172  174  176  178  180  182  184  186  188  190  192 
+		   194  196  198  200  202  204  206  208  210  212  214  216  218  220  222  224  226  228  230  232 
+		   234  236  238  240  242  244  246  248  250  252  254  256  258  260  262  264  266  268  270  272 
+	winflags=195892, sortindx=3, maxtasks=0, graph_cpus=0, graph_mems=0, double_up=0, combine_cpus=0, core_types=0
+	summclr=3, msgsclr=3, headclr=2, taskclr=3
+Fixed_widest=0, Summ_mscale=1, Task_mscale=0, Zero_suppress=0, Tics_scaled=0
+EOF
+    command chown "${user_name}":"${user_name}" /home/"${user_name}"/.config/procps/toprc
+    command ls --color=always -l /home/"${user_name}"/.config/procps/toprc
+    else [[ -e "/home/${user_name}"/.config/procps ]] && command rm -vfr /home/"${user_name}"/.config/procps
 fi
 
 command echo -e '\e[1;36;40m ***\e[1;34;40m toggling Services\e[1;36;40m ***\e[m'
 [[ ${mouse} == on ]] && command systemctl start gpm
-command systemctl enable NetworkManager systemd-boot-update fstrim.timer gpm${irq_balance}
+if [[ ${reflector_autostart} == on ]]; then reflector_autostart=' reflector reflector.timer'; else reflector_autostart=''; fi
+if [[ ${hblock_auto_update} == on ]]; then hblock_auto_update=' hblock.timer'; else hblock_auto_update=''; fi
+command systemctl enable NetworkManager systemd-boot-update fstrim.timer gpm${irq_balance}${reflector_autostart}${ananicy_cpp}${preload}${hblock_auto_update}
 if [[ ${network_manager_auto_start} != on ]]; then network_manager_auto_start=' NetworkManager'; else network_manager_auto_start=''; fi
 if [[ ${bootloader_auto_update} != on ]]; then bootloader_auto_update=' systemd-boot-update'; else bootloader_auto_update=''; fi
 if [[ ${ssd_trim} != on ]]; then ssd_trim=' fstrim.timer'; else ssd_trim=''; fi
@@ -681,7 +643,7 @@ command cat << 'EOF' >> /etc/issue
 \e[0;33m         `._'','   +. `.      `._,   /' .__    _.      _     <       ,+'   ,+-.     `. |     '`+.
 \e[0;31m           ``'      `. `.          /',  `. """" |     (_)  ___`+._.+'      | /' ___  | |     _  '`+.
 \e[1;31m                     `.   +-___-+"' ,^.  | c===-'_  _ ,-. / _ `+,-._    __ | |/'   `.| |__  (_)___.`'.
-\e[1;35m                       `+.__  _...+'   | | ,--.|| |' k| || (_) || ,.`.,/  `| |(  C==<| '  `.,-.|  `+. +.
+\e[1;35m                       `+.__  _...+'   | | ,--.|| |' )| || (_) || ,.`.,/  `| |(  C==<| '  `.,-.|  `+. +.
 \e[0;35m                           '''       ,'  | |    | ./" | || ._,-;| || ||  ()  |>==u  )| ,^. || || D  ). `.
 \e[0;34m                                   ,/   /__|.  ,|_|.  |_| `.__/,|_||_| `._/|_|.`._./'|_| |_||_|| ._/+   '.
 \e[1;34m                                 ,'          +  _  ,-.   ,-.  ,--.   ,++-.-+. _                | |'     '.
@@ -694,27 +656,26 @@ EOF
 else command echo -e '\n\n\n\n\n\n' >> /etc/issue; fi
 command ls --color=always /etc/issue
 command cat << 'EOF' > /etc/profile
+export PATH='/usr/local/sbin:/usr/local/bin:/usr/bin'
 append_path () {
   case ":$PATH:" in
-    *:"$1":*)
-      ;;
-    *)
-      PATH="${PATH:+$PATH:}$1"
+    *:"$1":*) ;;
+    *)        PATH="${PATH:+$PATH:}$1"
   esac
 }
-export PATH='/usr/local/sbin:/usr/local/bin:/usr/bin'
-if [[ -d /etc/profile.d/ ]]; then
-  for profile in /etc/profile.d/*.sh; do
-    [[ -r $profile ]] && . "$profile"
-  done
-  unset profile
-fi
-[[ $- == *i* ]] && [[ -z $POSIXLY_CORRECT ]] && [[ ${0#-} != sh ]] && [[ -r /etc/bash.bashrc ]] && . /etc/bash.bashrc
+[[ -d /etc/profile.d/ ]] && for profile in /etc/profile.d/*.sh
+do
+  [[ -r $profile ]] && . "$profile"
+done
+unset profile
 unset -f append_path
 unset TERMCAP
 unset MANPATH
+[[ $- == *i* ]] && [[ -z $POSIXLY_CORRECT ]] && [[ ${0#-} != sh ]] && [[ -r /etc/bash.bashrc ]] && . /etc/bash.bashrc
 EOF
 command ls --color=always -l /etc/profile
+command echo '' > /etc/bash.bash_logout
+command ls --color=always -l /etc/bash.bash_logout
 command cat << 'EOF' > /etc/inputrc
 set meta-flag on
 set input-meta on
@@ -731,149 +692,7 @@ set colored-completion-prefix on
 set menu-complete-display-prefix on
 EOF
 command ls --color=always -l /etc/inputrc
-if [[ ${fastfetch_clear} == on ]]
-    then command echo "alias clear='clear; tput cup 4 0; fastfetch'" > /etc/bash.bashrc
-    else command echo '' > /etc/bash.bashrc; fi
-[[ ${wget_alias} == on ]] && command echo "alias wget='wget -c'" >> /etc/bash.bashrc
-[[ ${less_alias} == on ]] && command echo "alias less='less -r'" >> /etc/bash.bashrc
-[[ ${general_alias} == on ]] && command cat << 'EOF' >> /etc/bash.bashrc
-alias grep='grep --color=always'
-alias diff='diff --color=always'
-alias ip='ip --color=always'
-alias rm='rm -f'
-alias dd='dd status=progress'
-alias ps='ps -uf'
-alias pwd="pwd -LP | command grep --color=always '/\|'"
-alias I='su -c'
-ls() {
-  command ls --color=always -FAXlh "$@" |\
-  command grep --color=always '^b\|:\|\.\|root\|' |\
-  GREP_COLORS='ms=01;34'\
-  command grep --color=always '^d\|/\|_\|' |\
-  GREP_COLORS='ms=01;32'\
-  command grep --color=always '^total\|-\|>\|' |\
-  GREP_COLORS='ms=01;36'\
-  command grep --color=always '^l\|' |\
-  GREP_COLORS='ms=01;33'\
-  command grep --color=always '^c\|*\|'
-}
-cd() {
-  command cd "$@"; ls
-}
-file() {
-  command file "$@" |\
-  command grep --color=always 'block\|/\|-\|+\|' |\
-  GREP_COLORS='ms=01;34'\
-  command grep --color=always 'directory\|:\|\.\|,\|#\|)\|(\|_\|' |\
-  GREP_COLORS='ms=01;36'\
-  command grep --color=always 'link\|' |\
-  GREP_COLORS='ms=01;33'\
-  command grep --color=always 'character\|'
-}
-cat() {
-  command cat "$@" |\
-  command grep --color=always '\.\|,\|;\|:\|_\|}\|{\|)\|(\|]\|\[\|\\\|\$\|#\|?\|!\|@\|`\|"\|' |\
-  command grep --color=always "'\|" |\
-  GREP_COLORS='ms=01;34'\
-  command grep --color=always '+\|-\|*\|/\|%\|=\|>\|<\|&\||\|\^\|~\|'
-}
-lsblk() {
-  command lsblk "$@" |\
-  command grep --color=always ']\|\[\|RM\|RO\|FS\|disk\|%\|' |\
-  GREP_COLORS='ms=01;34'\
-  command grep --color=always '^NAME\|SIZE\|TYPE\|SWAP\|\.\|:\|/\|-\|VER\|AVAIL\|UUID\|USE\|'
-}
-lspci() {
-  command lspci -tvvv "$@" |\
-  command grep --color=always ']\|\[\|+\|-\||\|\\\|/\|' |\
-  GREP_COLORS='ms=01;34'\
-  command grep --color=always '\.\|:\|,\|' |\
-  GREP_COLORS='ms=01;35'\
-  command grep --color=always 'Audio\|' |\
-  GREP_COLORS='ms=01;36'\
-  command grep --color=always 'USB\|'
-}
-findmnt() {
-  command findmnt "$@" |\
-  command grep --color=always 'TARGET\|SOURCE\|FSTYPE\|OPTIONS\|' |\
-  GREP_COLORS='ms=01;36'\
-  command grep --color=always ',\|=\|' |\
-  GREP_COLORS='ms=01;32'\
-  command grep --color=always '/\|'
-}
-sha256sum() {
-  command sha256sum "$@"
-  command echo -e '\e[1;32;40m----------------------------------------------------------------\e[m\n'
-}
-EOF
-[[ ${pacman_alias} == on ]] && command cat << 'EOF' >> /etc/bash.bashrc
-pacman() {
-  case $1 in
-    upgrade)
-      shift 1; command pacman --color=always -Syu $@
-      ;;
-    install)
-      shift 1; command pacman --color=always -S $@
-      ;;
-    remove)
-      shift 1; command pacman --color=always -Runs $@
-      ;;
-    autoremove)
-      orph="$(command pacman -Qdtq)"
-      if [[ -n $2 ]] || [[ -n $orph ]]; then
-        shift 1; command pacman --color=always -Runs $@ $orph
-      else echo '0 package removed'; fi
-      ;;
-    clean)
-      shift 1; command pacman --color=always -Scc $@
-      ;;
-    search)
-      if [[ $2 == group ]]; then
-        shift 2; command pacman --color=always -Sgg $@
-      else shift 1; command pacman --color=always -Ss $@; fi
-      ;;
-    info)
-      shift 1; command pacman --color=always -Sii $@
-      ;;
-    list)
-      case $2 in
-        installed)
-          shift 2; command pacman --color=always -Qet $@
-          ;;
-        available)
-          shift 2; command pacman --color=always -Qs $@
-          ;;
-        orphan)
-          shift 2; command pacman --color=always -Qdt $@
-          ;;
-        group)
-          shift 2; command pacman --color=always -Qg $@
-          ;;
-        *)
-          shift 1; command pacman --color=always -Q $@
-          ;;
-      esac
-      ;;
-    *)
-      command pacman --color=always $@
-      ;;
-  esac
-}
-EOF
-[[ ${interactive_shell_top_bar} == on ]] && command cat << 'EOF' >> /etc/bash.bashrc
-tbar_mid=$((($(command tput cols) - 6 >> 1)))
-tbar_right=$((($(command tput cols) - 9)))
-tty_name=$(command tty | command sed 's#/dev/##')
-tbar() {
-  bat_percent=$(command cat /sys/class/power_supply/BAT0/capacity)
-  bat_format='\e[0;34;47m100% [II}'
-  ((bat_percent < 100)) && bat_format=" \e[0;34;47m$bat_percent% [II\e[0;30;47m}"
-  ((bat_percent < 64)) && bat_format=" \e[0;33;47m$bat_percent% [I\e[0;30;47mI}"
-  ((bat_percent < 32)) && bat_format=" \e[0;31;47m$bat_percent% [\e[0;30;47mII}"
-  command echo -e "\n\e[1B\e[2A\e[s\e[0;0H\e[0;34;47m\e[K <$tty_name> [$(command pwd -LP)]\e[0;${tbar_mid}H$(command date +'%I:%M %p')\e[0;${tbar_right}H$bat_format\e[u"
-}
-PROMPT_COMMAND=tbar
-EOF
+command echo '' > /etc/bash.bashrc
 user_id='$EUID'
 tmux_id='$TMUX'
 [[ ${user_command_prompt_color} != *\e[*m* ]] && user_command_prompt_color='\e[1;35;44m'
@@ -882,19 +701,16 @@ tmux_id='$TMUX'
 [[ ${root_command_prompt_color} != *\e[*m* ]] && root_command_prompt_color='\e[0;31;43m'
 [[ ${root_command_prompt_arrow_color} != *\e[*m* ]] && root_command_prompt_arrow_color='\e[0;31;40m'
 [[ ${root_command_prompt_line_color} != *\e[*m* ]] && root_command_prompt_line_color='\e[1;33;40m'
-[[ -n ${tmux} ]] && [[ ${interactive_shell_fastfetch} == on ]] && command cat << EOF >> /etc/bash.bashrc
+[[ -n ${tmux} ]] && [[ ${interactive_shell_fastfetch} == on ]] && command cat << EOF > /etc/bash.bashrc
 PS1='\[\e[4C${user_command_prompt_arrow_color}__${user_command_prompt_color} \u ${user_command_prompt_arrow_color}\]\n   |__> \[${user_command_prompt_line_color}\]'
 PS0='\e[12C\e[1;32m|\\/|\n\e[12C\e[1;36m|  |\e[1;32;44m \h \e[1;34;40m\n\e[13C\\/\n\e[1;37m'
 if [[ ${user_id} == 0 ]]
 then
   PS1='\[\e[4C${root_command_prompt_arrow_color}__${root_command_prompt_color} \u ${root_command_prompt_arrow_color}\]\n   |__> \[${root_command_prompt_line_color}\]'
   PS0='\e[12C\e[1;33m|\\/|\n\e[12C\e[1;31m|  |\e[1;32;43m \h \e[0;31;40m\n\e[13C\\/\n\e[1;37m'
-else if [[ -z ${tmux_id} ]]
+elif [[ -z ${tmux_id} ]]
 then
-  command clear
-  command tput cup 4 0
-  command fastfetch
-  fi
+  command clear; command tput cup 4 0; command fastfetch
 fi
 if [[ -n ${tmux_id} ]]
 then
@@ -903,7 +719,7 @@ then
   [[ ${user_id} == 0 ]] && PS1='\[\e[2B\e[4C${root_command_prompt_arrow_color}__${root_command_prompt_color} \u ${root_command_prompt_arrow_color}\]\n   |__> \[\e[s\e[0;0H\e[0;34;47m\e[K <\l> [\w]\e[u${root_command_prompt_line_color}\]'
 fi
 EOF
-[[ -z ${tmux} ]] && [[ ${interactive_shell_fastfetch} == on ]] && command cat << EOF >> /etc/bash.bashrc
+[[ -z ${tmux} ]] && [[ ${interactive_shell_fastfetch} == on ]] && command cat << EOF > /etc/bash.bashrc
 PS1='\[\e[4C${user_command_prompt_arrow_color}__${user_command_prompt_color} \u ${user_command_prompt_arrow_color}\]\n   |__> \[${user_command_prompt_line_color}\]'
 PS0='\e[12C\e[1;32m|\\/|\n\e[12C\e[1;36m|  |\e[1;32;44m \h \e[1;34;40m\n\e[13C\\/\n\e[1;37m'
 if [[ ${user_id} == 0 ]]
@@ -911,19 +727,18 @@ then
   PS1='\[\e[4C${root_command_prompt_arrow_color}__${root_command_prompt_color} \u ${root_command_prompt_arrow_color}\]\n   |__> \[${root_command_prompt_line_color}\]'
   PS0='\e[12C\e[1;33m|\\/|\n\e[12C\e[1;31m|  |\e[1;32;43m \h \e[0;31;40m\n\13C\\/\n\e[1;37m'
 else
-  command clear
-  command tput cup 4 0
-  command fastfetch
+  command clear; command tput cup 4 0; command fastfetch
 fi
 EOF
-[[ -n ${tmux} ]] && [[ ${interactive_shell_fastfetch} != on ]] && command cat << EOF >> /etc/bash.bashrc
+[[ -n ${tmux} ]] && [[ ${interactive_shell_fastfetch} != on ]] && command cat << EOF > /etc/bash.bashrc
 PS1='\[\e[4C${user_command_prompt_arrow_color}__${user_command_prompt_color} \u ${user_command_prompt_arrow_color}\]\n   |__> \[${user_command_prompt_line_color}\]'
 PS0='\e[12C\e[1;32m|\\/|\n\e[12C\e[1;36m|  |\e[1;32;44m \h \e[1;34;40m\n\e[13C\\/\n\e[1;37m'
 if [[ ${user_id} == 0 ]]
 then
   PS1='\[\e[4C${root_command_prompt_arrow_color}__${root_command_prompt_color} \u ${root_command_prompt_arrow_color}\]\n   |__> \[${root_command_prompt_line_color}\]'
   PS0='\e[12C\e[1;33m|\\/|\n\e[12C\e[1;31m|  |\e[1;32;43m \h \e[0;31;40m\n\e[13C\\/\n\e[1;37m'
-else [[ -z ${tmux_id} ]] && command clear
+else
+  [[ -z ${tmux_id} ]] && command clear
 fi
 if [[ -n ${tmux_id} ]]
 then
@@ -932,58 +747,391 @@ then
   [[ ${user_id} == 0 ]] && PS1='\[\e[2B\e[4C${root_command_prompt_arrow_color}__${root_command_prompt_color} \u ${root_command_prompt_arrow_color}\]\n   |__> \[\e[s\e[0;0H\e[0;34;47m\e[K <\l> [\w]\e[u${root_command_prompt_line_color}\]'
 fi
 EOF
-[[ -z ${tmux} ]] && [[ ${interactive_shell_fastfetch} != on ]] && command cat << EOF >> /etc/bash.bashrc
+[[ -z ${tmux} ]] && [[ ${interactive_shell_fastfetch} != on ]] && command cat << EOF > /etc/bash.bashrc
 PS1='\[\e[4C${user_command_prompt_arrow_color}__${user_command_prompt_color} \u ${user_command_prompt_arrow_color}\]\n   |__> \[${user_command_prompt_line_color}\]'
 PS0='\e[12C\e[1;32m|\\/|\n\e[12C\e[1;36m|  |\e[1;32;44m \h \e[1;34;40m\n\e[13C\\/\n\e[1;37m'
 if [[ ${user_id} == 0 ]]
 then
   PS1='\[\e[4C${root_command_prompt_arrow_color}__${root_command_prompt_color} \u ${root_command_prompt_arrow_color}\]\n   |__> \[${root_command_prompt_line_color}\]'
   PS0='\e[12C\e[1;33m|\\/|\n\e[12C\e[1;31m|  |\e[1;32;43m \h \e[0;31;40m\n\e[13C\\/\n\e[1;37m'
-else command clear
+else
+  command clear
 fi
+EOF
+[[ ${interactive_shell_top_bar} == on ]] && command cat << 'EOF' >> /etc/bash.bashrc
+tbar() {
+  local tbar_mid=$((($COLUMNS - 6 >> 1)))
+  local tbar_right=$((($COLUMNS - 9)))
+  local tty_name=$(command tty | command sed 's#/dev/##')
+  local bat_percent=$(command cat /sys/class/power_supply/BAT0/capacity)
+  local bat_format='\e[0;34;47m100% [II}'
+  ((bat_percent < 100)) && bat_format=" \e[0;34;47m$bat_percent% [II\e[0;30;47m}"
+  ((bat_percent < 64)) && bat_format=" \e[0;33;47m$bat_percent% [I\e[0;30;47mI}"
+  ((bat_percent < 32)) && bat_format=" \e[0;31;47m$bat_percent% [\e[0;30;47mII}"
+  command echo -e "\n\e[1B\e[2A\e[s\e[0;0H\e[0;34;47m\e[K <$tty_name> [$(command pwd -LP)]\e[0;${tbar_mid}H$(command date +'%I:%M %p')\e[0;${tbar_right}H$bat_format\e[u"
+}
+PROMPT_COMMAND=tbar
+EOF
+if [[ ${fastfetch_clear_alias} == on ]]; then
+    command cat << EOF > "/home/${user_name}/.config/fastfetch/config_small.jsonc"
+{
+  "logo":{"source":"arch_small"},
+  "display":{
+    "color":{"output":"cyan"},
+    "separator":""
+  },
+  "modules":[
+    {"type":"kernel", "key":"[_/\\arch___> ","keyColor":"blue"},
+    {"type":"packages", "key":"[_Packages_> ", "keyColor":"green", "outputColor":"white"},
+    {"type":"localip", "key":"[_Local_IP_> ", "keyColor":"green", "outputColor":"white"},
+    {"type":"memory", "key":"[_RAM______> ", "keyColor":"magenta", "format":"[{3}] {1} / {2}"},
+    {"type":"swap", "key":"[_SWAP_____> ", "keyColor":"magenta", "format":"[{3}] {1} / {2}"},
+    {"type":"disk", "key":"[_Disk_____> ", "keyColor":"magenta", "format":"[{3}] {1} / {2} {9}"},
+    {"type":"battery", "key":"[_Battery__> ", "keyColor":"magenta", "format":"[{4}] {5}"},
+    "break",
+    {"type":"colors", "paddingLeft":9, "symbol":"circle"}
+  ]
+}
+EOF
+    command chown "${user_name}":"${user_name}" /home/"${user_name}"/.config/fastfetch/config_small.jsonc
+    command ls --color=always -l /home/"${user_name}"/.config/fastfetch/config_small.jsonc
+    command cat << 'EOF' >> /etc/bash.bashrc
+alias clear='ffsc="--load-config $HOME/.config/fastfetch/config_small.jsonc"; (( $COLUMNS > 128 )) && ffsc=""; clear; tput cup 4 0; command fastfetch $ffsc'
+alias fastfetch='ffsc="--load-config $HOME/.config/fastfetch/config_small.jsonc"; (( $COLUMNS > 128 )) && ffsc=""; fastfetch $ffsc'
+EOF
+fi
+[[ ${wget_alias} == on ]] && command echo "alias wget='wget -c'" >> /etc/bash.bashrc
+[[ ${less_alias} == on ]] && command echo -e "alias less='less -r'\nalias more='less -r'" >> /etc/bash.bashrc
+[[ ${general_alias} == on ]] && command cat << 'EOF' >> /etc/bash.bashrc
+alias grep='grep --color=auto'
+alias diff='diff --color=auto'
+alias ip='ip --color=auto'
+alias pwd="pwd -LP | command grep --color=auto '/\|'"
+alias mount='mount -v'
+alias umount='umount -v'
+alias mv='mv -v'
+alias cp='cp -v'
+alias rm='rm -vf'
+alias dd='dd status=progress'
+alias ps='ps --sort size -uf'
+alias I='su -c'
+ls() {
+  command ls --color=always -FAXlh "$@" |\
+  command grep --color=always '^b\|:\|\.\|root\|' | GREP_COLORS='ms=01;34'\
+  command grep --color=always '^d\|/\|_\|' | GREP_COLORS='ms=01;32'\
+  command grep --color=always '^total\|-\|>\|' | GREP_COLORS='ms=01;36'\
+  command grep --color=always '^l\|' | GREP_COLORS='ms=01;33'\
+  command grep --color=always '^c\|*\|'
+}
+cd() {
+  command cd "$@"; ls
+}
+lsblk() {
+  command lsblk "$@" |\
+  command grep --color=always ']\|\[\|RM\|RO\|FS\|disk\|%\|\.\|:\|-\|' | GREP_COLORS='ms=01;34'\
+  command grep --color=always '^NAME\|SIZE\|TYPE\|SWAP\|VER\|AVAIL\|UUID\|USE\|/\|└\|├\|─\|'
+}
+lspci() {
+  command lspci -tvvv "$@" |\
+  command grep --color=always ']\|\[\|+\|-\||\|\\\|/\|' | GREP_COLORS='ms=01;34'\
+  command grep --color=always '\.\|:\|,\|' | GREP_COLORS='ms=01;35'\
+  command grep --color=always 'Audio\|' | GREP_COLORS='ms=01;36'\
+  command grep --color=always 'USB\|'
+}
+cat() {
+  case $@ in
+    *-c*|*--color*) 
+      command cat -n $(command echo $@ | command sed 's#--color##g' | command sed 's#-c##g') |\
+      command grep --color=always '\.\|,\|;\|:\|_\|}\|{\|)\|(\|]\|\[\|\\\|\$\|#\|?\|!\|@\|`\|"\|' |\
+      command grep --color=always "'\|" | GREP_COLORS='ms=01;34'\
+      command grep --color=always '+\|-\|*\|/\|%\|=\|>\|<\|&\||\|\^\|~\|' ;;
+    *)command cat "$@" ;;
+  esac
+}
+sha256sum() {
+  command sha256sum "$@"
+  command echo -e '\e[1;32;40m----------------------------------------------------------------\e[m\n'
+}
+file() {
+  command file "$@" |\
+  command grep --color=always 'block\|/\|-\|+\|' | GREP_COLORS='ms=01;34'\
+  command grep --color=always 'directory\|:\|\.\|,\|#\|)\|(\|_\|' | GREP_COLORS='ms=01;36'\
+  command grep --color=always 'link\|' | GREP_COLORS='ms=01;33'\
+  command grep --color=always 'character\|'
+}
+findmnt() {
+  command findmnt "$@" |\
+  command grep --color=always 'TARGET\|SOURCE\|FSTYPE\|OPTIONS\|' | GREP_COLORS='ms=01;36'\
+  command grep --color=always '│\|└\|├\|─\|,\|=\|' | GREP_COLORS='ms=01;32'\
+  command grep --color=always '/\|'
+}
+find() {
+  local line=$(command printf '%*s' $((($COLUMNS - 8))) | command tr ' ' _)
+  local files=$(command find "$@" 2> /dev/null | command grep --color=always '\.\|' | GREP_COLORS='ms=01;34' command grep --color=always '/\|' |\
+    command fzf -m --ansi -e --cycle --color=16 --layout=reverse-list --header=$line --border --border-label=$line\
+    --preview="printf '\e[1;35;40m'; file {}; echo -e '\e[0;36;40m'$line; printf '\e[0;31;40m'
+      [[ -f {} ]] && cat -n {} | GREP_COLORS='ms=01;32' grep --color=always '[0-9]\|' | grep --color=always '+\|-\|*\|/\|%\|=\|>\|<\|&\||\|\^\|~\|'"\
+    --preview-window=up,50% --preview-label=$line --preview-label-pos=bottom)
+  if [[ -n $files ]]; then command vim $files; else command echo "$files"; fi
+}
+history() {
+  case $1 in
+  '')local hcmd=$(\
+    command history | command grep --color=always '[0-9]\|' | command fzf --ansi --color=16 -e --layout=reverse-list --cycle --border\
+      --header=$(command printf '%*s' $((($COLUMNS - 8))) | command tr ' ' -) | command awk '{$1=""}1')
+    command printf '\n'; eval $hcmd ;;
+  -h|help|--help)
+    command history --help | command grep --color=always '\[\|\]\|\-\|' ;;
+  *)command history $@ ;;
+  esac
+}
+kill() {
+  case $1 in
+  -l|-L) shift 1; command kill -l $@ | command grep --color=always '[0-9]\|' ;;
+  -h|help|--help) command kill --help | command grep --color=always '\-\|\[\|\]\||\|' ;;
+  *) if [[ -n $2 ]]; then command kill $@
+    else local pid=$(\
+      command ps -aux |\
+      command fzf -m -e --color=16 --cycle --layout=reverse-list --border --header=$(command printf '%*s' $((($COLUMNS - 8))) | command tr ' ' -) |\
+      command awk '{print $2}'); [[ -n $pid ]] && command kill $1 $pid
+    fi ;;
+  esac
+}
+EOF
+[[ ${fzf_alias} == on ]] && command cat << 'EOF' >> /etc/bash.bashrc
+fzf() {
+  case $@ in
+  -h|*help*|*--help*) command fzf -h | command grep --color=always '\-\|\[\|\]\|' ;;
+  *--no-logo*) command fzf -m --ansi --cycle --color=16 --layout=reverse-list --border --header=$(command printf '%*s' $((($COLUMNS - 8))) | command tr ' ' '=') $(command echo "$@" | command sed 's#--no-logo##g') ;;
+  *) command fzf -m --ansi --cycle --color=16 --layout=reverse-list --border --header=$(command printf '%*s' $((($COLUMNS - 8))) | command tr ' ' '=') --preview="echo -e \"\
+  \e[1;32;40m          _._     \e[1;37;40m  _._
+  \e[1;32;40m         j7~*^    \e[1;37;40m j7~*^
+  \e[1;31;40m zx   \e[1;32;40m  a0bo aod/ \e[1;37;40ma0bo
+  \e[1;31;40m \\\`*b.\e[1;32;40m    M\\\"  \\\`Z7\e[1;37;40m   M\\\"
+  \e[1;31;40m j7/  \e[1;32;40m  ,N'  /7   \e[1;37;40m,N'
+  \e[1;31;40m \\\`'  \e[1;32;40m   ;U  /Ebad\e[1;37;40m ;U
+\e[0;30;47m command-line FuZzy Finder \e[m\"" --preview-window=up,7 $@ ;;
+  esac
+}
+EOF
+[[ ${cal_alias} == on ]] && command cat << 'EOF' >> /etc/bash.bashrc
+cal() {
+  case $1 in
+    -1|month|--month|single|--single|one|--one)
+      command echo -e '\e[m-C-C-C-C-C-C-C-C-C-C-.\n---------------------|'
+      command cal --color=always -1
+      command echo -e '\e[m_____________________|' ;;
+    -3|three|--three|triple|--triple)
+      command echo -e '\e[m-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-.\n-----------------------------------------------------------------|'
+      command cal --color=always -3
+      command echo -e '\e[m_________________________________________________________________|' ;;
+    -y|-12|year|--year)
+      command echo -e '\e[m-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-C-.\n-------------------------------------------------------------------|\e[1;31;40m'
+      command cal --color=always -y
+      command echo -e '\e[m___________________________________________________________________|' ;;
+    help|--help|-h)
+      command echo -e 'Options:\e[1;35;40m- - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - - - - - - - - -\e[1;37;40m
+  -1, month, single, one, --month, --single, --one  \e[1;35;40m| \e[1;37;40mshow single month calendar
+  -3, three, --three                                \e[1;35;40m| \e[1;37;40mshow triple month calendar
+  -y, -12, year, --year                             \e[1;35;40m| \e[1;37;40mshow twelve month calendar
+\e[1;35;40m- - - - - - - - - - - - - - - - - - - - - - - - - - + - - - - - - - - - - - - - - - - -\e[m'
+      command calcurse -h | command sed 's#calcurse#cal#g' | command grep --color=always '\-\|' ;;
+    *)command calcurse "$@" ;;
+  esac
+}
+EOF
+[[ ${pacman_alias} == on ]] && command cat << 'EOF' >> /etc/bash.bashrc
+pacman() {
+  command echo -e "\e[0;34;40m -===================================================================-
+  \e[0;31;40m ,-.\e[0;36;40m   _ __   __ _  ___ _ _ __   __ _ _ _    \e[1;33;40m,--.
+  \e[0;31;40m| OO|\e[0;36;40m | '_ \\ / _\` |/ __| ' \`  \`:/ _\` | ' \`: \e[1;33;40m/ _,-\` ,-. ,-. ,-. ,''.
+  \e[0;31;40m|   |\e[0;36;40m | |_) | (_| | (__| || || | (_| | || | \e[1;33;40m\\  \`-, '-' '-' '-' '..'
+  \e[0;31;40m'^^^'\e[0;36;40m | .__/ \\__,_|\\___|_||_||_|\\__,_|_||_|  \e[1;33;40m\`--'
+       \e[0;36;40m |_|\e[0;34;40m
+ -===================================================================-\e[m"
+  case $1 in
+    upgrade|update)
+      shift 1; command pacman --color=always -Syu $@ ;;
+    install)
+      shift 1
+      if [[ $@ == *.pkg.tar.zst* ]]
+      then command pacman --color=always -U $@
+      else command pacman --color=always -S $@
+      fi ;;
+    remove|purge|uninstall)
+      shift 1; command pacman --color=always -Runs $@ ;;
+    autoremove)
+      local orph="$(command pacman -Qdtq)"
+      if [[ -n $2 ]] || [[ -n $orph ]]
+      then shift 1; command pacman --color=always -Runs $@ $orph
+      else echo ' 0 package removed'
+      fi ;;
+    clean)
+      shift 1; command pacman --color=always -Scc $@ ;;
+    search)
+      case $2 in
+        group|--group)
+          shift 2
+          if [[ -n $@ ]]
+          then command pacman --color=always -Sgg $@
+          else command pacman --color=always -Sgg | command awk '{print $1}' | command uniq
+          fi ;;
+        *)shift 1; command pacman --color=always -Ss $@ ;;
+      esac ;;
+    info|show)
+      shift 1; command pacman --color=always -Sii $@ ;;
+    list)
+      case $2 in
+        explicit|--explicit|user-installed|--user-installed|manual-installed|--manual-installed)
+          shift 2
+          if [[ -z $@ ]]
+          then command pacman --color=always -Qe
+          else command pacman --color=always -Qlkk $@
+          fi ;;
+        all|-all|installed|--installed)
+          shift 2
+          if [[ -z $@ ]]
+          then command pacman --color=always -Qs
+          else command pacman --color=always -Qlkk $@
+          fi ;;
+        orphan|--orphan)
+          shift 2; command pacman --color=always -Qdt $@ ;;
+        group|--group)
+          shift 2; command pacman --color=always -Qg $@ ;;
+        *)shift 1
+          if [[ -z $@ ]]
+          then command pacman --color=always -Qs
+          else command pacman --color=always -Qlkk $@
+          fi ;;
+      esac ;;
+    version|--version|-V)
+      command pacman -V\
+        | GREP_COLORS='ms=01;33' command grep --color=always "\.\|-\|/\|_\|'\|" \
+        | GREP_COLORS='ms=01;33' command grep --color=always '\\\|' ;;
+    help|--help|-h)
+      shift 1
+      [[ -z $@ ]] && command echo -e "\e[0;32;40mnew pacman alias:\e[0;34;40m_______________________|________________\e[m
+    pacman upgrade [package(s)]\e[0;34;40m.........|..\e[mupgrade System and install New Package
+    pacman install <package(s)>\e[0;34;40m.........|..\e[minstall New Package
+    pacman remove <package(s)>\e[0;34;40m..........|..\e[mpurge Package and Dependency
+    pacman autoremove [package(s)]\e[0;34;40m......|..\e[mremove Package and Orphan
+    pacman clean\e[0;34;40m........................|..\e[mclean all cach
+    pacman search [keyword(s)]\e[0;34;40m..........|..\e[msearch by keyword
+    pacman info [package(s)]\e[0;34;40m............|..\e[mshow detail info of package
+    pacman list [package(s)]\e[0;34;40m............|..\e[mlist all installed package
+    pacman list explicit [package(s)]\e[0;34;40m...|..\e[mlist all explicit installed package
+    pacman list orphan [package(s)]\e[0;34;40m.....|..\e[mlist orphan package
+    pacman list group [group(s)]\e[0;34;40m........|..\e[mlist package group
+    pacman version\e[0;34;40m......................|..\e[mshow pacman version
+    pacman help [option(s)]\e[0;34;40m.............|..\e[mshow help sheat of option
+\e[0;34;40m----------------------------------------|----------------\e[m"
+      command pacman -h $@ | command grep --color=always '\-\|' ;;
+    ''|logo|--logo) ;;
+    *)command pacman --color=always $@ ;;
+  esac
+}
+EOF
+[[ ${pacman_fzf_alias} == on ]] && command cat << 'EOF' >> /etc/bash.bashrc
+pacman() {
+  local logo="\e[0;34;40m -===================================================================-
+  \e[0;31;40m ,-.\e[0;36;40m   _ __   __ _  ___ _ _ __   __ _ _ _    \e[1;33;40m,--.
+  \e[0;31;40m| OO|\e[0;36;40m | '_ \\ / _\` |/ __| ' \`  \`:/ _\` | ' \`: \e[1;33;40m/ _,-\` ,-. ,-. ,-. ,''.
+  \e[0;31;40m|   |\e[0;36;40m | |_) | (_| | (__| || || | (_| | || | \e[1;33;40m\\  \`-, '-' '-' '-' '..'
+  \e[0;31;40m'^^^'\e[0;36;40m | .__/ \\__,_|\\___|_||_||_|\\__,_|_||_|  \e[1;33;40m\`--'
+       \e[0;36;40m |_|\e[0;34;40m
+ -===================================================================-\e[m"
+  local logo_fzf="
+\e[0;34;40m-===================================================================-
+ \e[0;31;40m ,-.\e[0;36;40m   _ __   __ _  ___ _ _ __   __ _ _ _    \e[1;33;40m,--.
+ \e[0;31;40m| OO|\e[0;36;40m | '_ \\\\ / _\\\` |/ __| ' \\\`  \\\`:/ _\\\` | ' \\\`: \e[1;33;40m/ _,-\\\` ,-. ,-. ,-. ,''.
+ \e[0;31;40m|   |\e[0;36;40m | |_) | (_| | (__| || || | (_| | || | \e[1;33;40m\\\\  \\\`-, '-' '-' '-' '..'
+ \e[0;31;40m'^^^'\e[0;36;40m | .__/ \\\\__,_|\\\\___|_||_||_|\\\\__,_|_||_|  \e[1;33;40m\\\`--'
+      \e[0;36;40m |_|\e[0;34;40m
+-===================================================================-\e[m"
+  local btm='  _____________________________________________________________________'
+  local line="$(command printf '%*s' $((($COLUMNS / 2))) | command tr ' ' -)"
+  case $1 in
+  upgrade|update) shift 1; command echo -e "$logo"; command pacman --color=always -Syu $@ ;;
+  install) shift 1; command echo -e "$logo"
+    if [[ $@ == *.pkg.tar.zst* ]]; then command pacman --color=always -U $@
+      else command pacman --color=always -S $@; fi ;;
+  remove|purge|uninstall) shift 1; command echo -e "$logo"; command pacman --color=always -Runs $@ ;;
+  autoremove) command echo -e "$logo"; local orph="$(command pacman -Qdtq)"
+    if [[ -n $2 ]] || [[ -n $orph ]]; then shift 1; command pacman --color=always -Runs $@ $orph
+      else echo ' 0 package removed'; fi ;;
+  clean) shift 1; command echo -e "$logo"; command pacman --color=always -Scc $@ ;;
+  info|show) shift 1; command echo -e "$logo"; command pacman --color=always -Sii $@ ;;
+  search) case $2 in
+    group|--group) shift 2
+      if [[ -z $@ ]]
+      then local gp=$(command pacman --color=always -Sgg | command awk '{print $1}' | command uniq | command fzf --ansi --color=16 --layout=reverse-list --cycle -e --border --header=$line\
+        --preview="echo -e \"$logo_fzf\"; pacman --color=always -Sgg {}" --preview-window=left,69 --preview-label="$btm" --preview-label-pos=1:bottom)
+        if [[ -n $gp ]]; then local pkg=$(command pacman -Sgg $gp | command awk '{print $2}' | command fzf --ansi --color=16 --layout=reverse-list --cycle -e --border --header=$line\
+          --preview="echo -e \"$logo_fzf\"; pacman --color=always -Ss {}" --preview-window=left,69 --preview-label="$btm" --preview-label-pos=1:bottom); fi
+      else local gp=$(command pacman --color=always -Sgg | command awk '{print $1}' | command uniq | command fzf --ansi --color=16 --layout=reverse-list --cycle -e -q "$@" --border --header=$line\
+        --preview="echo -e \"$logo_fzf\"; pacman --color=always -Sgg {}" --preview-window=left,69 --preview-label="$btm" --preview-label-pos=1:bottom)
+        if [[ -n $gp ]]; then local pkg=$(command pacman -Sgg $gp | command awk '{print $2}' | command fzf --ansi --color=16 --layout=reverse-list --cycle -e --border --header=$line\
+          --preview="echo -e \"$logo_fzf\"; pacman --color=always -Ss {}" --preview-window=left,69 --preview-label="$btm" --preview-label-pos=1:bottom); fi
+      fi; if [[ -n $pkg ]]; then command echo -e "\n$logo"; command pacman -Sii $pkg; else command printf '\n'; fi ;;
+    '') shift 1; local pkg=$(command pacman --color=always -Ssq | command fzf --ansi --color=16 --layout=reverse-list --cycle -e --border --header=$line\
+      --preview="echo -e \"$logo_fzf\"; pacman --color=always -Ss {}" --preview-window=left,69 --preview-label="$btm" --preview-label-pos=1:bottom)
+      if [[ -n $pkg ]]; then command echo -e "\n$logo"; command pacman -Sii $pkg; else command printf '\n'; fi ;;
+    *) shift 1; local pkg=$(command pacman --color=always -Ssq | command fzf --ansi --color=16 --layout=reverse-list --cycle -e -q "$@" --border --header=$line\
+      --preview="echo -e \"$logo_fzf\"; pacman --color=always -Ss {}" --preview-window=left,69 --preview-label="$btm" --preview-label-pos=1:bottom)
+      if [[ -n $pkg ]]; then command echo -e "\n$logo"; command pacman -Sii $pkg; else command printf '\n'; fi ;;
+    esac ;;
+  list) case $2 in
+    explicit|--explicit|user-installed|--user-installed|manual-installed|--manual-installed) shift 2
+      if [[ -n $@ ]]
+      then local pkg=$(command pacman --color=always -Qeq | command fzf --ansi --color=16 --layout=reverse-list --cycle -e -q "$@" --border --header=$line\
+        --preview="echo -e \"$logo_fzf\"; pactree -c {}" --preview-window=left,69 --preview-label="$btm" --preview-label-pos=1:bottom)
+      else local pkg=$(command pacman --color=always -Qeq | command fzf --ansi --color=16 --layout=reverse-list --cycle -e --border --header=$line\
+        --preview="echo -e \"$logo_fzf\"; pactree -c {}" --preview-window=left,69 --preview-label="$btm" --preview-label-pos=1:bottom)
+      fi; if [[ -n $pkg ]]; then command echo -e "\n$logo"; command pacman --color=always -Qlkk $pkg; else command printf '\n'; fi ;;
+    all|--all|installed|--installed) shift 2
+      if [[ -n $@ ]]
+      then local pkg=$(command pacman --color=always -Qq | command fzf --ansi --color=16 --layout=reverse-list --cycle -e -q "$@" --border --header=$line\
+        --preview="echo -e \"$logo_fzf\"; pactree -c {}" --preview-window=left,69 --preview-label="$btm" --preview-label-pos=1:bottom)
+      else local pkg=$(command pacman --color=always -Qq | command fzf --ansi --color=16 --layout=reverse-list --cycle -e --border --header=$line\
+        --preview="echo -e \"$logo_fzf\"; pactree -c {}" --preview-window=left,69 --preview-label="$btm" --preview-label-pos=1:bottom)
+      fi; if [[ -n $pkg ]]; then command echo -e "\n$logo"; command pacman --color=always -Qlkk $pkg; else command printf '\n'; fi ;;
+    orphan|--orphan) command echo -e "$logo"; shift 2; command pacman --color=always -Qdt $@ ;;
+    group|--group) command echo -e "$logo"; shift 2; command pacman --color=always -Qg $@ ;;
+    *) shift 1
+      if [[ -n $@ ]]
+      then local pkg=$(command pacman --color=always -Qq | command fzf --ansi --color=16 --layout=reverse-list --cycle -e -q "$@" --border --header=$line\
+        --preview="echo -e \"$logo_fzf\"; pactree -c {}" --preview-window=left,69 --preview-label="$btm" --preview-label-pos=1:bottom)
+      else local pkg=$(command pacman --color=always -Qq | command fzf --ansi --color=16 --layout=reverse-list --cycle -e --border --header=$line\
+        --preview="echo -e \"$logo_fzf\"; pactree -c {}" --preview-window=left,69 --preview-label="$btm" --preview-label-pos=1:bottom)
+      fi; if [[ -n $pkg ]]; then command echo -e "\n$logo"; command pacman --color=always -Qlkk $pkg; else command printf '\n'; fi ;;
+      esac ;;
+  version|--version|-V) command echo -e "$logo"; command pacman -V\
+    | GREP_COLORS='ms=01;33' command grep --color=always "\.\|-\|/\|_\|'\|" \
+    | GREP_COLORS='ms=01;33' command grep --color=always '\\\|' ;;
+  help|--help|-h) command echo -e "$logo"; shift 1
+    [[ -z $@ ]] && command echo -e "\e[0;32;40mnew pacman alias:\e[0;34;40m_______________________|________________\e[m
+    pacman upgrade [package(s)]\e[0;34;40m.........|..\e[mupgrade System and install New Package
+    pacman install <package(s)>\e[0;34;40m.........|..\e[minstall New Package
+    pacman remove <package(s)>\e[0;34;40m..........|..\e[mpurge Package and Dependency
+    pacman autoremove [package(s)]\e[0;34;40m......|..\e[mremove Package and Orphan
+    pacman clean\e[0;34;40m........................|..\e[mclean all cach
+    pacman search [keyword(s)]\e[0;34;40m..........|..\e[msearch by keyword
+    pacman info [package(s)]\e[0;34;40m............|..\e[mshow detail info of package
+    pacman list [package(s)]\e[0;34;40m............|..\e[mlist all installed package
+    pacman list explicit [package(s)]\e[0;34;40m...|..\e[mlist all explicit installed package
+    pacman list orphan [package(s)]\e[0;34;40m.....|..\e[mlist orphan package
+    pacman list group [group(s)]\e[0;34;40m........|..\e[mlist package group
+    pacman version\e[0;34;40m......................|..\e[mshow pacman version
+    pacman help [option(s)]\e[0;34;40m.............|..\e[mshow help sheat of option
+\e[0;34;40m----------------------------------------|----------------\e[m"
+    command pacman -h $@ | command grep --color=always '\-\|' ;;
+  ''|logo|--logo) command echo -e "$logo" ;;
+  *) command echo -e "$logo"; command pacman --color=always $@ ;;
+  esac
+}
 EOF
 command ls --color=always -l /etc/bash.bashrc
 command . /etc/bash.bashrc
-
-if [[ ${customize_top} == on ]]
-    then command su -c "mkdir /home/\"${user_name}\"/.config/procps" "${user_name}"
-    command cat << EOF > "/home/${user_name}/.config/procps/toprc"
-top's Config File (Linux processes with windows)
-Id:k, Mode_altscr=0, Mode_irixps=1, Delay_time=1.0, Curwin=0
-Def	fieldscur=  75   81  103  105  119  123  129  137  111  117  115  139   76   78   82   84   86   88   90   92 
-		    94   96   98  100  106  108  112  120  124  126  130  132  134  140  142  144  146  148  150  152 
-		   154  156  158  160  162  164  166  168  170  172  174  176  178  180  182  184  186  188  190  192 
-		   194  196  198  200  202  204  206  208  210  212  214  216  218  220  222  224  226  228  230  232 
-		   234  236  238  240  242  244  246  248  250  252  254  256  258  260  262  264  266  268  270  272 
-	winflags=195382, sortindx=21, maxtasks=0, graph_cpus=2, graph_mems=1, double_up=0, combine_cpus=0, core_types=0
-	summclr=1, msgsclr=3, headclr=1, taskclr=3
-Job	fieldscur=  75   77  115  111  117   80  103  105  137  119  123  128  120   79  139   82   84   86   88   90 
-		    92   94   96   98  100  106  108  112  124  126  130  132  134  140  142  144  146  148  150  152 
-		   154  156  158  160  162  164  166  168  170  172  174  176  178  180  182  184  186  188  190  192 
-		   194  196  198  200  202  204  206  208  210  212  214  216  218  220  222  224  226  228  230  232 
-		   234  236  238  240  242  244  246  248  250  252  254  256  258  260  262  264  266  268  270  272 
-	winflags=195892, sortindx=0, maxtasks=0, graph_cpus=0, graph_mems=0, double_up=0, combine_cpus=0, core_types=0
-	summclr=6, msgsclr=6, headclr=7, taskclr=6
-Mem	fieldscur=  75  117  119  120  123  125  127  129  131  154  132  156  135  136  102  104  111  139   76   78 
-		    80   82   84   86   88   90   92   94   96   98  100  106  108  112  114  140  142  144  146  148 
-		   150  152  158  160  162  164  166  168  170  172  174  176  178  180  182  184  186  188  190  192 
-		   194  196  198  200  202  204  206  208  210  212  214  216  218  220  222  224  226  228  230  232 
-		   234  236  238  240  242  244  246  248  250  252  254  256  258  260  262  264  266  268  270  272 
-	winflags=195892, sortindx=21, maxtasks=0, graph_cpus=0, graph_mems=0, double_up=0, combine_cpus=0, core_types=0
-	summclr=5, msgsclr=5, headclr=4, taskclr=5
-Usr	fieldscur=  75   77   79   81   85   97  115  111  117  137  139   82   86   88   90   92   94   98  100  102 
-		   104  106  108  112  118  120  122  124  126  128  130  132  134  140  142  144  146  148  150  152 
-		   154  156  158  160  162  164  166  168  170  172  174  176  178  180  182  184  186  188  190  192 
-		   194  196  198  200  202  204  206  208  210  212  214  216  218  220  222  224  226  228  230  232 
-		   234  236  238  240  242  244  246  248  250  252  254  256  258  260  262  264  266  268  270  272 
-	winflags=195892, sortindx=3, maxtasks=0, graph_cpus=0, graph_mems=0, double_up=0, combine_cpus=0, core_types=0
-	summclr=3, msgsclr=3, headclr=2, taskclr=3
-Fixed_widest=0, Summ_mscale=1, Task_mscale=0, Zero_suppress=0, Tics_scaled=0
-EOF
-    command chown "${user_name}":"${user_name}" /home/"${user_name}"/.config/procps/toprc
-    command ls --color=always -l /home/"${user_name}"/.config/procps/toprc
-    else [[ -e "/home/${user_name}"/.config/procps ]] && command rm -fr /home/"${user_name}"/.config/procps
-fi
 
 command echo -e "\n\e[1;36;40mset Passcode for \"${user_name}\":\e[m"
 command passwd "${user_name}"

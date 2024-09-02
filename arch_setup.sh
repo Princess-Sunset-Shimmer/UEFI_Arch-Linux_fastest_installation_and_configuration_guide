@@ -781,7 +781,7 @@ if [[ ${fastfetch_clear_alias} == on ]]; then
     "separator":""
   },
   "modules":[
-    {"type":"kernel", "key":"[_/\\arch___> ","keyColor":"blue"},
+    {"type":"kernel", "key":"[_/\\\\arch___> ", "keyColor":"blue"},
     {"type":"packages", "key":"[_Packages_> ", "keyColor":"green", "outputColor":"white"},
     {"type":"localip", "key":"[_Local_IP_> ", "keyColor":"green", "outputColor":"white"},
     {"type":"memory", "key":"[_RAM______> ", "keyColor":"magenta", "format":"[{3}] {1} / {2}"},

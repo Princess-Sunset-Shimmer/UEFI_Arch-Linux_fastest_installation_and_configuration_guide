@@ -853,14 +853,7 @@ install [fastfetch](https://archlinux.org/packages/extra/x86_64/fastfetch/)
 ```py
         pacman -Syu fastfetch
 ```
-generate Config-File to `/home/your_user_name/.config/fastfetch/config.jsonc`
-```py
-        fastfetch --gen-config
-```
-and Create file `/home/your_user_name/.config/fastfetch/logo`
-```py
-        vim /home/your_user_name/.config/fastfetch/logo
-```
+and Create file `/home/your_user_name/.config/fastfetch/logo`\
 then Draw /\\rch Cutie-Mark out ( i means Arch-Logo )
 ```lua
                   .
@@ -882,6 +875,10 @@ $2        /      ,.-+-..      \
   /  _,+'"                 "'+._  \
  /,-'                           `-.\
 '                                   '
+```
+generate Config-File to `/home/your_user_name/.config/fastfetch/config.jsonc`
+```py
+        fastfetch --gen-config
 ```
 now Change the `config.jsonc` file contents to
 ```jsonc
@@ -914,13 +911,35 @@ now Change the `config.jsonc` file contents to
   ]
 }
 ```
+create `/home/your_user_name/.config/fastfetch/config_small.jsonc` file tith Below-Contents:\
+```jsonc
+{
+  "logo":{"source":"arch_small"},
+  "display":{
+    "color":{"output":"cyan"},
+    "separator":""
+  },
+  "modules":[
+    {"type":"kernel", "key":"[_/\\arch___> ", "keyColor":"blue"},
+    {"type":"packages", "key":"[_Packages_> ", "keyColor":"green", "outputColor":"white"},
+    {"type":"localip", "key":"[_Local_IP_> ", "keyColor":"green", "outputColor":"white"},
+    {"type":"memory", "key":"[_RAM______> ", "keyColor":"magenta", "format":"[{3}] {1} / {2}"},
+    {"type":"swap", "key":"[_SWAP_____> ", "keyColor":"magenta", "format":"[{3}] {1} / {2}"},
+    {"type":"disk", "key":"[_Disk_____> ", "keyColor":"magenta", "format":"[{3}] {1} / {2} {9}"},
+    {"type":"battery", "key":"[_Battery__> ", "keyColor":"magenta", "format":"[{4}] {5}"},
+    "break",
+    {"type":"colors", "paddingLeft":9, "symbol":"circle"}
+  ]
+}
+```
 - - - -
 `note`: Thanks for [Carter Li](https://github.com/CarterLi) and other Related-Developers, Configuration like Above has been added to ***Official-Fastfetch-Exsamples***\
 now you can directly test it by run `fastfetch --load-config examples/22.jsonc` along with trying out other developer's config too
 - - - -
 add Below-Alias to `/etc/bash.bashrc`
 ```bash
-alias clear='clear; tput cup 4 0; fastfetch'
+alias fastfetch='ffsc="--load-config $HOME/.config/fastfetch/config_small.jsonc"; (( $COLUMNS > 128 )) && ffsc=""; fastfetch $ffsc'
+alias clear='clear; command tput cup 4 0; fastfetch'
 ```
 - - - -
 then you can use `clear` command as `fastfetch`.\

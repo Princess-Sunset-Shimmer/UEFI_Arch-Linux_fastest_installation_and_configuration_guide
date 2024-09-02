@@ -427,6 +427,13 @@ add `zswap.enabled=1` to `options`
 options root=UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw quiet loglevel=0 zswap.enabled=1
 ```
 ## .improve CPU performance
+- ananicy cpp
+currently, you can Build and Install [ananicy-cpp]() from AUR\
+or Install it from [Chaotic-AUR](https://aur.chaotic.cx/)\
+then you enable `ananicy-cpp` service
+```py
+        systemctl enable ananicy-cpp
+```
 - irq balance
 ```
         pacman -Syu irqbalance

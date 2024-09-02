@@ -853,14 +853,6 @@ install [fastfetch](https://archlinux.org/packages/extra/x86_64/fastfetch/)
 ```py
         pacman -Syu fastfetch
 ```
-add Below-Alias to `/etc/bash.bashrc`
-```bash
-alias clear='clear; tput cup 4 0; fastfetch'
-```
-- - - -
-then you can use `clear` command as `fastfetch`.\
-you even can feed `fastfetch` **--options** to `clear` command
-- - - -
 generate Config-File to `/home/your_user_name/.config/fastfetch/config.jsonc`
 ```py
         fastfetch --gen-config
@@ -925,6 +917,14 @@ now Change the `config.jsonc` file contents to
 - - - -
 `note`: Thanks for [Carter Li](https://github.com/CarterLi) and other Related-Developers, Configuration like Above has been added to ***Official-Fastfetch-Exsamples***\
 now you can directly test it by run `fastfetch --load-config examples/22.jsonc` along with trying out other developer's config too
+- - - -
+add Below-Alias to `/etc/bash.bashrc`
+```bash
+alias clear='clear; tput cup 4 0; fastfetch'
+```
+- - - -
+then you can use `clear` command as `fastfetch`.\
+you even can feed `fastfetch` **--options** to `clear` command
 - - - -
 - generate [top](https://en.wikipedia.org/wiki/Top_(software)) command Config-File
 ```py

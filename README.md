@@ -845,7 +845,8 @@ fzf() {
   esac
 }
 ```
-put Above-Alias to `/etc/bash.bashrc`
+put Above-Alias to `/etc/bash.bashrc`\
+then you can run `. /etc/bash.bashrc` to see the changes
 - fastfetch
 
 install [fastfetch](https://archlinux.org/packages/extra/x86_64/fastfetch/)

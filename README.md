@@ -409,6 +409,14 @@ add Above-Contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
         sysctl -p /etc/sysctl.d/99-sysctl.conf
 ```
 ## .improve Memory performance
+- preload
+
+currently, you can Build and Install (preload)[] from AUR\
+or you can install it from [Chaotic-AUR](https://aur.chaotic.cx/)\
+then you enable `preload` service
+```py
+        systemctl enable preload
+```
 - improve Virtual-Memory performance
 ```lua
 vm.dirty_background_ratio=16
@@ -428,6 +436,7 @@ options root=UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw quiet loglevel=0 zswap
 ```
 ## .improve CPU performance
 - ananicy cpp
+
 currently, you can Build and Install [ananicy-cpp]() from AUR\
 or Install it from [Chaotic-AUR](https://aur.chaotic.cx/)\
 then you enable `ananicy-cpp` service

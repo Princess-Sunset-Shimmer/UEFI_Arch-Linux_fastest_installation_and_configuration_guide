@@ -796,8 +796,8 @@ EOF
     command chown "${user_name}":"${user_name}" /home/"${user_name}"/.config/fastfetch/config_small.jsonc
     command ls --color=always -l /home/"${user_name}"/.config/fastfetch/config_small.jsonc
     command cat << 'EOF' >> /etc/bash.bashrc
-alias clear='ffsc="--load-config $HOME/.config/fastfetch/config_small.jsonc"; (( $COLUMNS > 128 )) && ffsc=""; clear; tput cup 4 0; command fastfetch $ffsc'
 alias fastfetch='ffsc="--load-config $HOME/.config/fastfetch/config_small.jsonc"; (( $COLUMNS > 128 )) && ffsc=""; fastfetch $ffsc'
+alias clear='clear; command tput cup 4 0; fastfetch'
 EOF
 fi
 [[ ${wget_alias} == on ]] && command echo "alias wget='wget -c'" >> /etc/bash.bashrc

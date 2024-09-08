@@ -824,7 +824,7 @@ ls() {
   command grep --color=always '^c\|*\|'
 }
 cd() {
-  command cd "$@"; ls
+  command cd "$@" && ls
 }
 lsblk() {
   command lsblk "$@" |\

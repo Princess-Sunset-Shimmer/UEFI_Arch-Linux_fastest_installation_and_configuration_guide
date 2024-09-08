@@ -707,7 +707,7 @@ ls() {
 }
 
 cd() {
-  command cd "$@"; ls
+  command cd "$@" && ls
 }
 
 file() {

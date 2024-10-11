@@ -411,7 +411,7 @@ add Above-Contents to your `/etc/sysctl.d/99-sysctl.conf` file; then
 ## .improve Memory performance
 - preload
 
-currently, you can Build and Install (preload)[] from AUR\
+currently, you can Build and Install [preload]() from AUR\
 or you can install it from [Chaotic-AUR](https://aur.chaotic.cx/)\
 then you enable `preload` service
 ```py

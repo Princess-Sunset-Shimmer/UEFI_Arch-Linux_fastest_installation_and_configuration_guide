@@ -869,7 +869,7 @@ install [fastfetch](https://archlinux.org/packages/extra/x86_64/fastfetch/)
 ```py
         pacman -Syu fastfetch
 ```
-and Create file `/home/your_user_name/.config/fastfetch/logo`\
+and Create file `~/.config/fastfetch/logo`\
 then Draw /\\rch Cutie-Mark out ( i means Arch-Logo )
 ```lua
                   .
@@ -892,14 +892,14 @@ $2        /      ,.-+-..      \
  /,-'                           `-.\
 '                                   '
 ```
-generate Config-File to `/home/your_user_name/.config/fastfetch/config.jsonc`
+generate Config-File to `~/.config/fastfetch/config.jsonc`
 ```py
         fastfetch --gen-config
 ```
 now Change the `config.jsonc` file contents to
 ```jsonc
 {
-  "logo": {"source": "/home/your_user_name/.config/fastfetch/logo"},
+  "logo": {"source": "~/.config/fastfetch/logo"},
   "display": {
     "color": {"separator": "yellow", "output": "cyan"},
     "separator": " | "
@@ -927,7 +927,7 @@ now Change the `config.jsonc` file contents to
   ]
 }
 ```
-create `/home/your_user_name/.config/fastfetch/config_small.jsonc` file tith Below-Contents:\
+create `~/.config/fastfetch/config_small.jsonc` file tith Below-Contents:\
 ```jsonc
 {
   "logo":{"source":"arch_small"},

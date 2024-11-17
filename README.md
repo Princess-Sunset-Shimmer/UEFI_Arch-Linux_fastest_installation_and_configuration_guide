@@ -684,6 +684,7 @@ alias ip='ip --color=auto'
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
 alias pwd="pwd -LP | command grep --color=auto '/\|'"
+alias free='free -ht'
 alias mount='mount -v'
 alias umount='umount -v'
 alias cp='cp -v'

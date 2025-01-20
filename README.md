@@ -14,7 +14,7 @@ minimal **/\rch Linux** installation starting right now\
 ```c
         sha256sum /directory/archlinux.iso
 ```
-- use either **GUI-Utility** like `rufus` and `etcher` or use `dd` to write your **image_file** to your ***USB-Flash-Drive***
+- use either **GUI-Utility** like `rufus` and `etcher` or cli `dd` to write your **image_file** to your ***USB-Flash-Drive***
 ```c
         dd if=/directory/archlinux.iso of=/dev/usb_flash_drive_file_name status=progress
 ```

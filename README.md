@@ -28,7 +28,7 @@ minimal **/\rch Linux** installation starting right now\
 | Partition             | Mount on       | Size           | Purpose                                  |
 | :-------------------- | :------------- | :------------- | :--------------------------------------- |
 | /dev/your_drive_name1 | `/boot`        | `256M` minium  | for Kernel, Bootloader, EFI and Firmware |
-| /dev/your_deive_name2 | [SWAP]         | `512M` minium  | for Swaping                              |
+| /dev/your_drive_name2 | [SWAP]         | `512M` minium  | for Swaping                              |
 | /dev/your_drive_name3 | `/`            | rest of drive  | for whole /\rch base                     |
 - - - -
 `note`: you can make **[SWAP]** partition as twice bigger as your ***Total-System-Memory-Size***\

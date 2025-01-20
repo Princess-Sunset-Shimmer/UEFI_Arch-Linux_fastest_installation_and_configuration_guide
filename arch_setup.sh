@@ -355,6 +355,7 @@ EOF
   "display":{
     "color":{"separator":"${fastfetch_separator_color}", "output":"${fastfetch_system_info_color}"},
     "separator":"${fastfetch_separator}",
+    "percent":{"type":["num","bar"},
     "bar":{"charElapsed":"I", "charTotal":"_", "borderLeft":"{", "borderRight":"}", "width":16}
   },
   "modules":[ 

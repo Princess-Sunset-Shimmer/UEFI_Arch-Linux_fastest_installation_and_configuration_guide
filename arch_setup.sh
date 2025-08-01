@@ -99,6 +99,7 @@ fold='on'
 enhance_search='on'
 expand_tab='on'
 indent_size='4'
+indent='on'
 
 base_devel='on'
 cmake='on'
@@ -274,6 +275,7 @@ else
     [[ ${line_number} == on ]] && command echo ':set number' >> /etc/vimrc
     [[ ${line_wrap} != on ]] && command echo ':set nowrap' >> /etc/vimrc
     [[ ${expand_tab} == on ]] && command echo ':set expandtab' >> /etc/vimrc
+    [[ ${indent} == on ]] && command echo ":set autoindent\n:set smartindent" >> /etc/vimrc
     [[ ${fold} == on ]] && command echo ':set foldmethod=indent' >> /etc/vimrc
     [[ ${hilight_current_line} == on ]] && command echo ':set cursorline' >> /etc/vimrc
     [[ ${enhance_search} == on ]] && command echo -e ':set incsearch\n:set hlsearch' >> /etc/vimrc

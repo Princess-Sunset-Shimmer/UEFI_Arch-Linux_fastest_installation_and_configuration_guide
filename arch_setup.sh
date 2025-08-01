@@ -270,7 +270,7 @@ if [[ -z ${hblock} ]]
 [[ -z ${nano} ]] && command pacman -Runs --color=always --noconfirm nano
 if [[ -z ${vim} ]]; then command pacman --Runs --color=always --noconfirm vim
 else
-    command echo -e "runtime! archlinux.vim\n:set tabstop=${indent_size}\n:set shiftwidth=${indent_size}" > /etc/vimrc
+    command echo -e "runtime! archlinux.vim\n:set tabstop=${indent_size}\n:set softtabstop=${indent_size}\n:set shiftwidth=${indent_size}" > /etc/vimrc
     [[ ${line_number} == on ]] && command echo ':set number' >> /etc/vimrc
     [[ ${line_wrap} != on ]] && command echo ':set nowrap' >> /etc/vimrc
     [[ ${expand_tab} == on ]] && command echo ':set expandtab' >> /etc/vimrc

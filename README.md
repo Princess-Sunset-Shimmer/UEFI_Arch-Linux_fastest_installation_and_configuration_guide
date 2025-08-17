@@ -965,7 +965,7 @@ now you can directly test it by run `fastfetch --load-config examples/22.jsonc` 
 - - - -
 add Below-Alias to `/etc/bash.bashrc`
 ```bash
-alias fastfetch='ffsc="--load-config $HOME/.config/fastfetch/config_small.jsonc"; (( $COLUMNS > 128 )) && ffsc=""; fastfetch $ffsc'
+alias fastfetch='ffsc="--config $HOME/.config/fastfetch/config_small.jsonc"; (( $COLUMNS > 128 )) && ffsc=""; fastfetch $ffsc'
 alias clear='clear; command tput cup 4 0; fastfetch'
 ```
 - - - -

@@ -358,7 +358,7 @@ EOF
     "color":{"separator":"${fastfetch_separator_color}", "output":"${fastfetch_system_info_color}"},
     "separator":"${fastfetch_separator}",
     "percent":{"type":["num","bar"},
-    "bar":{"char.elapsed":"I", "char.total":"_", "border.left":"{", "border.right":"}", "width":16}
+    "bar":{"char":{"elapsed":"I", "char.total":"_"}, "border":{"left":"{", "border.right":"}"}, "width":16}
   },
   "modules":[ 
     {"type":"kernel", "key":"   /\\\\rch  ", "keyColor":"${fastfetch_system_name_color}"},

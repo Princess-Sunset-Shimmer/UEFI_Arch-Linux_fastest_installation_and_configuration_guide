@@ -812,6 +812,7 @@ alias ip='ip --color=auto'
 alias pwd="pwd -LP | command grep --color=auto '/\|'"
 alias mount='mount -v'
 alias umount='umount -v'
+alias mkdir='mkdir -v'
 alias mv='mv -v'
 alias cp='cp -v'
 alias rm='rm -vf'

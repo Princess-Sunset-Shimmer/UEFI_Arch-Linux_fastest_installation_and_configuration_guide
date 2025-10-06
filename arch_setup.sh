@@ -3,7 +3,6 @@
 host_name="host"
 user_name="user"
 group="audio,video,storage"
-remove_and_link_root_directory='on'
 
 # NETWORK #==================================================================#
 
@@ -258,8 +257,6 @@ command userdel "${user_name}"
 command useradd -m "${user_name}"; [[ -n ${group} ]] && command usermod -aG "${group}" "${user_name}";
 command rm -f /home/"${user_name}"/.bash*; command su -c "mkdir /home/\"${user_name}\"/.config" "${user_name}"
 command ls --color=always -FAXhl /home/"${user_name}"
-if [[ ${remove_and_link_root_directory} == on ]]
-    then command cd /; command rm -fr /root; command ln -sf /home/"${user_name}" /root; command file /root; fi
 
 command echo -e '\e[1;36;40m ***\e[1;34;40m configuring Packages\e[1;36;40m ***\e[m'
 if [[ -z ${hblock} ]]

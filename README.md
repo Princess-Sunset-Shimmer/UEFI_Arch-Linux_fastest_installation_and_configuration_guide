@@ -16,7 +16,7 @@ minimal **/\rch Linux** installation starting right now\
 ```
 - use either **GUI-Utility** like `rufus` and `etcher` or **CLI-Utility** `dd` to write your **image_file** to your ***USB-Flash-Drive***
 ```c
-        dd if=/directory/archlinux.iso of=/dev/usb_flash_drive_file_name status=progress
+        dd status=progress if=/directory/archlinux.iso of=/dev/usb_flash_drive_file_name
 ```
 - boot your built ***Bootable-USB*** then select `*Arch Linux install medium (x86_64, UEFI)`
 ## .Partition, Format, Mount and genfstab for your drive

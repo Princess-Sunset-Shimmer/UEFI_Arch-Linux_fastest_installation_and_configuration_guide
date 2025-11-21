@@ -813,7 +813,6 @@ alias mkdir='mkdir -v'
 alias mv='mv -v'
 alias cp='cp -v'
 alias rm='rm -vf'
-alias dd='dd status=progress'
 alias ps='ps --sort size -uf'
 alias I='su -c'
 ls() {

@@ -86,7 +86,7 @@ initrd /amd-ucode.img
 initrd /initramfs-linux.img
 options root=UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX rw
 ```
-`linux` takes path to kernel;\
+`linux` takes path to kernel; path is relative to ESP mount point\
 `initrd` [initial ram disk](https://en.wikipedia.org/wiki/Initial_ramdisk); you need to load ***amd-ucode.img*** xor ***intel-ucode.img*** to RAM first before load ***initial-ram-file-system*** image\
 `options` takes **Kernel-Parameters**; `root=` set device to support up `\`; replace `UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX` to your own `/` ***Root-Partition-UUID***;\
 which you can find it in previously generated ***fstab*** file, or you can run `findmnt -n -o UUID /` to show it

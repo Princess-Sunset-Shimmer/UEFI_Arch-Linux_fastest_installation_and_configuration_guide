@@ -76,7 +76,7 @@ by this step, you can install other packages such as ***dust, btop, vim, tmux, c
 ## .install Bootloader and enable Microcode updates
 - write your ***Boot-Entry-File*** for Boot-Loader
 ```c
-        mkdir -P /mnt/boot/loader/entries
+        mkdir -p /mnt/boot/loader/entries
         vim /mnt/boot/loader/entries/arch.conf
 ```
 example minimal **Entry-File** contents:

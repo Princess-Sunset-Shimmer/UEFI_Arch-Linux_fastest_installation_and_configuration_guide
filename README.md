@@ -683,7 +683,8 @@ fi
 ```
 then run `. /etc/bash.bashrc` to see the changes
 ## .other packages
-- general command alias
+- general command alias\
+Below-Alias require [fzf](https://archlinux.org/packages/extra/x86_64/fzf/) be installed
 ```bash
 alias ip='ip --color=auto'
 alias grep='grep --color=auto'
@@ -791,7 +792,6 @@ find() {
   if [[ -f $files ]]; then command vim $files; else command echo "$files"; fi
 }
 ```
-Below-Alias require [fzf](https://archlinux.org/packages/extra/x86_64/fzf/) be installed
 ```bash
 history() {
   case $1 in

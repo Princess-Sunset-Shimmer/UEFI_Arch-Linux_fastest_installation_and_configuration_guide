@@ -813,7 +813,7 @@ alias mkdir='mkdir -v'
 alias mv='mv -v'
 alias cp='cp -v'
 alias rm='rm -vf'
-alias ps='ps --sort size -uf'
+alias ps='ps aux --sort=-%mem,-%cpu'
 alias I='su -c'
 ls() {
   command ls --color=always -FAXlh "$@" |\
@@ -891,7 +891,7 @@ kill() {
   -h|help|--help) command kill --help | command grep --color=always '\-\|\[\|\]\||\|' ;;
   *) if [[ -n $2 ]]; then command kill $@
     else local pid=$(\
-      command ps -aux |\
+      command ps aux --sort=-%mem,-%cpu |\
       command fzf -m -e --color=16 --cycle --layout=reverse-list --border --header=$(command printf '%*s' $((($COLUMNS - 8))) | command tr ' ' -) |\
       command awk '{print $2}'); [[ -n $pid ]] && command kill $1 $pid
     fi ;;

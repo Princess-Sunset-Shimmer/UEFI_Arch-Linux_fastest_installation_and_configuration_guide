@@ -824,7 +824,7 @@ kill() {
         then command kill $@
         else
           local pid=$(\
-            command ps -aux |\
+            command ps aux |\
             command fzf -m -e --color=16 --cycle --layout=reverse-list --border\
               --header=$(command printf '%*s' $((($COLUMNS - 8))) |\
             command tr ' ' -) |\

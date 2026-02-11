@@ -696,7 +696,7 @@ alias mkdir='mkdir -v'
 alias cp='cp -v'
 alias mv='mv -v'
 alias rm='rm -vf'
-alias ps='ps -uf'
+alias ps='ps aux --sort=-%mem,-%cpu | command fzf'
 alias I='su -c'
 
 ls() {
@@ -824,7 +824,7 @@ kill() {
         then command kill $@
         else
           local pid=$(\
-            command ps aux  --sort=-%mem,-%cpu |\
+            command ps aux --sort=-%mem,-%cpu |\
             command fzf -m -e --color=16 --cycle --layout=reverse-list --border\
               --header=$(command printf '%*s' $((($COLUMNS - 8))) |\
             command tr ' ' -) |\

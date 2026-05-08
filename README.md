@@ -10,10 +10,14 @@ minimal **/\rch Linux** installation starting right now\
 - step 5: [finish the installation](#finish-the-installation "goto finish-the-installation")
 ## .Make bootable USB and Boot live environment
 - goto [official download page](https://archlinux.org/download/) to download **iso_file**
-- check file SHA256
+- check file SHA256 and BLACKE2b
 ```c
         sha256sum /directory/archlinux.iso
 ```
+```c
+        b2sum /directory/archlinux.iso
+```
+then verify their outputs matched the official hash
 - use either **GUI-Utility** like `rufus` and `etcher` or **CLI-Utility** `dd` to write your **image_file** to your ***USB-Flash-Drive***
 ```c
         dd if=/directory/archlinux.iso of=/dev/usb_flash_drive_file_name status=progress

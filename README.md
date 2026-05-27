@@ -176,6 +176,27 @@ with Contents Below:
 ethernet.cloned-mac-address=random
 wifi.cloned-mac-address=stable
 ```
+- use [dnscrypt-proxy](https://archlinux.org/packages/extra/x86_64/dnscrypt-proxy/) to enhance DNS resolve
+install ***dnscrypt-proxy***
+```c
+        pacman -Syu dnscrypt-proxy
+```
+- - - -
+`note`: default config file `/etc/dnscrypt-proxy/dnscrypt-proxy.toml` works well out of box, you can optionally config it as your need
+- - - -
+rewrite `/etc/resolv.conf` with contents below\
+```py
+nameserver 127.0.0.1 options edns0 ndots:1 single-request-reopen
+```
+and make `/etc/resolv.conf` immutable
+```c
+       chattr +i /etc/resolv.conf
+```
+now enable and restart ***dnscrypt-proxy*** service to use it
+```
+        systemctl enable dnscrypt-proxy
+        systemctl restart dnscrypt-proxy
+```
 - generate [hblock](https://github.com/hectorm/hblock) Hosts-File
 ```c
         pacman -Syu hblock

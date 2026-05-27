@@ -140,6 +140,8 @@ you can login as `root` and configure your brand new **/\rch Linux** now
 ```lua
         echo 'your_new_hostname' > /etc/hostname
 ```
+you can set your hostname as `localhost`, this is a general hostname that enhance privacy\
+you can optionally use `chattr +i /etc/hostname` to make hostname immutable for protect your hostname from being changed by malware
 - create **Unpriviliged-User**
 ```c
         useradd -m your_user_name

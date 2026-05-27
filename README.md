@@ -61,6 +61,9 @@ mount `/` ***Root-Partition*** to `/mnt` first, then mount ***Sub-Partition*** n
         mkdir /mnt/etc
         genfstab -U /mnt > /mnt/etc/fstab
 ```
+- - - -
+`note`: you can use `chattr +i /mnt/etc/fstab` to make fstab immutable for protect fstab be changed by malware
+- - - -
 ## .connect internet
 ***--Just-Wire-In-->***
 ## .install Arch Linux

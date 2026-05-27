@@ -180,6 +180,7 @@ ethernet.cloned-mac-address=random
 wifi.cloned-mac-address=stable
 ```
 - use [dnscrypt-proxy](https://archlinux.org/packages/extra/x86_64/dnscrypt-proxy/) to enhance DNS resolve
+
 install ***dnscrypt-proxy***
 ```c
         pacman -Syu dnscrypt-proxy

@@ -878,7 +878,7 @@ fzf alias
 ```bash
 fzf() {
   case $@ in
-    -h|*help*|*--help*)
+    *-h*|*help*|*--help*)
       command fzf -h |\
       command grep --color=always '\-\|\[\|\]\|' ;;
     *--no-logo*)

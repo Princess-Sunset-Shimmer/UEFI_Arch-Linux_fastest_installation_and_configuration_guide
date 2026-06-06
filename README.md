@@ -799,8 +799,13 @@ findmnt() {
 }
 
 sha256sum() {
-  command sha256sum "$@"
-  command echo -e '\e[1;32;40m----------------------------------------------------------------\e[m\n'
+  case $@ in
+  *-c*|*--check*|*--tag*|*--help*|*--version*)
+    command sha256sum "$@" ;;
+  *)
+    command sha256sum "$@"
+    command echo -e '\e[1;32;40m----------------------------------------------------------------\e[m\n' ;;
+  esac
 }
 ```
 the `find` alias requires [fzf](https://archlinux.org/packages/extra/x86_64/fzf/) and [vim](https://archlinux.org/packages/extra/x86_64/vim/) be installed

@@ -849,8 +849,13 @@ cat() {
   esac
 }
 sha256sum() {
-  command sha256sum "$@"
-  command echo -e '\e[1;32;40m----------------------------------------------------------------\e[m\n'
+  case $@ in
+  *-c*|*--check*|*--tag*|*--help*|*--version*)
+    command sha256sum "$@" ;;
+  *)
+    command sha256sum "$@"
+    command echo -e '\e[1;32;40m----------------------------------------------------------------\e[m\n' ;;
+  esac
 }
 file() {
   command file "$@" |\

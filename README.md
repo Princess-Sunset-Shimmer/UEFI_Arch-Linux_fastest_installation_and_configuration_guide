@@ -815,7 +815,7 @@ find() {
     *-delete*|*-print*|*-fprint*|*-ls*|*-fls*|*-prune*|*-quit*|*-exec*|*-ok*|*--help*|*--version*)
       command find "$@" ;;
     *)
-      local line=$(command printf '%*s' $((($COLUMNS - 8))) | command tr ' ' _)
+      local line=$(command printf '%*s' $((($COLUMNS - 8))) | command tr ' ' -)
       local files=$(\
         command find "$@" 2> /dev/null |\
         command grep --color=always '\.\|' | GREP_COLORS='ms=01;34'\

@@ -829,7 +829,7 @@ find() {
             [[ -f {} ]] && cat -n {} | GREP_COLORS='ms=01;32' grep --color=always '[0-9]\|' | grep --color=always '+\|-\|*\|/\|%\|=\|>\|<\|&\||\|\^\|~\|'"\
           --preview-window=up,50% --preview-label=$line --preview-label-pos=bottom
       )
-      if [[ -f $files ]]; then command vim $files; else command echo "$files"; fi ;;
+      if [[ -f $files ]]; then command file "$files" | command grep -q "text" && command vim "$files" || file "$files"; else command echo "$files"; fi ;;
   esac
 }
 ```

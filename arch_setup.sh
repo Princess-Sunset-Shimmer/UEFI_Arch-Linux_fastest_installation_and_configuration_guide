@@ -881,7 +881,7 @@ find() {
         --preview="printf '\e[1;35;40m'; file {}; echo -e '\e[0;36;40m'$line; printf '\e[0;31;40m'
           [[ -f {} ]] && cat -n {} | GREP_COLORS='ms=01;32' grep --color=always '[0-9]\|' | grep --color=always '+\|-\|*\|/\|%\|=\|>\|<\|&\||\|\^\|~\|'"\
         --preview-window=up,50% --preview-label=$line --preview-label-pos=bottom)
-      if [[ -n $files ]]; then command vim $files; else command echo "$files"; fi ;;
+      if [[ -f $files ]]; then command file "$files" | command grep -q "text" && command vim "$files" || file "$files"; else command echo "$files"; fi ;;
   esac
 }
 history() {
